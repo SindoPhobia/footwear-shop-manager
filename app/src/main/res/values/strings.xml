@@ -6,4 +6,6 @@
     <string name="fragment_appnavigation_button_home">Home</string>
     <string name="fragment_appnavigation_button_sales">Sales</string>
     <string name="fragment_appnavigation_button_stock">Stock</string>
+    <string name="activity_home_text_title">Manager Portal</string>
+    <string name="activity_home_text_sales">Latest Sales</string>
 </resources>

@@ -3,19 +3,16 @@ package com.example.shopmanager;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.example.shopmanager.Home.HomeActivity;
 import com.example.shopmanager.Sales.SalesActivity;
@@ -23,7 +20,7 @@ import com.example.shopmanager.Stock.StockActivity;
 
 public class AppNavigationFragment extends Fragment {
 
-    Button buttonHome, buttonSales, buttonStock;
+    ImageButton buttonHome, buttonSales, buttonStock;
 
     BUTTON highlightedButton;
 
@@ -36,13 +33,13 @@ public class AppNavigationFragment extends Fragment {
 
         switch (button) {
             case HOME:
-                buttonHome.setBackgroundTintList(ContextCompat.getColorStateList(getContext(), R.color.teal_200));
+                buttonHome.setImageResource(R.drawable.icon_home_selected);
                 break;
             case SALES:
-                buttonSales.setBackgroundTintList(ContextCompat.getColorStateList(getContext(), R.color.teal_200));
+                buttonSales.setImageResource(R.drawable.icon_sales_selected);
                 break;
             case STOCK:
-                buttonStock.setBackgroundTintList(ContextCompat.getColorStateList(getContext(), R.color.teal_200));
+                buttonStock.setImageResource(R.drawable.icon_stock_selected);
                 break;
         }
     }

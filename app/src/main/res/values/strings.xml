@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">ShopManager</string>
     <string name="title_activity_home">HomeActivity</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="fragment_appnavigation_button_home">Home</string>
+    <string name="fragment_appnavigation_button_sales">Sales</string>
+    <string name="fragment_appnavigation_button_stock">Stock</string>
 </resources>

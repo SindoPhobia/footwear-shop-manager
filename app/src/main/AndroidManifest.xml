@@ -13,6 +13,17 @@
         android:theme="@style/Theme.ShopManager"
         tools:targetApi="31">
         <activity
+            android:name=".Stock.StockActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Sales.SalesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Home.HomeActivity"
+            android:exported="false"
+            android:label="@string/title_activity_home"
+            android:theme="@style/Theme.ShopManager" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

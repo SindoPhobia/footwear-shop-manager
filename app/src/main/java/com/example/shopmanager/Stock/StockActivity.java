@@ -1,17 +1,16 @@
-package com.example.shopmanager;
+package com.example.shopmanager.Stock;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.example.shopmanager.R;
 
-
-public class MainActivity extends AppCompatActivity {
+public class StockActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
+        setContentView(R.layout.activity_stock);
     }
 }

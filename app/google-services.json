@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "866271157436",
+    "project_id": "tryferos-d4c9a",
+    "storage_bucket": "tryferos-d4c9a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:866271157436:android:4a31fe496ae1dd47e144b9",
+        "android_client_info": {
+          "package_name": "com.example.shopmanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "866271157436-2noeuvtetu4j56dvcip677q1hsado9kk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZMfdWxrqgH2O-3vwcJGN4LBj2xN5mVe0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "866271157436-2noeuvtetu4j56dvcip677q1hsado9kk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

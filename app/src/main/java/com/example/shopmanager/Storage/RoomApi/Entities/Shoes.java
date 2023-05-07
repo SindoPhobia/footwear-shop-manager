@@ -28,8 +28,40 @@ public class Shoes {
     @ColumnInfo (name="code")
     private String code;
 
+    @ColumnInfo (name="sizes")
+    private String sizes;
+
     @ColumnInfo (name = "date")
     private long date;
+
+    @ColumnInfo (name="gender")
+    private int gender;
+
+    public String getSizes() {
+        return sizes;
+    }
+
+    public void setSizes(String sizes) {
+        this.sizes = sizes;
+    }
+
+    public int getGender() {
+        return gender;
+    }
+
+    public Shoes(String name, float price, boolean saleEnabled, float salePrice, String code, long date, int gender) {
+        this.name = name;
+        this.price = price;
+        this.saleEnabled = saleEnabled;
+        this.salePrice = salePrice;
+        this.code = code;
+        this.date = date;
+        this.gender = gender;
+    }
+
+    public void setGender(int gender) {
+        this.gender = gender;
+    }
 
     public int getId() {
         return id;

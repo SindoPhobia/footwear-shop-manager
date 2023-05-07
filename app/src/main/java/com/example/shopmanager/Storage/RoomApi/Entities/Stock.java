@@ -4,10 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 @Entity (tableName = "Stock",
-        primaryKeys = {"shoe_id", "color_id", "brand_id","category_id", "size_id","id"},
+        indices = {
+                @Index(value={"shoe_id", "brand_id", "category_id", "color_id"}, unique = true),
+        },
         foreignKeys = {
                 @ForeignKey(entity = Shoes.class,
                         parentColumns = "id",
@@ -29,14 +32,11 @@ import androidx.room.PrimaryKey;
                         childColumns = "category_id",
                         onDelete = ForeignKey.CASCADE,
                         onUpdate = ForeignKey.CASCADE),
-                @ForeignKey(entity = Sizes.class,
-                        parentColumns = "id",
-                        childColumns = "size_id",
-                        onDelete = ForeignKey.CASCADE,
-                        onUpdate = ForeignKey.CASCADE)
         }
 )
 public class Stock {
+
+    @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id") @NonNull
     private int id;
 
@@ -52,8 +52,25 @@ public class Stock {
     @ColumnInfo(name="brand_id") @NonNull
     private int brandId;
 
-    @ColumnInfo(name="size_id") @NonNull
-    private int sizeId;
+    @ColumnInfo(name="amount") @NonNull
+    private int amount;
+
+    public Stock(int shoeId, int categoryId, int colorId, int brandId) {
+        this.id = id;
+        this.shoeId = shoeId;
+        this.categoryId = categoryId;
+        this.colorId = colorId;
+        this.brandId = brandId;
+        this.amount = 1;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
 
     public int getId() {
         return id;
@@ -95,11 +112,4 @@ public class Stock {
         this.brandId = brandId;
     }
 
-    public int getSizeId() {
-        return sizeId;
-    }
-
-    public void setSizeId(int sizeId) {
-        this.sizeId = sizeId;
-    }
 }

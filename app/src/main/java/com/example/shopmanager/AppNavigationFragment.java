@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -17,6 +16,7 @@ import android.widget.ImageButton;
 import com.example.shopmanager.Home.HomeActivity;
 import com.example.shopmanager.Sales.SalesActivity;
 import com.example.shopmanager.Stock.StockActivity;
+import com.example.shopmanager.Stock.StocksActivity;
 
 public class AppNavigationFragment extends Fragment {
 
@@ -52,7 +52,7 @@ public class AppNavigationFragment extends Fragment {
             highlightedButton = BUTTON.HOME;
         } else if(parentActivity instanceof SalesActivity) {
             highlightedButton = BUTTON.SALES;
-        }else if(parentActivity instanceof StockActivity) {
+        }else if(parentActivity instanceof StocksActivity || parentActivity instanceof StockActivity) {
                 highlightedButton = BUTTON.STOCK;
             }
     }
@@ -67,7 +67,7 @@ public class AppNavigationFragment extends Fragment {
 
         buttonHome.setOnClickListener(viewButtonHome -> changeActivity(viewButtonHome, HomeActivity.class));
         buttonSales.setOnClickListener(viewButtonSales -> changeActivity(viewButtonSales, SalesActivity.class));
-        buttonStock.setOnClickListener(viewButtonStock -> changeActivity(viewButtonStock, StockActivity.class));
+        buttonStock.setOnClickListener(viewButtonStock -> changeActivity(viewButtonStock, StocksActivity.class));
 
         setHighlightButton(highlightedButton);
         return view;

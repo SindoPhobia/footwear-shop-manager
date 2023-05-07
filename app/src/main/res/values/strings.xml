@@ -24,4 +24,5 @@
     <string name="activity_sales_constraint_sales_text_labelsalesweekly">Weekly</string>
     <string name="activity_sales_constraint_filters_edittext_search">Search</string>
     <string name="activity_sales_constraint_filters_button_filters">Filters</string>
+    <string name="activity_stock_list_header_text_title">Inventory</string>
 </resources>

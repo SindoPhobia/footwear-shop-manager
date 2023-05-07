@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/recyclerview_stock_constraint_imagecontainer"
+        android:layout_width="88dp"
+        android:layout_height="88dp"
+        android:background="@drawable/background_rounded_blue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/recyclerview_stock_constraint_imagecontainer_image"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/icon_stock_amount" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/recyclerview_stock_text_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Brand - Name"
+        android:textColor="@color/neutral_900"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/recyclerview_stock_constraint_imagecontainer"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/recyclerview_stock_text_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_rounded_full_blue"
+        android:fontFamily="@font/poppins_semibold"
+        android:padding="2dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:text="Category"
+        android:textColor="@color/neutral_100"
+        android:textSize="8sp"
+        app:layout_constraintStart_toStartOf="@+id/recyclerview_stock_text_name"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerview_stock_text_name" />
+
+    <TextView
+        android:id="@+id/recyclerview_stock_text_gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/background_rounded_full_blue"
+        android:fontFamily="@font/poppins_semibold"
+        android:padding="2dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:text="Gender"
+        android:textColor="@color/neutral_100"
+        android:textSize="8sp"
+        app:layout_constraintStart_toEndOf="@+id/recyclerview_stock_text_category"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerview_stock_text_name" />
+
+    <LinearLayout
+        android:id="@+id/recyclerview_stock_list_sizes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_rounded_full_blue"
+        android:orientation="horizontal"
+        android:padding="2dp"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/recyclerview_stock_constraint_imagecontainer"
+        app:layout_constraintStart_toStartOf="@+id/recyclerview_stock_text_category">
+
+        <TextView
+            android:id="@+id/recyclerview_stock_text_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="40"
+            android:textColor="@color/neutral_100"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/recyclerview_stock_text_sizeamount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins_semibold"
+            android:text=" - 2"
+            android:textColor="@color/blue_300"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/recyclerview_stock_text_discountpercent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/background_rounded_blue"
+        android:fontFamily="@font/poppins_semibold"
+        android:padding="4dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:text="20%"
+        android:textColor="@color/neutral_100"
+        android:textSize="8sp"
+        app:layout_constraintBottom_toBottomOf="@+id/recyclerview_stock_text_currentprice"
+        app:layout_constraintEnd_toStartOf="@+id/recyclerview_stock_text_currentprice"
+        app:layout_constraintTop_toTopOf="@+id/recyclerview_stock_text_currentprice" />
+
+    <TextView
+        android:id="@+id/recyclerview_stock_text_currentprice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="120 €"
+        android:textColor="@color/blue_400"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/recyclerview_stock_text_originalprice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-4dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="120 €"
+        android:textColor="@color/neutral_700"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerview_stock_text_currentprice" />
+
+    <TextView
+        android:id="@+id/recyclerview_stock_text_label_totalstock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Total Stock"
+        android:textColor="@color/neutral_700"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="@+id/recyclerview_stock_constraint_imagecontainer"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/recyclerview_stock_text_totalstock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="7"
+        android:textColor="@color/blue_400"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toStartOf="@+id/recyclerview_stock_image_totalstock"
+        app:layout_constraintTop_toTopOf="@+id/recyclerview_stock_text_label_totalstock" />
+
+    <ImageView
+        android:id="@+id/recyclerview_stock_image_totalstock"
+        android:layout_width="8dp"
+        android:layout_height="8dp"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintBottom_toBottomOf="@+id/recyclerview_stock_text_label_totalstock"
+        app:layout_constraintEnd_toStartOf="@+id/recyclerview_stock_text_label_totalstock"
+        app:layout_constraintTop_toTopOf="@+id/recyclerview_stock_text_label_totalstock"
+        app:srcCompat="@drawable/icon_stock_selected" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

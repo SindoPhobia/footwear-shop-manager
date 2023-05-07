@@ -4,6 +4,7 @@
         <item name="colorPrimaryVariant">@color/blue_700</item>
         <item name="colorOnPrimary">@color/neutral_100</item>
 
+        <item name="android:textAllCaps">false</item>
         <item name="android:windowAnimationStyle">@null</item>
     </style>
 </resources>

@@ -6,6 +6,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import com.example.shopmanager.Storage.Analytics.StockAnalytics;
 import com.example.shopmanager.Storage.RoomApi.Entities.Brands;
 import com.example.shopmanager.Storage.RoomApi.Entities.Categories;
 import com.example.shopmanager.Storage.RoomApi.Entities.Colors;
@@ -205,5 +206,10 @@ public interface StockDao{
             "inner join Brands b1 on b1.id=s1.brand_id " +
             "order by s2.date asc")
     public List<Shoe> getStockAsc();
+
+    @Query("select " +
+            "(select count(*) from Stock) as stockTotal," +
+            "(select count(*) from Categories) as categoriesTotal")
+    public StockAnalytics getStockAnalytics();
 
 }

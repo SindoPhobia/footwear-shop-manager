@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.example.shopmanager.Home.HomeActivity;
+import com.example.shopmanager.Storage.Analytics.SalesAnalytics;
+import com.example.shopmanager.Storage.Firestore.Collections.Sale;
+import com.example.shopmanager.Storage.Firestore.Collections.SoldStock;
 import com.example.shopmanager.Storage.Firestore.FirestoreDB;
 import com.example.shopmanager.Storage.RoomApi.Entities.Brands;
 import com.example.shopmanager.Storage.RoomApi.Entities.Categories;
@@ -20,6 +23,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -30,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static StockDB stockDatabase;
     public static FirestoreDB firestoreDB;
+    public static SalesAnalytics salesAnalytics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +51,9 @@ public class MainActivity extends AppCompatActivity {
 
         firestoreDB = new FirestoreDB();
         firestoreDB.init(FirebaseFirestore.getInstance());
+
+        salesAnalytics = new SalesAnalytics();
+        salesAnalytics.init();
 
         pushData();
         finish();
@@ -96,21 +104,21 @@ public class MainActivity extends AppCompatActivity {
         shoe2.setSizes("1,2,3,4,5,6,7,8,9");
         shoe3.setSizes("1,2,3,4,5,6,7,8,9");
 
-        stockDatabase.stockDao().insertBrands(brand1);
-        stockDatabase.stockDao().insertBrands(brand2);
-        stockDatabase.stockDao().insertBrands(brand3);
+//        stockDatabase.stockDao().insertBrands(brand1);
+//        stockDatabase.stockDao().insertBrands(brand2);
+//        stockDatabase.stockDao().insertBrands(brand3);
+////
+//        stockDatabase.stockDao().insertCategories(cat1);
+//        stockDatabase.stockDao().insertCategories(cat2);
+//        stockDatabase.stockDao().insertCategories(cat3);
 //
-        stockDatabase.stockDao().insertCategories(cat1);
-        stockDatabase.stockDao().insertCategories(cat2);
-        stockDatabase.stockDao().insertCategories(cat3);
-
-        stockDatabase.stockDao().insertColors(color1);
-        stockDatabase.stockDao().insertColors(color2);
-        stockDatabase.stockDao().insertColors(color3);
-
-        stockDatabase.stockDao().insertShoe(shoe1);
-        stockDatabase.stockDao().insertShoe(shoe2);
-        stockDatabase.stockDao().insertShoe(shoe3);
+//        stockDatabase.stockDao().insertColors(color1);
+//        stockDatabase.stockDao().insertColors(color2);
+//        stockDatabase.stockDao().insertColors(color3);
+//
+//        stockDatabase.stockDao().insertShoe(shoe1);
+//        stockDatabase.stockDao().insertShoe(shoe2);
+//        stockDatabase.stockDao().insertShoe(shoe3);
 ////
 //        stockDatabase.stockDao().insertStock(stock1);
 //        stockDatabase.stockDao().insertStock(stock2);
@@ -122,6 +130,8 @@ public class MainActivity extends AppCompatActivity {
         Log.d("items", shoe.parseSizes(shoe.getSizesFormatted()));
         Log.d("items", String.valueOf(shoes.size()));
         Log.d("items", shoe.toString());
+
+        Log.d("total", String.valueOf(stockDatabase.stockDao().getStockAnalytics()));
 
 
     }

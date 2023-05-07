@@ -1,6 +1,15 @@
 package com.example.shopmanager.Storage.Firestore.Collections;
 
+import android.util.Log;
+
+import com.google.firebase.firestore.DocumentSnapshot;
+
+import org.checkerframework.checker.units.qual.A;
+
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 
 public class Sale {
     private String seller;
@@ -9,11 +18,61 @@ public class Sale {
 
     private SoldStock[] soldStock;
 
+    public Sale(){}
+
     public Sale(String seller, String id, long date, SoldStock[] stock_ids) {
         this.seller = seller;
         this.id = id;
         this.date = date;
         this.soldStock = stock_ids;
+    }
+
+    public HashMap<String, Object> parseSale(){
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("seller", seller);
+        map.put("id", id);
+        map.put("date", date);
+
+        ArrayList<HashMap<String, Object>> listSold = new ArrayList<>();
+        for(SoldStock item : soldStock){
+            HashMap<String, Object> tmp = new HashMap<>();
+            tmp.put("color", item.getColor());
+            tmp.put("price", item.getPrice());
+            tmp.put("size", item.getSize());
+            tmp.put("stock_id", item.getStock_id());
+            listSold.add(tmp);
+        }
+
+        map.put("soldStock", listSold);
+        return map;
+    }
+
+    public static Sale convertSale(DocumentSnapshot snap){
+        HashMap<String, Object> map = (HashMap<String, Object>) snap.getData();
+        Object obj = map.get("soldStock");
+        ArrayList<SoldStock> soldStock = new ArrayList<>();
+        if(obj instanceof ArrayList<?>){
+            ArrayList items = (ArrayList) obj;
+            for (Object item : items){
+                if(item instanceof HashMap<?, ?>){
+                    HashMap<String, Object> data = (HashMap<String, Object>) item;
+                    soldStock.add(
+                            new SoldStock(
+                                    data.get("stock_id").toString(),
+                                    Integer.parseInt(data.get("size").toString()),
+                                    data.get("color").toString(),
+                                    Float.parseFloat(data.get("price").toString())
+                            )
+                    );
+                }
+            }
+        }
+        return new Sale(
+                map.get("seller").toString(),
+                map.get("id").toString(),
+                Long.parseLong(map.get("date").toString()),
+                soldStock.stream().toArray(SoldStock[]::new)
+        );
     }
 
     @Override
@@ -50,11 +109,11 @@ public class Sale {
         this.date = date;
     }
 
-    public SoldStock[] getStock_ids() {
+    public SoldStock[] getSoldStock() {
         return soldStock;
     }
 
-    public void setStock_ids(SoldStock[] stock_ids) {
+    public void setSoldStock(SoldStock[] stock_ids) {
         this.soldStock = stock_ids;
     }
 }

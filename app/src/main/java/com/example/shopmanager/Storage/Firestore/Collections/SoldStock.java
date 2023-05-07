@@ -6,6 +6,8 @@ public class SoldStock {
     private String color;
     private float price;
 
+    public SoldStock(){}
+
     public SoldStock(String stock_id, int size, String color, float price) {
         this.stock_id = stock_id;
         this.size = size;

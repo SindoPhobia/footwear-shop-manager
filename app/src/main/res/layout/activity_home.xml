@@ -70,7 +70,7 @@
                             android:id="@+id/activity_sales_constraint_analyticssales"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="8dp"
+                            android:layout_marginEnd="16dp"
                             android:background="@drawable/background_rounded_blue"
                             android:clipToPadding="false"
                             android:paddingTop="16dp"
@@ -283,7 +283,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:layout_marginEnd="8dp"
+                        android:layout_marginEnd="16dp"
                         android:fontFamily="@font/poppins_semibold"
                         android:text="@string/activity_home_button_salesviewmore"
                         android:textSize="16sp"
@@ -319,11 +319,13 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
                         android:backgroundTint="@color/neutral_100"
                         android:fontFamily="@font/poppins_semibold"
                         android:text="@string/activity_home_button_stocklatest"
                         android:textColor="@color/blue_400"
                         android:textSize="16sp"
+                        app:layout_constraintEnd_toStartOf="@+id/activity_home_constraint_stock_button_topstock"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -332,14 +334,13 @@
                         style="?android:attr/borderlessButtonStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
                         android:layout_marginTop="16dp"
                         android:backgroundTint="@color/blue_400"
                         android:fontFamily="@font/poppins_semibold"
                         android:text="@string/activity_home_button_stocktop"
                         android:textSize="16sp"
-                        app:layout_constraintStart_toEndOf="@+id/activity_home_constraint_stock_button_lateststock"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:layout_editor_absoluteX="171dp" />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/activity_home_constraint_stock_recyclerview"
@@ -360,7 +361,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:layout_marginEnd="8dp"
+                        android:layout_marginEnd="16dp"
                         android:backgroundTint="@color/neutral_100"
                         android:fontFamily="@font/poppins_semibold"
                         android:text="@string/activity_home_button_stockviewmore"

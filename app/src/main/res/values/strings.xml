@@ -20,4 +20,8 @@
     <string name="activity_home_constraint_analyticstock_text_title">Stock</string>
     <string name="activity_home_constraint_analyticstock_text_labeltotalstock">Total Items</string>
     <string name="activity_home_constraint_analyticstock_text_labelcategorytypes">Categories</string>
+    <string name="activity_sales_constraint_sales_text_labelsalesmonthly">Monthly</string>
+    <string name="activity_sales_constraint_sales_text_labelsalesweekly">Weekly</string>
+    <string name="activity_sales_constraint_filters_edittext_search">Search</string>
+    <string name="activity_sales_constraint_filters_button_filters">Filters</string>
 </resources>

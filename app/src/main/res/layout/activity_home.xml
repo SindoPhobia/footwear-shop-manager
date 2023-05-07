@@ -67,7 +67,7 @@
                         android:orientation="horizontal">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
-                            android:id="@+id/activity_home_constraint_analyticssales"
+                            android:id="@+id/activity_sales_constraint_analyticssales"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8dp"

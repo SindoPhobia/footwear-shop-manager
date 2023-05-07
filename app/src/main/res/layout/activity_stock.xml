@@ -7,7 +7,7 @@
     tools:context=".Stock.StockActivity">
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerView3"
+        android:id="@+id/activity_stock_fragment_navigation"
         android:name="com.example.shopmanager.AppNavigationFragment"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -17,21 +17,180 @@
         tools:layout="@layout/fragment_app_navigation" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="409dp"
-        android:layout_height="681dp"
-        app:layout_constraintBottom_toTopOf="@+id/fragmentContainerView3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/activity_stock_fragment_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/activity_sales_constraint_filters"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="STOCK"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:clipToPadding="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/activity_sales_constraint_filters_constraint_search"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="64dp"
+                android:background="@drawable/background_rounded_blue"
+                android:baselineAligned="false"
+                android:gravity="center"
+                android:paddingStart="24dp"
+                android:paddingEnd="24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/activity_sales_constraint_filters_button_filters"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/activity_sales_constraint_filters_edittext_search"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/icon_search" />
+
+                <EditText
+                    android:id="@+id/activity_sales_constraint_filters_edittext_search"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/blue_400"
+                    android:ems="10"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:hint="@string/activity_sales_constraint_filters_edittext_search"
+                    android:inputType="text"
+                    android:textColor="@color/neutral_100"
+                    android:textColorHint="@color/blue_300"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <Button
+                android:id="@+id/activity_sales_constraint_filters_button_filters"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="@string/activity_sales_constraint_filters_button_filters"
+                android:textColor="@color/blue_300"
+                app:icon="@drawable/icon_filter"
+                app:iconTint="@color/blue_300"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/activity_sales_constraint_filterlist"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_sales_constraint_filters">
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/activity_sale_filterlist_filter_category"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/background_rounded_blue"
+                        android:fontFamily="@font/poppins"
+                        android:padding="2dp"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:text="Sneaker"
+                        android:textColor="@color/blue_300"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/activity_sale_filterlist_filter_category3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/background_rounded_blue"
+                        android:fontFamily="@font/poppins"
+                        android:padding="2dp"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:text="Date: Ascending"
+                        android:textColor="@color/blue_300"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/activity_sale_filterlist_filter_category4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/background_rounded_blue"
+                        android:fontFamily="@font/poppins"
+                        android:padding="2dp"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:text="Price: 20 € - 100 €"
+                        android:textColor="@color/blue_300"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/activity_stock_recyclerview_stock"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/activity_sales_constraint_filterlist" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/activity_stock_button_createnew"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:clickable="true"
+            app:backgroundTint="@color/blue_700"
+            app:layout_constraintBottom_toBottomOf="@+id/activity_stock_recyclerview_stock"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/icon_plus"
+            app:tint="@color/neutral_100" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -110,9 +110,10 @@
             android:layout_height="18dp"
             android:layout_marginStart="72dp"
             android:layout_marginTop="12dp"
+            android:tint="@color/blue_400"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/icon_stock_selected" />
+            app:srcCompat="@drawable/icon_stock" />
 
         <LinearLayout
             android:id="@+id/recyclerview_sale_list_items"

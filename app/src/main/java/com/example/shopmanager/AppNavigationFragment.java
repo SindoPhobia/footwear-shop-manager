@@ -21,6 +21,7 @@ import com.example.shopmanager.Stocks.StocksActivity;
 public class AppNavigationFragment extends Fragment {
 
     ImageButton buttonHome, buttonSales, buttonStock;
+    View indicatorHome, indicatorSales, indicatorStock;
 
     BUTTON highlightedButton;
 
@@ -33,13 +34,16 @@ public class AppNavigationFragment extends Fragment {
 
         switch (button) {
             case HOME:
-                buttonHome.setImageResource(R.drawable.icon_home_selected);
+                buttonHome.setImageTintList(getContext().getColorStateList(R.color.blue_400));
+                indicatorHome.setVisibility(View.VISIBLE);
                 break;
             case SALES:
-                buttonSales.setImageResource(R.drawable.icon_sales_selected);
+                buttonSales.setImageTintList(getContext().getColorStateList(R.color.blue_400));
+                indicatorSales.setVisibility(View.VISIBLE);
                 break;
             case STOCK:
-                buttonStock.setImageResource(R.drawable.icon_stock_selected);
+                buttonStock.setImageTintList(getContext().getColorStateList(R.color.blue_400));
+                indicatorStock.setVisibility(View.VISIBLE);
                 break;
         }
     }
@@ -64,6 +68,10 @@ public class AppNavigationFragment extends Fragment {
         buttonHome = view.findViewById(R.id.fragment_appnavigation_button_home);
         buttonSales = view.findViewById(R.id.fragment_appnavigation_button_sales);
         buttonStock = view.findViewById(R.id.fragment_appnavigation_button_stock);
+
+        indicatorHome = view.findViewById(R.id.fragment_appnavigation_indicator_home);
+        indicatorSales = view.findViewById(R.id.fragment_appnavigation_indicator_sales);
+        indicatorStock = view.findViewById(R.id.fragment_appnavigation_indicator_stock);
 
         buttonHome.setOnClickListener(viewButtonHome -> changeActivity(viewButtonHome, HomeActivity.class));
         buttonSales.setOnClickListener(viewButtonSales -> changeActivity(viewButtonSales, SalesActivity.class));

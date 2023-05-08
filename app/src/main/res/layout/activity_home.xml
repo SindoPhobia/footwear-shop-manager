@@ -68,7 +68,7 @@
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/activity_home_constraint_analyticssales"
-                            android:layout_width="wrap_content"
+                            android:layout_width="256dp"
                             android:layout_height="match_parent"
                             android:layout_marginEnd="16dp"
                             android:background="@drawable/background_rounded_blue"
@@ -116,12 +116,10 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="48dp"
-                                android:layout_marginEnd="24dp"
                                 android:fontFamily="@font/poppins_semibold"
                                 android:text="12.360 €"
                                 android:textColor="@color/neutral_100"
                                 android:textSize="12sp"
-                                app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toEndOf="@+id/activity_home_constraint_sales_text_labelsalestotal"
                                 app:layout_constraintTop_toTopOf="@+id/activity_home_constraint_sales_text_salestotal" />
 
@@ -150,7 +148,7 @@
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:id="@+id/activity_home_constraint_analyticstock"
-                            android:layout_width="wrap_content"
+                            android:layout_width="256dp"
                             android:layout_height="match_parent"
                             android:layout_marginEnd="8dp"
                             android:background="@drawable/background_rounded_blue"

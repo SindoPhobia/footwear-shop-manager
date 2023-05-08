@@ -52,25 +52,13 @@ public class Stock {
     @ColumnInfo(name="brand_id") @NonNull
     private int brandId;
 
-    @ColumnInfo(name="amount") @NonNull
-    private int amount;
-
     public Stock(int shoeId, int categoryId, int colorId, int brandId) {
-        this.id = id;
         this.shoeId = shoeId;
         this.categoryId = categoryId;
         this.colorId = colorId;
         this.brandId = brandId;
-        this.amount = 1;
     }
 
-    public int getAmount() {
-        return amount;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
 
     public int getId() {
         return id;

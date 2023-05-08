@@ -1,6 +1,7 @@
 package com.example.shopmanager.Storage.RoomApi;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 public class Shoe {
@@ -16,6 +17,7 @@ public class Shoe {
     private String color;
 
     private String sizes;
+    private int gender;
 
     public String getSizes() {
         return sizes;
@@ -25,16 +27,53 @@ public class Shoe {
         this.sizes = sizes;
     }
 
-    private int gender;
 
-    private static final String SEPARATOR = ",";
-
-    public List<Integer> getSizesFormatted(){
-        return Arrays.asList(Arrays.stream(this.sizes.split(SEPARATOR)).map(size -> Integer.parseInt(size)).toArray(Integer[]::new));
+    public Shoe(int id, String name, String code, long date, float price, boolean sale_enabled, float sale_price, String category, String brand, String color, String sizes, int gender) {
+        this.id = id;
+        this.name = name;
+        this.code = code;
+        this.date = date;
+        this.price = price;
+        this.sale_enabled = sale_enabled;
+        this.sale_price = sale_price;
+        this.category = category;
+        this.brand = brand;
+        this.color = color;
+        this.sizes = sizes;
+        this.gender = gender;
     }
 
-    public String parseSizes(List<Integer> sizes){
-        return sizes.stream().map(item -> String.valueOf(item)).reduce((a,b) -> a+","+b).get();
+    private static final String SIZE_SEPARATOR = ",";
+    private static final String AMOUNT_SEPARATOR = "-";
+
+    public HashMap<String, Integer> getSizesFormatted(){
+        HashMap<String, Integer> data = new HashMap<>();
+        String[] sizes = this.sizes.split(SIZE_SEPARATOR);
+        for(String size : sizes){
+            String[] sizeData = size.split(AMOUNT_SEPARATOR);
+            data.put(sizeData[0], Integer.parseInt(sizeData[1]));
+        }
+        return data;
+    }
+
+    public String parseSizes(HashMap<String, Integer> sizes){
+        return sizes.entrySet().stream().map((item) -> item.getKey()+AMOUNT_SEPARATOR+item.getValue()).reduce((a,b) -> a+SIZE_SEPARATOR+b).get();
+    }
+
+    public void addSize(String size, int amount){
+        editSizeCount(size, amount);
+    }
+
+    public void removeSize(String size){
+        HashMap<String, Integer> data = getSizesFormatted();
+        data.remove(size);
+        this.sizes = parseSizes(data);
+    }
+
+    public void editSizeCount(String size, int newCount){
+        HashMap<String, Integer> data = getSizesFormatted();
+        data.put(size, newCount);
+        this.sizes = parseSizes(data);
     }
 
     public int getId() {

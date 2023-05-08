@@ -36,7 +36,7 @@
             android:fontFamily="@font/poppins_semibold"
             android:text="@string/activity_home_text_title"
             android:textColor="@color/neutral_900"
-            android:textSize="24sp"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -78,12 +78,13 @@
 
                             <ImageView
                                 android:id="@+id/activity_home_constraint_sales_icon_analytics"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
                                 android:layout_marginStart="24dp"
                                 app:layout_constraintBottom_toBottomOf="@+id/activity_home_constraint_analyticssales_text_title"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="@+id/activity_home_constraint_analyticssales_text_title"
+                                app:layout_constraintVertical_bias="0.40"
                                 app:srcCompat="@drawable/icon_sales_circled" />
 
                             <TextView
@@ -94,7 +95,7 @@
                                 android:fontFamily="@font/poppins_semibold"
                                 android:text="@string/activity_home_constraint_analyticssales_text_title"
                                 android:textColor="@color/neutral_100"
-                                android:textSize="18sp"
+                                android:textSize="14sp"
                                 app:layout_constraintStart_toEndOf="@+id/activity_home_constraint_sales_icon_analytics"
                                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -106,7 +107,7 @@
                                 android:fontFamily="@font/poppins_semibold"
                                 android:text="12.360 €"
                                 android:textColor="@color/neutral_100"
-                                android:textSize="16sp"
+                                android:textSize="12sp"
                                 app:layout_constraintStart_toStartOf="@+id/activity_home_constraint_sales_icon_analytics"
                                 app:layout_constraintTop_toBottomOf="@+id/activity_home_constraint_analyticssales_text_title" />
 
@@ -119,7 +120,7 @@
                                 android:fontFamily="@font/poppins_semibold"
                                 android:text="12.360 €"
                                 android:textColor="@color/neutral_100"
-                                android:textSize="16sp"
+                                android:textSize="12sp"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toEndOf="@+id/activity_home_constraint_sales_text_labelsalestotal"
                                 app:layout_constraintTop_toTopOf="@+id/activity_home_constraint_sales_text_salestotal" />
@@ -131,7 +132,7 @@
                                 android:fontFamily="@font/poppins"
                                 android:text="@string/activity_home_text_analyticstotallabel"
                                 android:textColor="@color/blue_300"
-                                android:textSize="14sp"
+                                android:textSize="12sp"
                                 app:layout_constraintStart_toStartOf="@+id/activity_home_constraint_sales_text_salestotal"
                                 app:layout_constraintTop_toBottomOf="@+id/activity_home_constraint_sales_text_salestotal" />
 
@@ -142,7 +143,7 @@
                                 android:fontFamily="@font/poppins"
                                 android:text="@string/activity_home_text_analyticstodaylabel"
                                 android:textColor="@color/blue_300"
-                                android:textSize="14sp"
+                                android:textSize="12sp"
                                 app:layout_constraintStart_toStartOf="@+id/activity_home_constraint_sales_text_salestoday"
                                 app:layout_constraintTop_toBottomOf="@+id/activity_home_constraint_sales_text_salestoday" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -160,11 +161,12 @@
 
                             <ImageView
                                 android:id="@+id/activity_home_constraint_analyticstock_icon_stock"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
                                 app:layout_constraintBottom_toBottomOf="@+id/activity_home_constraint_analyticstock_text_title"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="@+id/activity_home_constraint_analyticstock_text_title"
+                                app:layout_constraintVertical_bias="0.40"
                                 app:srcCompat="@drawable/icon_stock_circled" />
 
                             <TextView
@@ -175,7 +177,7 @@
                                 android:fontFamily="@font/poppins_semibold"
                                 android:text="@string/activity_home_constraint_analyticstock_text_title"
                                 android:textColor="@color/neutral_100"
-                                android:textSize="18sp"
+                                android:textSize="14sp"
                                 app:layout_constraintStart_toEndOf="@+id/activity_home_constraint_analyticstock_icon_stock"
                                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -187,7 +189,7 @@
                                 android:fontFamily="@font/poppins_semibold"
                                 android:text="462"
                                 android:textColor="@color/neutral_100"
-                                android:textSize="16sp"
+                                android:textSize="12sp"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@+id/activity_home_constraint_analyticstock_text_title" />
 
@@ -195,7 +197,7 @@
                                 android:id="@+id/activity_home_constraint_analyticstock_icon_totalstock"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
+                                android:layout_marginStart="4dp"
                                 app:layout_constraintBottom_toBottomOf="@+id/activity_home_constraint_analyticstock_text_totalstock"
                                 app:layout_constraintStart_toEndOf="@+id/activity_home_constraint_analyticstock_text_totalstock"
                                 app:layout_constraintTop_toTopOf="@+id/activity_home_constraint_analyticstock_text_totalstock"
@@ -208,6 +210,7 @@
                                 android:fontFamily="@font/poppins"
                                 android:text="@string/activity_home_constraint_analyticstock_text_labeltotalstock"
                                 android:textColor="@color/blue_300"
+                                android:textSize="12sp"
                                 app:layout_constraintStart_toStartOf="@+id/activity_home_constraint_analyticstock_text_totalstock"
                                 app:layout_constraintTop_toBottomOf="@+id/activity_home_constraint_analyticstock_text_totalstock" />
 
@@ -219,6 +222,7 @@
                                 android:fontFamily="@font/poppins_semibold"
                                 android:text="27"
                                 android:textColor="@color/neutral_100"
+                                android:textSize="12sp"
                                 app:layout_constraintStart_toEndOf="@+id/activity_home_constraint_analyticstock_text_labeltotalstock"
                                 app:layout_constraintTop_toTopOf="@+id/activity_home_constraint_analyticstock_text_totalstock" />
 
@@ -226,7 +230,7 @@
                                 android:id="@+id/imageView4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
+                                android:layout_marginStart="4dp"
                                 app:layout_constraintBottom_toBottomOf="@+id/activity_home_constraint_analyticstock_text_stockcategories"
                                 app:layout_constraintStart_toEndOf="@+id/activity_home_constraint_analyticstock_text_stockcategories"
                                 app:layout_constraintTop_toTopOf="@+id/activity_home_constraint_analyticstock_text_stockcategories"
@@ -239,7 +243,7 @@
                                 android:fontFamily="@font/poppins"
                                 android:text="@string/activity_home_constraint_analyticstock_text_labelcategorytypes"
                                 android:textColor="@color/blue_300"
-                                android:textSize="14sp"
+                                android:textSize="12sp"
                                 app:layout_constraintStart_toStartOf="@+id/activity_home_constraint_analyticstock_text_stockcategories"
                                 app:layout_constraintTop_toBottomOf="@+id/activity_home_constraint_analyticstock_text_stockcategories" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -262,7 +266,7 @@
                         android:fontFamily="@font/poppins_semibold"
                         android:text="@string/activity_home_text_sales"
                         android:textColor="@color/neutral_900"
-                        android:textSize="20sp"
+                        android:textSize="16sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -284,9 +288,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="16dp"
-                        android:fontFamily="@font/poppins_semibold"
+                        android:fontFamily="@font/poppins"
+                        android:includeFontPadding="false"
                         android:text="@string/activity_home_button_salesviewmore"
-                        android:textSize="16sp"
+                        android:textSize="12sp"
                         app:layout_constraintEnd_toStartOf="@+id/activity_home_constraint_latestsales_button_createnew"
                         app:layout_constraintStart_toStartOf="@+id/activity_home_constraint_latestsales_recyclerview_sales"
                         app:layout_constraintTop_toBottomOf="@+id/activity_home_constraint_latestsales_recyclerview_sales" />
@@ -297,12 +302,14 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:backgroundTint="@color/blue_700"
-                        android:fontFamily="@font/poppins_semibold"
+                        android:fontFamily="@font/poppins"
+                        android:includeFontPadding="false"
                         android:isScrollContainer="false"
                         android:text="@string/activity_home_button_salescreatenew"
-                        android:textSize="16sp"
+                        android:textSize="12sp"
                         app:icon="@drawable/icon_plus"
                         app:iconGravity="end"
+                        app:iconSize="12dp"
                         app:layout_constraintEnd_toEndOf="@+id/activity_home_constraint_latestsales_recyclerview_sales"
                         app:layout_constraintTop_toBottomOf="@+id/activity_home_constraint_latestsales_recyclerview_sales" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -320,10 +327,11 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
                         android:backgroundTint="@color/neutral_100"
-                        android:fontFamily="@font/poppins_semibold"
+                        android:fontFamily="@font/poppins"
+                        android:includeFontPadding="false"
                         android:text="@string/activity_home_button_stocklatest"
                         android:textColor="@color/blue_400"
-                        android:textSize="16sp"
+                        android:textSize="12sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -335,14 +343,15 @@
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
                         android:backgroundTint="@color/blue_400"
-                        android:fontFamily="@font/poppins_semibold"
+                        android:fontFamily="@font/poppins"
+                        android:includeFontPadding="false"
                         android:text="@string/activity_home_button_stocktop"
-                        android:textSize="16sp"
+                        android:textSize="12sp"
                         app:layout_constraintStart_toEndOf="@+id/activity_home_constraint_stock_button_lateststock"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/activity_home_constraint_stock_recyclerview"
+                        android:id="@+id/activity_home_constraint_stock_recyclerview_stock"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
@@ -362,13 +371,14 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="16dp"
                         android:backgroundTint="@color/neutral_100"
-                        android:fontFamily="@font/poppins_semibold"
+                        android:fontFamily="@font/poppins"
+                        android:includeFontPadding="false"
                         android:text="@string/activity_home_button_stockviewmore"
                         android:textColor="@color/blue_400"
-                        android:textSize="16sp"
+                        android:textSize="12sp"
                         app:layout_constraintEnd_toStartOf="@+id/activity_home_constraint_stock_button_createnew"
-                        app:layout_constraintStart_toStartOf="@+id/activity_home_constraint_stock_recyclerview"
-                        app:layout_constraintTop_toBottomOf="@+id/activity_home_constraint_stock_recyclerview" />
+                        app:layout_constraintStart_toStartOf="@+id/activity_home_constraint_stock_recyclerview_stock"
+                        app:layout_constraintTop_toBottomOf="@+id/activity_home_constraint_stock_recyclerview_stock" />
 
                     <Button
                         android:id="@+id/activity_home_constraint_stock_button_createnew"
@@ -376,13 +386,15 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:backgroundTint="@color/blue_700"
-                        android:fontFamily="@font/poppins_semibold"
+                        android:fontFamily="@font/poppins"
+                        android:includeFontPadding="false"
                         android:text="@string/activity_home_button_stockcreatenew"
-                        android:textSize="16sp"
+                        android:textSize="12sp"
                         app:icon="@drawable/icon_plus"
                         app:iconGravity="end"
-                        app:layout_constraintEnd_toEndOf="@+id/activity_home_constraint_stock_recyclerview"
-                        app:layout_constraintTop_toBottomOf="@+id/activity_home_constraint_stock_recyclerview" />
+                        app:iconSize="12dp"
+                        app:layout_constraintEnd_toEndOf="@+id/activity_home_constraint_stock_recyclerview_stock"
+                        app:layout_constraintTop_toBottomOf="@+id/activity_home_constraint_stock_recyclerview_stock" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

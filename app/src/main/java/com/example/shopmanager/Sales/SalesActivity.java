@@ -6,11 +6,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-<<<<<<< Updated upstream
-=======
-import android.widget.EditText;
->>>>>>> Stashed changes
-import android.widget.SearchView;
 
 import com.example.shopmanager.MainActivity;
 import com.example.shopmanager.R;

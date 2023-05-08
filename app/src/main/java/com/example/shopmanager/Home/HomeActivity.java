@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.example.shopmanager.MainActivity;
@@ -52,7 +53,7 @@ public class HomeActivity extends AppCompatActivity {
         ArrayList<SaleDisplayModel> homeSalesList = new ArrayList<>();
 
         int startCount = Math.min(MainActivity.sales.size(), SALES_DISPLAY_COUNT);
-        for(int i = startCount - 1; i == 0; i--) {
+        for(int i = startCount - 1; i >= 0; i--) {
             homeSalesList.add(MainActivity.sales.get(i));
         }
 

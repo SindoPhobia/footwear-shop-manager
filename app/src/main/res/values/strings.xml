@@ -15,7 +15,7 @@
     <string name="activity_home_button_stockviewmore">View More</string>
     <string name="activity_home_button_stockcreatenew">Create</string>
     <string name="activity_home_constraint_analyticssales_text_title">Sales</string>
-    <string name="activity_home_text_analyticstotallabel">Total</string>
+    <string name="activity_sales_text_analyticstotallabel">Total</string>
     <string name="activity_home_text_analyticstodaylabel">Today</string>
     <string name="activity_home_constraint_analyticstock_text_title">Stock</string>
     <string name="activity_home_constraint_analyticstock_text_labeltotalstock">Total Items</string>
@@ -25,4 +25,5 @@
     <string name="activity_sales_constraint_filters_edittext_search">Search</string>
     <string name="activity_sales_constraint_filters_button_filters">Filters</string>
     <string name="activity_stock_list_header_text_title">Inventory</string>
+    <string name="activity_home_constraint_analyticstock_text_labeltotalsales">Total Sales</string>
 </resources>

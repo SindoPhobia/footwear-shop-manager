@@ -67,9 +67,9 @@
                         android:orientation="horizontal">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
-                            android:id="@+id/activity_sales_constraint_analyticssales"
+                            android:id="@+id/activity_home_constraint_analyticssales"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_marginEnd="16dp"
                             android:background="@drawable/background_rounded_blue"
                             android:clipToPadding="false"
@@ -130,7 +130,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/poppins"
-                                android:text="@string/activity_home_text_analyticstotallabel"
+                                android:text="@string/activity_home_constraint_analyticstock_text_labeltotalsales"
                                 android:textColor="@color/blue_300"
                                 android:textSize="12sp"
                                 app:layout_constraintStart_toStartOf="@+id/activity_home_constraint_sales_text_salestotal"
@@ -370,12 +370,14 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="16dp"
                         android:backgroundTint="@color/neutral_100"
                         android:fontFamily="@font/poppins"
                         android:includeFontPadding="false"
                         android:text="@string/activity_home_button_stockviewmore"
                         android:textColor="@color/blue_400"
                         android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/activity_home_constraint_stock_button_createnew"
                         app:layout_constraintStart_toStartOf="@+id/activity_home_constraint_stock_recyclerview_stock"
                         app:layout_constraintTop_toBottomOf="@+id/activity_home_constraint_stock_recyclerview_stock" />

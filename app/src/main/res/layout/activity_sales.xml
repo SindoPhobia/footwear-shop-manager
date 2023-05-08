@@ -88,7 +88,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins"
-                    android:text="@string/activity_home_text_analyticstotallabel"
+                    android:text="@string/activity_sales_text_analyticstotallabel"
                     android:textColor="@color/blue_300"
                     android:textSize="12sp" />
             </LinearLayout>

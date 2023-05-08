@@ -271,7 +271,7 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/activity_home_constraint_latestsales_recyclerview_sales"
                         android:layout_width="0dp"
-                        android:layout_height="118dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="16dp"
                         app:layout_constraintEnd_toEndOf="parent"

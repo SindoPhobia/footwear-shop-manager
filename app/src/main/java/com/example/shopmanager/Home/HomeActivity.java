@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.example.shopmanager.MainActivity;
 import com.example.shopmanager.R;
+import com.example.shopmanager.Storage.Analytics.StockAnalytics;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -28,5 +29,9 @@ public class HomeActivity extends AppCompatActivity {
 
         analyticsSalesTotal.setText(new StringBuilder().append(MainActivity.salesAnalytics.getTotal()).append("€"));
         analyticsSalesToday.setText(new StringBuilder().append(MainActivity.salesAnalytics.getToday()).append("€"));
+
+        StockAnalytics stockAnalytics = MainActivity.stockDatabase.stockDao().getStockAnalytics();
+        analyticsStockTotal.setText(String.valueOf(stockAnalytics.getStockTotal()));
+        analyticsCategoriesTotal.setText(String.valueOf(stockAnalytics.getCategoriesTotal()));
     }
 }

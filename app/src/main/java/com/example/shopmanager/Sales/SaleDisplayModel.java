@@ -4,19 +4,29 @@ import java.util.Arrays;
 
 public class SaleDisplayModel {
 
-    private int id;
+    private String id;
     private String seller;
     private long date;
     private StockDisplayModel[] stock;
 
-    public SaleDisplayModel(int id, String seller, long date, StockDisplayModel[] stock) {
+    public SaleDisplayModel(String id, String seller, long date) {
+        this.id = id;
+        this.seller = seller;
+        this.date = date;
+    }
+
+    public SaleDisplayModel(String id, String seller, long date, StockDisplayModel[] stock) {
         this.id = id;
         this.seller = seller;
         this.date = date;
         this.stock = stock;
     }
 
-    public int getId() { return id; }
+    public void setStockDisplayModel(StockDisplayModel[] stock){
+        this.stock = stock;
+    }
+
+    public String getId() { return id; }
     public String getSeller() { return seller; }
     public long getDate() { return date; }
     public StockDisplayModel[] getStock() { return stock; }
@@ -31,17 +41,18 @@ public class SaleDisplayModel {
                 '}';
     }
 
+
     public static class StockDisplayModel {
 
-        private int id;
+        private int stock_id;
         private String name;
         private String brand;
         private String color;
         private String size;
         private float price;
 
-        public StockDisplayModel(int id, String name, String brand, String color, String size, float price) {
-            this.id = id;
+        public StockDisplayModel(int stock_id, String name, String brand, String color, String size, float price) {
+            this.stock_id = stock_id;
             this.name = name;
             this.brand = brand;
             this.color = color;
@@ -49,7 +60,7 @@ public class SaleDisplayModel {
             this.price = price;
         }
 
-        public int getId() { return id; }
+        public int getStockId() { return stock_id; }
         public String getName() { return name; }
         public String getBrand() { return brand; }
         public String getColor() { return color; }
@@ -59,7 +70,7 @@ public class SaleDisplayModel {
         @Override
         public String toString() {
             return "StockDisplayModel{" +
-                    "id=" + id +
+                    "id=" + stock_id +
                     ", name='" + name + '\'' +
                     ", brand='" + brand + '\'' +
                     ", color='" + color + '\'' +

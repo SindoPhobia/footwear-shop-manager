@@ -5,15 +5,21 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.SearchView;
 
+import com.example.shopmanager.MainActivity;
 import com.example.shopmanager.R;
+import com.example.shopmanager.Storage.Firestore.Collections.Sale;
+import com.example.shopmanager.Storage.Firestore.Collections.SoldStock;
+import com.example.shopmanager.Storage.Firestore.FirestoreDB;
+import com.example.shopmanager.Storage.RoomApi.Shoe;
+import com.example.shopmanager.Storage.RoomApi.StockDB;
 
 import java.util.ArrayList;
 import java.util.Date;
 
 public class SalesActivity extends AppCompatActivity {
 
-    ArrayList<SaleDisplayModel> sales;
     SaleRecyclerViewAdapter saleRecyclerViewAdapter;
     RecyclerView salesRecyclerView;
 
@@ -24,35 +30,15 @@ public class SalesActivity extends AppCompatActivity {
 
         salesRecyclerView = findViewById(R.id.activity_sales_recyclerview_sales);
 
-        setupSales();
-        saleRecyclerViewAdapter = new SaleRecyclerViewAdapter(this, sales);
+        saleRecyclerViewAdapter = new SaleRecyclerViewAdapter(this, MainActivity.sales);
         salesRecyclerView.setAdapter(saleRecyclerViewAdapter);
         salesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        setUpSearchFilter();
     }
 
-
-    private void setupSales() {
-        sales = new ArrayList<>();
-
-        // TODO: Combine sale and stock data and create the necessary objects
-        SaleDisplayModel.StockDisplayModel stock1 = new SaleDisplayModel.StockDisplayModel(
-                1,
-                "stan smeeth", "abibbas",
-                "yellow", "43", 69.0F
-        );
-
-        SaleDisplayModel.StockDisplayModel stock2 = new SaleDisplayModel.StockDisplayModel(
-                1,
-                "tryfera edition", "nike",
-                "pink", "46", 420.0F
-        );
-
-
-        SaleDisplayModel.StockDisplayModel[] stocks = new SaleDisplayModel.StockDisplayModel[2];
-        stocks[0] = stock1;
-        stocks[1] = stock2;
-
-        SaleDisplayModel sale1 = new SaleDisplayModel(1, "Tryff", new Date().getTime(), stocks);
-        sales.add(sale1);
+    private void setUpSearchFilter(){
+//        SearchView search = findViewById(R.id.activity_stocks_constraint_filters_edittext_search);
     }
+
 }

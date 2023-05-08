@@ -1,33 +1,33 @@
 package com.example.shopmanager.Storage.Firestore.Collections;
 
 public class SoldStock {
-    private String stock_id;
-    private int size;
+    private int stock_id;
+    private String size;
     private String color;
     private float price;
 
     public SoldStock(){}
 
-    public SoldStock(String stock_id, int size, String color, float price) {
+    public SoldStock(int stock_id, String size, String color, float price) {
         this.stock_id = stock_id;
         this.size = size;
         this.color = color;
         this.price = price;
     }
 
-    public String getStock_id() {
+    public int getStock_id() {
         return stock_id;
     }
 
-    public void setStock_id(String stock_id) {
+    public void setStock_id(int stock_id) {
         this.stock_id = stock_id;
     }
 
-    public int getSize() {
+    public String getSize() {
         return size;
     }
 
-    public void setSize(int size) {
+    public void setSize(String size) {
         this.size = size;
     }
 

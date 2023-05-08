@@ -28,6 +28,11 @@ public class SaleRecyclerViewAdapter extends RecyclerView.Adapter<SaleRecyclerVi
         this.sales = sales;
     }
 
+    public void setSales(ArrayList<SaleDisplayModel> newSales){
+        this.sales = newSales;
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -39,7 +44,7 @@ public class SaleRecyclerViewAdapter extends RecyclerView.Adapter<SaleRecyclerVi
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.id.setText(String.format("%04d", sales.get(position).getId()));
+        holder.id.setText(sales.get(position).getId());
         holder.seller.setText(sales.get(position).getSeller());
 
         Date date = new Date(sales.get(position).getDate());

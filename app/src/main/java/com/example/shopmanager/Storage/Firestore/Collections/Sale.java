@@ -58,8 +58,8 @@ public class Sale {
                     HashMap<String, Object> data = (HashMap<String, Object>) item;
                     soldStock.add(
                             new SoldStock(
-                                    data.get("stock_id").toString(),
-                                    Integer.parseInt(data.get("size").toString()),
+                                    Integer.parseInt(data.get("stock_id").toString()),
+                                    data.get("size").toString(),
                                     data.get("color").toString(),
                                     Float.parseFloat(data.get("price").toString())
                             )

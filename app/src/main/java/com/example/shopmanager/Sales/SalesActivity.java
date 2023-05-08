@@ -16,7 +16,7 @@ import android.widget.ListAdapter;
 import com.example.shopmanager.MainActivity;
 import com.example.shopmanager.R;
 
-public class SalesActivity extends AppCompatActivity {
+public class SalesActivity extends AppCompatActivity implements MainActivity.SearchFilter {
 
     SaleRecyclerViewAdapter saleRecyclerViewAdapter;
 
@@ -49,7 +49,7 @@ public class SalesActivity extends AppCompatActivity {
         setUpSearchFilter();
     }
 
-    private void setUpSearchFilter(){
+    public void setUpSearchFilter(){
         EditText search = findViewById(R.id.activity_stocks_constraint_filters_edittext_search);
         search.addTextChangedListener(new TextWatcher() {
             @Override

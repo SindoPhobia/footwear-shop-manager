@@ -26,6 +26,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,6 +36,10 @@ public class MainActivity extends AppCompatActivity {
 
     public static ArrayList<SaleDisplayModel> sales;
     public static ArrayList<StockDisplayModel> stock;
+
+    public interface SearchFilter{
+        public void setUpSearchFilter();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,10 +131,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void populateData(Intent intent){
-
-//        stock.addAll();
-        Log.d("sizes", String.valueOf(stockDatabase.stockDao().getStockDesc().size()));
-        Log.d("sizes", String.valueOf(Arrays.asList(stockDatabase.stockDao().getStockDesc().stream().map(item ->
+        List<StockDisplayModel> stockModel = Arrays.asList(stockDatabase.stockDao()
+                .getStockDesc().stream().map(item ->
                 new StockDisplayModel(
                         item.getId(),
                         item.getName(),
@@ -141,7 +144,14 @@ public class MainActivity extends AppCompatActivity {
                         item.getSizesFormatted(),
                         item.getDate()
                 )
-        ).toArray(StockDisplayModel[]::new)).size()));
+        ).toArray(StockDisplayModel[]::new));
+        Log.d("stock",String.valueOf(stockModel.size()));
+        if(stockModel.size()>=1){
+            stock = new ArrayList<>(stockModel);
+        }else{
+            stock = new ArrayList<>();
+        }
+
         FirestoreDB.getLatestSales(50, new FirestoreDB.Callback() {
             @Override
             public void onComplete(Sale[] salesData) {

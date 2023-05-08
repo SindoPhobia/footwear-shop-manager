@@ -56,6 +56,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingEnd="4dp"
+                    android:tint="@color/neutral_100"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/activity_stocks_constraint_filters_edittext_search"
                     app:layout_constraintStart_toStartOf="parent"

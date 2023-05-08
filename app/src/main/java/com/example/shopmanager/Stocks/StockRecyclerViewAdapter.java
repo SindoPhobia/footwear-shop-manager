@@ -13,9 +13,11 @@ import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.shopmanager.MainActivity;
 import com.example.shopmanager.R;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 public class StockRecyclerViewAdapter extends RecyclerView.Adapter<StockRecyclerViewAdapter.ViewHolder> {
 
@@ -35,6 +37,13 @@ public class StockRecyclerViewAdapter extends RecyclerView.Adapter<StockRecycler
         this.context = context;
         this.stockModels = stock;
         this.onClickInterface = onClickInterface;
+    }
+
+    public void filterStock(String newText){
+        this.stockModels = (ArrayList<StockDisplayModel>)
+                MainActivity.stock.stream().filter(item -> (item.getBrand()+" - "+item.getName()).toLowerCase().contains(newText.toLowerCase())).
+                        collect(Collectors.toList());
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -64,6 +73,8 @@ public class StockRecyclerViewAdapter extends RecyclerView.Adapter<StockRecycler
         }
 
         holder.totalStock.setText(String.valueOf(element.getTotalStock()));
+
+        holder.sizesList.removeAllViews();
 
         element.getSizes().forEach((size, amount) -> {
             holder.sizesList.addView(createSizeElement(size, amount));

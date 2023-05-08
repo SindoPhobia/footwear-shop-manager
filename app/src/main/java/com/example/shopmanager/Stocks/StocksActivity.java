@@ -6,7 +6,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 
+import com.example.shopmanager.MainActivity;
 import com.example.shopmanager.R;
 
 import java.util.ArrayList;
@@ -14,60 +18,54 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class StocksActivity extends AppCompatActivity implements StockRecyclerViewAdapter.StockOnClickInterface {
+public class StocksActivity extends AppCompatActivity implements StockRecyclerViewAdapter.StockOnClickInterface, MainActivity.SearchFilter {
 
     RecyclerView stockRecyclerView;
 
     StockRecyclerViewAdapter stockRecyclerViewAdapter;
-    ArrayList<StockDisplayModel> stockModels;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stocks);
 
-        stockModels = new ArrayList<>();
 
         stockRecyclerView = findViewById(R.id.activity_stocks_recyclerview_stock);
 
-        setupStock();
-        stockRecyclerViewAdapter = new StockRecyclerViewAdapter(this, stockModels, this);
+        stockRecyclerViewAdapter = new StockRecyclerViewAdapter(this, MainActivity.stock, this);
         stockRecyclerView.setAdapter(stockRecyclerViewAdapter);
         stockRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        setUpSearchFilter();
     }
 
-    private void setupStock() {
-        // TODO: Get from database
-
-        StockDisplayModel stock1 = new StockDisplayModel(1,
-                "tryferos edition", "abibbas", "Sneakers",
-                69.0F, true, 40.0F,
-                new HashMap<String, Integer>() {{
-                    put("40", 3);
-                    put("41", 2);
-                    put("43", 5);
-                }}, new Date().getTime()
-        );
-
-        StockDisplayModel stock2 = new StockDisplayModel(2,
-                "dale edition", "abibbas", "Sneakers",
-                69.0F, false, 0F,
-                new HashMap<String, Integer>() {{
-                    put("40", 3);
-                    put("41", 2);
-                    put("43", 5);
-                }}, new Date().getTime()
-        );
-
-        stockModels.add(stock1);
-        stockModels.add(stock2);
-    }
 
     @Override
     public void onClick(int position) {
-        stockModels.get(position);
+        MainActivity.stock.get(position);
 
         Intent intentStartStockActivity = new Intent(this, StockActivity.class);
         startActivity(intentStartStockActivity);
+    }
+
+    @Override
+    public void setUpSearchFilter() {
+        EditText search = findViewById(R.id.activity_stocks_constraint_filters_edittext_search);
+        search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String newText = s.toString();
+                stockRecyclerViewAdapter.filterStock(newText);
+            }
+        });
     }
 }

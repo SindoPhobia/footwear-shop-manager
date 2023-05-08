@@ -38,12 +38,6 @@ public class MainActivity extends AppCompatActivity {
         salesAnalytics = new SalesAnalytics();
         salesAnalytics.init();
 
-        Shoe shoe = new Shoe(1, "ntelos", "code", 12, 50f, false, 50f, "athletic",
-                "adidas", "white", "40-2,41-2,43-4,45-5,46-6", 0);
-
-        Log.d("shoes", shoe.getSizesFormatted().toString());
-        Log.d("shoes", shoe.parseSizes(shoe.getSizesFormatted()));
-
         // TODO: Grab data from both databases for the main recycler views
         finish();
     }

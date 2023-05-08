@@ -55,11 +55,12 @@
 
                     <ImageView
                         android:id="@+id/activity_sales_constraint_sales_icon_analytics"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
                         app:layout_constraintBottom_toBottomOf="@+id/activity_sales_constraint_analyticssales_text_title"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/activity_sales_constraint_analyticssales_text_title"
+                        app:layout_constraintVertical_bias="0.4"
                         app:srcCompat="@drawable/icon_sales_circled" />
 
                     <TextView
@@ -70,7 +71,7 @@
                         android:fontFamily="@font/poppins_semibold"
                         android:text="@string/activity_home_constraint_analyticssales_text_title"
                         android:textColor="@color/neutral_100"
-                        android:textSize="18sp"
+                        android:textSize="14sp"
                         app:layout_constraintStart_toEndOf="@+id/activity_sales_constraint_sales_icon_analytics"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -90,7 +91,7 @@
                             android:fontFamily="@font/poppins_semibold"
                             android:text="12.360 €"
                             android:textColor="@color/neutral_100"
-                            android:textSize="16sp" />
+                            android:textSize="12sp" />
 
                         <TextView
                             android:id="@+id/activity_sales_constraint_sales_text_labelsalestotal"
@@ -99,7 +100,7 @@
                             android:fontFamily="@font/poppins"
                             android:text="@string/activity_home_text_analyticstotallabel"
                             android:textColor="@color/blue_300"
-                            android:textSize="14sp" />
+                            android:textSize="12sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -118,7 +119,7 @@
                             android:fontFamily="@font/poppins_semibold"
                             android:text="2.500 €"
                             android:textColor="@color/neutral_100"
-                            android:textSize="16sp" />
+                            android:textSize="12sp" />
 
                         <TextView
                             android:id="@+id/activity_sales_constraint_sales_text_labelsalesmonthly"
@@ -126,7 +127,8 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins"
                             android:text="@string/activity_sales_constraint_sales_text_labelsalesmonthly"
-                            android:textColor="@color/blue_300" />
+                            android:textColor="@color/blue_300"
+                            android:textSize="12sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -145,14 +147,15 @@
                             android:fontFamily="@font/poppins_semibold"
                             android:text="552 €"
                             android:textColor="@color/neutral_100"
-                            android:textSize="16sp" />
+                            android:textSize="12sp" />
 
                         <TextView
                             android:id="@+id/activity_sales_constraint_sales_text_labelsalesweekly"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/activity_sales_constraint_sales_text_labelsalesweekly"
-                            android:textColor="@color/blue_300" />
+                            android:textColor="@color/blue_300"
+                            android:textSize="12sp" />
 
                     </LinearLayout>
 
@@ -172,7 +175,7 @@
                             android:fontFamily="@font/poppins_semibold"
                             android:text="12.360 €"
                             android:textColor="@color/neutral_100"
-                            android:textSize="16sp" />
+                            android:textSize="12sp" />
 
                         <TextView
                             android:id="@+id/activity_sales_constraint_sales_text_labelsalesoday"
@@ -181,7 +184,7 @@
                             android:fontFamily="@font/poppins"
                             android:text="@string/activity_home_text_analyticstodaylabel"
                             android:textColor="@color/blue_300"
-                            android:textSize="14sp" />
+                            android:textSize="12sp" />
                     </LinearLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -250,12 +253,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_semibold"
+                android:includeFontPadding="false"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
                 android:text="@string/activity_sales_constraint_filters_button_filters"
-                android:textColor="@color/blue_300"
+                android:textColor="@color/neutral_100"
+                android:textSize="12sp"
                 app:icon="@drawable/icon_filter"
-                app:iconTint="@color/blue_300"
+                app:iconTint="@color/neutral_100"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -282,11 +287,11 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             android:clickable="true"
-            app:tint="@color/neutral_100"
             app:backgroundTint="@color/blue_700"
             app:layout_constraintBottom_toBottomOf="@+id/activity_sales_recyclerview_sales"
             app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/icon_plus" />
+            app:srcCompat="@drawable/icon_plus"
+            app:tint="@color/neutral_100" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,10 +1,15 @@
 package com.example.shopmanager.Sales;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+<<<<<<< Updated upstream
+=======
+import android.widget.EditText;
+>>>>>>> Stashed changes
 import android.widget.SearchView;
 
 import com.example.shopmanager.MainActivity;

@@ -44,6 +44,7 @@ public class StocksActivity extends AppCompatActivity implements StockRecyclerVi
         MainActivity.stock.get(position);
 
         Intent intentStartStockActivity = new Intent(this, StockActivity.class);
+        intentStartStockActivity.putExtra("code", MainActivity.stock.get(position).getCode());
         startActivity(intentStartStockActivity);
     }
 

@@ -109,43 +109,30 @@ public class MainActivity extends AppCompatActivity {
         shoe2.setSizes("1-3,2-3,3-3,4-3,5-3,6-3,7-3,8-3,9-3");
         shoe3.setSizes("1-5,2-4");
 
-        stockDatabase.stockDao().insertBrands(brand1);
-        stockDatabase.stockDao().insertBrands(brand2);
-        stockDatabase.stockDao().insertBrands(brand3);
+//        stockDatabase.stockDao().insertBrands(brand1);
+//        stockDatabase.stockDao().insertBrands(brand2);
+//        stockDatabase.stockDao().insertBrands(brand3);
+//        stockDatabase.stockDao().insertCategories(cat1);
+//        stockDatabase.stockDao().insertCategories(cat2);
+//        stockDatabase.stockDao().insertCategories(cat3);
 //
-        stockDatabase.stockDao().insertCategories(cat1);
-        stockDatabase.stockDao().insertCategories(cat2);
-        stockDatabase.stockDao().insertCategories(cat3);
-
-        stockDatabase.stockDao().insertColors(color1);
-        stockDatabase.stockDao().insertColors(color2);
-        stockDatabase.stockDao().insertColors(color3);
-
-        stockDatabase.stockDao().insertShoe(shoe1);
-        stockDatabase.stockDao().insertShoe(shoe2);
-        stockDatabase.stockDao().insertShoe(shoe3);
+//        stockDatabase.stockDao().insertColors(color1);
+//        stockDatabase.stockDao().insertColors(color2);
+//        stockDatabase.stockDao().insertColors(color3);
+//
+//        stockDatabase.stockDao().insertShoe(shoe1);
+//        stockDatabase.stockDao().insertShoe(shoe2);
+//        stockDatabase.stockDao().insertShoe(shoe3);
 ////
 //        stockDatabase.stockDao().insertStock(stock1);
 //        stockDatabase.stockDao().insertStock(stock2);
 //        stockDatabase.stockDao().insertStock(stock3);
     }
 
+
     public void populateData(Intent intent){
-        List<StockDisplayModel> stockModel = Arrays.asList(stockDatabase.stockDao()
-                .getStockDesc().stream().map(item ->
-                new StockDisplayModel(
-                        item.getId(),
-                        item.getName(),
-                        item.getBrand(),
-                        item.getCategory(),
-                        item.getPrice(),
-                        item.isSale_enabled(),
-                        item.getSale_price(),
-                        item.getSizesFormatted(),
-                        item.getDate()
-                )
-        ).toArray(StockDisplayModel[]::new));
-        Log.d("stock",String.valueOf(stockModel.size()));
+        List<StockDisplayModel> stockModel = new ArrayList<>(Arrays.asList(StockDisplayModel.parseStockToDisplayModel(
+                (ArrayList<Shoe>) MainActivity.stockDatabase.stockDao().getStockDesc())));
         if(stockModel.size()>=1){
             stock = new ArrayList<>(stockModel);
         }else{

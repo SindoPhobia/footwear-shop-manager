@@ -1,11 +1,20 @@
 package com.example.shopmanager.Stocks;
 
+import com.example.shopmanager.MainActivity;
+import com.example.shopmanager.Sales.SaleDisplayModel;
+import com.example.shopmanager.Storage.RoomApi.Shoe;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 public class StockDisplayModel {
     private String name;
     private String brand;
     private String category;
+
+    private String code;
 
     private int id;
 
@@ -18,12 +27,30 @@ public class StockDisplayModel {
 
     private long date;
 
-    public StockDisplayModel(int id,
+    public static StockDisplayModel[] parseStockToDisplayModel(ArrayList<Shoe> shoes){
+        return shoes.stream().map(item ->
+                        new StockDisplayModel(
+                                item.getId(),
+                                item.getCode(),
+                                item.getName(),
+                                item.getBrand(),
+                                item.getCategory(),
+                                item.getPrice(),
+                                item.isSale_enabled(),
+                                item.getSale_price(),
+                                item.getSizesFormatted(),
+                                item.getDate()
+                        )
+                ).toArray(StockDisplayModel[]::new);
+    }
+
+    public StockDisplayModel(int id, String code,
             String name, String brand, String category,
             float price, boolean saleEnabled, float salePrice,
             Map<String, Integer> sizes, long date
     ) {
         this.id = id;
+        this.code = code;
         this.name = name;
         this.brand = brand;
         this.category = category;
@@ -34,6 +61,8 @@ public class StockDisplayModel {
         this.date = date;
         this.totalStock = sizes.values().stream().reduce(0, (a,b) -> a+b);
     }
+
+    public String getCode(){return this.code;}
 
     public int getId() {
         return id;

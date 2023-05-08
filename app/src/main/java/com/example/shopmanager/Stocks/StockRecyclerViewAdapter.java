@@ -43,12 +43,12 @@ public class StockRecyclerViewAdapter extends RecyclerView.Adapter<StockRecycler
         holder.gender.setVisibility(View.INVISIBLE);
 
         if(element.isSaleEnabled()) {
-            holder.currentPrice.setText(String.valueOf(element.getSalePrice()));
-            holder.originalPrice.setText(String.valueOf(element.getPrice()));
+            holder.currentPrice.setText(new StringBuilder().append(element.getSalePrice()).append("€"));
+            holder.originalPrice.setText(new StringBuilder().append(element.getPrice()).append("€"));
             int discount = (int) ((element.getPrice() - element.getSalePrice()) / element.getPrice() * 100);
             holder.discountPercent.setText(String.valueOf(discount) + "%");
         } else {
-            holder.currentPrice.setText(String.valueOf(element.getPrice()));
+            holder.currentPrice.setText(new StringBuilder().append(element.getPrice()).append("€"));
             holder.originalPrice.setVisibility(View.INVISIBLE);
             holder.discountPercent.setVisibility(View.INVISIBLE);
         }

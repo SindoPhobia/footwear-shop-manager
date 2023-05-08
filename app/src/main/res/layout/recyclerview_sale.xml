@@ -20,21 +20,22 @@
 
         <TextView
             android:id="@+id/recyclerview_sale_text_id"
-            android:layout_width="48dp"
+            android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_semibold"
+            android:includeFontPadding="false"
             android:text="0000"
             android:textAlignment="textEnd"
             android:textColor="@color/blue_400"
-            android:textSize="14sp"
+            android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/recyclerview_sale_image_seller"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:layout_marginStart="14dp"
             app:layout_constraintBottom_toBottomOf="@+id/recyclerview_sale_text_seller"
             app:layout_constraintStart_toEndOf="@+id/recyclerview_sale_text_id"
             app:layout_constraintTop_toTopOf="@+id/recyclerview_sale_text_seller"
@@ -46,17 +47,18 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:fontFamily="@font/poppins_semibold"
+            android:includeFontPadding="false"
             android:text="Seller"
             android:textColor="@color/neutral_700"
-            android:textSize="14sp"
+            android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@+id/recyclerview_sale_image_seller"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/recyclerview_sale_image_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:layout_marginEnd="4dp"
             app:layout_constraintBottom_toBottomOf="@+id/recyclerview_sale_text_date"
             app:layout_constraintEnd_toStartOf="@+id/recyclerview_sale_text_date"
             app:layout_constraintTop_toTopOf="@+id/recyclerview_sale_text_date"
@@ -66,19 +68,20 @@
             android:id="@+id/recyclerview_sale_text_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:fontFamily="@font/poppins_semibold"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/poppins"
+            android:includeFontPadding="false"
             android:text="00/00/00"
             android:textColor="@color/neutral_700"
-            android:textSize="14sp"
+            android:textSize="12sp"
             app:layout_constraintEnd_toStartOf="@+id/recyclerview_sale_image_time"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/recyclerview_sale_image_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:layout_marginEnd="4dp"
             app:layout_constraintBottom_toBottomOf="@+id/recyclerview_sale_text_time"
             app:layout_constraintEnd_toStartOf="@+id/recyclerview_sale_text_time"
             app:layout_constraintTop_toTopOf="@+id/recyclerview_sale_text_time"
@@ -88,10 +91,11 @@
             android:id="@+id/recyclerview_sale_text_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_semibold"
+            android:fontFamily="@font/poppins"
+            android:includeFontPadding="false"
             android:text="00:00"
             android:textColor="@color/neutral_700"
-            android:textSize="14sp"
+            android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -122,6 +126,12 @@
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/recyclerview_sale_image_items"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent">
+
+            <include
+                layout="@layout/recyclerview_sale_stock_row"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

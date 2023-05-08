@@ -15,8 +15,8 @@ import android.widget.ImageButton;
 
 import com.example.shopmanager.Home.HomeActivity;
 import com.example.shopmanager.Sales.SalesActivity;
-import com.example.shopmanager.Stock.StockActivity;
-import com.example.shopmanager.Stock.StocksActivity;
+import com.example.shopmanager.Stocks.StockActivity;
+import com.example.shopmanager.Stocks.StocksActivity;
 
 public class AppNavigationFragment extends Fragment {
 

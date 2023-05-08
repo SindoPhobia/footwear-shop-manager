@@ -1,4 +1,4 @@
-package com.example.shopmanager.Stock;
+package com.example.shopmanager.Stocks;
 
 import androidx.appcompat.app.AppCompatActivity;
 

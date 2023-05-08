@@ -3,13 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/recyclerview_stock_constraint_imagecontainer"
         android:layout_width="88dp"
         android:layout_height="88dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/background_rounded_blue"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -66,39 +68,6 @@
         android:textSize="8sp"
         app:layout_constraintStart_toEndOf="@+id/recyclerview_stock_text_category"
         app:layout_constraintTop_toBottomOf="@+id/recyclerview_stock_text_name" />
-
-    <LinearLayout
-        android:id="@+id/recyclerview_stock_list_sizes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/background_rounded_full_blue"
-        android:orientation="horizontal"
-        android:padding="2dp"
-        android:paddingStart="4dp"
-        android:paddingEnd="4dp"
-        app:layout_constraintBottom_toBottomOf="@+id/recyclerview_stock_constraint_imagecontainer"
-        app:layout_constraintStart_toStartOf="@+id/recyclerview_stock_text_category">
-
-        <TextView
-            android:id="@+id/activity_stock_list_item1_list_sizes_item_text_size"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="@font/poppins_semibold"
-            android:text="40"
-            android:textColor="@color/neutral_100"
-            android:textSize="10sp" />
-
-        <TextView
-            android:id="@+id/activity_stock_list_item1_list_sizes_item_sizeamount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="@font/poppins_semibold"
-            android:text=" - 2"
-            android:textColor="@color/blue_300"
-            android:textSize="10sp" />
-    </LinearLayout>
 
     <TextView
         android:id="@+id/recyclerview_stock_text_discountpercent"
@@ -172,5 +141,13 @@
         app:layout_constraintEnd_toStartOf="@+id/recyclerview_stock_text_label_totalstock"
         app:layout_constraintTop_toTopOf="@+id/recyclerview_stock_text_label_totalstock"
         app:srcCompat="@drawable/icon_stock_selected" />
+
+    <LinearLayout
+        android:id="@+id/recyclerview_stock_list_sizes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/recyclerview_stock_constraint_imagecontainer"
+        app:layout_constraintStart_toStartOf="@+id/recyclerview_stock_text_category" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

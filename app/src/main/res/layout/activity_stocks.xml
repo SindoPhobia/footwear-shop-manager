@@ -39,8 +39,8 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/activity_stocks_constraint_filters_constraint_search"
                 android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginEnd="64dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
                 android:background="@drawable/background_rounded_blue"
                 android:baselineAligned="false"
                 android:gravity="center"
@@ -55,7 +55,7 @@
                     android:id="@+id/imageView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingEnd="8dp"
+                    android:paddingEnd="4dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/activity_stocks_constraint_filters_edittext_search"
                     app:layout_constraintStart_toStartOf="parent"
@@ -68,12 +68,13 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/blue_400"
                     android:ems="10"
-                    android:fontFamily="@font/poppins_semibold"
+                    android:fontFamily="@font/poppins"
                     android:hint="@string/activity_sales_constraint_filters_edittext_search"
+                    android:includeFontPadding="false"
                     android:inputType="text"
                     android:textColor="@color/neutral_100"
                     android:textColorHint="@color/blue_300"
-                    android:textSize="16sp"
+                    android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/imageView"
@@ -84,16 +85,19 @@
             <Button
                 android:id="@+id/activity_stocks_constraint_filters_button_filters"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:fontFamily="@font/poppins_semibold"
+                android:includeFontPadding="false"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
                 android:text="@string/activity_sales_constraint_filters_button_filters"
-                android:textColor="@color/blue_300"
+                android:textColor="@color/neutral_100"
+                android:textSize="12sp"
                 app:icon="@drawable/icon_filter"
-                app:iconTint="@color/blue_300"
+                app:iconTint="@color/neutral_100"
+                app:layout_constraintBottom_toBottomOf="@+id/activity_stocks_constraint_filters_constraint_search"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="@+id/activity_stocks_constraint_filters_constraint_search" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -131,8 +135,8 @@
                         android:paddingStart="8dp"
                         android:paddingEnd="8dp"
                         android:text="Sneaker"
-                        android:textColor="@color/blue_300"
-                        android:textSize="14sp" />
+                        android:textColor="@color/neutral_100"
+                        android:textSize="10sp" />
 
                     <TextView
                         android:id="@+id/activity_stocks_filterlist_filter_category3"
@@ -146,8 +150,8 @@
                         android:paddingStart="8dp"
                         android:paddingEnd="8dp"
                         android:text="Date: Ascending"
-                        android:textColor="@color/blue_300"
-                        android:textSize="14sp" />
+                        android:textColor="@color/neutral_100"
+                        android:textSize="10sp" />
 
                     <TextView
                         android:id="@+id/activity_stocks_filterlist_filter_category4"
@@ -161,8 +165,8 @@
                         android:paddingStart="8dp"
                         android:paddingEnd="8dp"
                         android:text="Price: 20 € - 100 €"
-                        android:textColor="@color/blue_300"
-                        android:textSize="14sp" />
+                        android:textColor="@color/neutral_100"
+                        android:textSize="10sp" />
 
                 </LinearLayout>
             </HorizontalScrollView>
@@ -186,6 +190,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
             android:clickable="true"
             app:backgroundTint="@color/blue_700"
             app:layout_constraintBottom_toBottomOf="@+id/activity_stocks_recyclerview_stock"

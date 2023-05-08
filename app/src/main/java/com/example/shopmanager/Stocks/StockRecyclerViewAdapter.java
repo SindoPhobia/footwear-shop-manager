@@ -101,7 +101,7 @@ public class StockRecyclerViewAdapter extends RecyclerView.Adapter<StockRecycler
         TextView amountView = new TextView(context);
 
         stockItemView.setBackground(ContextCompat.getDrawable(context, R.drawable.background_rounded_full_blue));
-        stockItemView.setPadding(8, 2, 8, 2);
+        stockItemView.setPadding(16, 4, 16, 4);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         params.rightMargin = 8;
         stockItemView.setLayoutParams(params);
@@ -111,12 +111,14 @@ public class StockRecyclerViewAdapter extends RecyclerView.Adapter<StockRecycler
         sizeView.setText(size);
         sizeView.setTypeface(ResourcesCompat.getFont(context, R.font.poppins_semibold));
         sizeView.setTextColor(ContextCompat.getColor(context, R.color.neutral_100));
-        sizeView.setTextSize(10);
+        sizeView.setTextSize(8);
+        sizeView.setIncludeFontPadding(false);
 
         amountView.setText(new StringBuilder().append(" - ").append(amount));
         amountView.setTypeface(ResourcesCompat.getFont(context, R.font.poppins_semibold));
         amountView.setTextColor(ContextCompat.getColor(context, R.color.blue_300));
-        amountView.setTextSize(10);
+        amountView.setTextSize(8);
+        amountView.setIncludeFontPadding(false);
 
         return stockItemView;
     }

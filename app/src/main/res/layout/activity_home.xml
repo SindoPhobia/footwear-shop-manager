@@ -318,47 +318,17 @@
                     android:layout_height="wrap_content"
                     android:background="@color/blue_400">
 
-                    <Button
-                        android:id="@+id/activity_home_constraint_stock_button_lateststock"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:backgroundTint="@color/neutral_100"
-                        android:fontFamily="@font/poppins"
-                        android:includeFontPadding="false"
-                        android:text="@string/activity_home_button_stocklatest"
-                        android:textColor="@color/blue_400"
-                        android:textSize="12sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <Button
-                        android:id="@+id/activity_home_constraint_stock_button_topstock"
-                        style="?android:attr/borderlessButtonStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:backgroundTint="@color/blue_400"
-                        android:fontFamily="@font/poppins"
-                        android:includeFontPadding="false"
-                        android:text="@string/activity_home_button_stocktop"
-                        android:textSize="12sp"
-                        app:layout_constraintStart_toEndOf="@+id/activity_home_constraint_stock_button_lateststock"
-                        app:layout_constraintTop_toTopOf="parent" />
-
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/activity_home_constraint_stock_recyclerview_stock"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="16dp"
                         android:layout_marginEnd="16dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="1.0"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/activity_home_constraint_stock_button_lateststock">
+                        app:layout_constraintTop_toBottomOf="@+id/activity_home_constraint_stock_text_lateststock">
 
                     </androidx.recyclerview.widget.RecyclerView>
 
@@ -368,6 +338,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="16dp"
                         android:backgroundTint="@color/neutral_100"
                         android:fontFamily="@font/poppins"
                         android:includeFontPadding="false"
@@ -394,6 +365,19 @@
                         app:iconSize="12dp"
                         app:layout_constraintEnd_toEndOf="@+id/activity_home_constraint_stock_recyclerview_stock"
                         app:layout_constraintTop_toBottomOf="@+id/activity_home_constraint_stock_recyclerview_stock" />
+
+                    <TextView
+                        android:id="@+id/activity_home_constraint_stock_text_lateststock"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="@string/activity_home_constraint_stock_text_lateststock"
+                        android:textColor="@color/neutral_100"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

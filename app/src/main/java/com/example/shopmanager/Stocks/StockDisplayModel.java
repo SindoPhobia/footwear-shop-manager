@@ -7,6 +7,8 @@ public class StockDisplayModel {
     private String brand;
     private String category;
 
+    private int id;
+
     private float price;
     private boolean saleEnabled;
     private float salePrice;
@@ -16,11 +18,12 @@ public class StockDisplayModel {
 
     private long date;
 
-    public StockDisplayModel(
+    public StockDisplayModel(int id,
             String name, String brand, String category,
             float price, boolean saleEnabled, float salePrice,
-            Map<String, Integer> sizes, int totalStock, long date
+            Map<String, Integer> sizes, long date
     ) {
+        this.id = id;
         this.name = name;
         this.brand = brand;
         this.category = category;
@@ -29,7 +32,15 @@ public class StockDisplayModel {
         this.salePrice = salePrice;
         this.sizes = sizes;
         this.date = date;
-        this.totalStock = totalStock;
+        this.totalStock = sizes.values().stream().reduce(0, (a,b) -> a+b);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() { return name; }

@@ -11,11 +11,15 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.shopmanager.MainActivity;
 import com.example.shopmanager.R;
+
+import org.checkerframework.checker.units.qual.A;
 
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 
 public class SaleRecyclerViewAdapter extends RecyclerView.Adapter<SaleRecyclerViewAdapter.ViewHolder>{
@@ -26,6 +30,12 @@ public class SaleRecyclerViewAdapter extends RecyclerView.Adapter<SaleRecyclerVi
     public SaleRecyclerViewAdapter(Context context, ArrayList<SaleDisplayModel> sales) {
         this.context = context;
         this.sales = sales;
+    }
+
+    public void filterSales(String newText){
+        ArrayList<SaleDisplayModel> list = new ArrayList<>(
+                Arrays.asList(MainActivity.sales.stream().filter(item -> item.getId().toLowerCase().contains(newText.toLowerCase())).toArray(SaleDisplayModel[]::new)));
+        setSales(list);
     }
 
     public void setSales(ArrayList<SaleDisplayModel> newSales){
@@ -52,6 +62,8 @@ public class SaleRecyclerViewAdapter extends RecyclerView.Adapter<SaleRecyclerVi
         Format timeFormat = new SimpleDateFormat("HH:mm");
         holder.date.setText(dateFormat.format(date));
         holder.time.setText(timeFormat.format(date));
+
+        holder.stock.removeAllViews();
 
         for(SaleDisplayModel.StockDisplayModel stock : sales.get(position).getStock()) {
             View rowView = this.createStockRowView(stock.getBrand(), stock.getName(), stock.getSize(), stock.getPrice());

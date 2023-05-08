@@ -39,24 +39,24 @@ public class StocksActivity extends AppCompatActivity implements StockRecyclerVi
     private void setupStock() {
         // TODO: Get from database
 
-        StockDisplayModel stock1 = new StockDisplayModel(
+        StockDisplayModel stock1 = new StockDisplayModel(1,
                 "tryferos edition", "abibbas", "Sneakers",
                 69.0F, true, 40.0F,
                 new HashMap<String, Integer>() {{
                     put("40", 3);
                     put("41", 2);
                     put("43", 5);
-                }}, 8, new Date().getTime()
+                }}, new Date().getTime()
         );
 
-        StockDisplayModel stock2 = new StockDisplayModel(
+        StockDisplayModel stock2 = new StockDisplayModel(2,
                 "dale edition", "abibbas", "Sneakers",
                 69.0F, false, 0F,
                 new HashMap<String, Integer>() {{
                     put("40", 3);
                     put("41", 2);
                     put("43", 5);
-                }}, 6, new Date().getTime()
+                }}, new Date().getTime()
         );
 
         stockModels.add(stock1);

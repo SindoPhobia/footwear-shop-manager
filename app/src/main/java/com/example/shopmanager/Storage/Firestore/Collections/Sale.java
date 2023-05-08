@@ -20,10 +20,16 @@ public class Sale {
 
     public Sale(){}
 
-    public Sale(String seller, String id, long date, SoldStock[] stock_ids) {
+    public Sale(String seller, long date, SoldStock[] stock_ids) {
         this.seller = seller;
-        this.id = id;
         this.date = date;
+        this.soldStock = stock_ids;
+    }
+
+    public Sale(String seller, String id,long date, SoldStock[] stock_ids) {
+        this.seller = seller;
+        this.date = date;
+        this.id = id;
         this.soldStock = stock_ids;
     }
 

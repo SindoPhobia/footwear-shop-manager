@@ -10,6 +10,8 @@ import com.example.shopmanager.Storage.Firestore.Collections.Sale;
 import com.example.shopmanager.Storage.Firestore.Collections.SoldStock;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.AggregateField;
+import com.google.firebase.firestore.AggregateSource;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -17,6 +19,7 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
 
+import java.text.Format;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -43,16 +46,37 @@ public class FirestoreDB {
                 .addOnCompleteListener(task -> convertSnapshot(task, callback));
     }
 
-    public static void addSale(Sale sale, Callback cl){
-        db.collection("Sales").add(sale.parseSale()).addOnCompleteListener(task -> {
+    public static void getTotalSales(CallbackAggregate cl){
+        db.collection("Sales").count().get(AggregateSource.SERVER).addOnCompleteListener(task -> {
             if(!task.isSuccessful()){
                 cl.onError();
                 return;
             }
-            Sale[] saleAr = new Sale[1];
-            saleAr[0] = sale;
-            cl.onComplete(saleAr);
-            MainActivity.salesAnalytics.onNewSale(sale);
+            cl.onComplete((int) task.getResult().getCount());
+        });
+    }
+
+    public static void addSale(Sale sale, Callback cl){
+        getTotalSales(new CallbackAggregate() {
+            @Override
+            public void onComplete(int count) {
+                 sale.setId(String.format("%04d", count+1));
+                db.collection("Sales").add(sale.parseSale()).addOnCompleteListener(task -> {
+                    if(!task.isSuccessful()){
+                        cl.onError();
+                        return;
+                    }
+                    Sale[] saleAr = new Sale[1];
+                    saleAr[0] = sale;
+                    cl.onComplete(saleAr);
+                    MainActivity.salesAnalytics.onNewSale(sale);
+                });
+            }
+
+            @Override
+            public void onError() {
+
+            }
         });
     }
 
@@ -90,6 +114,13 @@ public class FirestoreDB {
     public interface Callback{
         public void onComplete(Sale[] sales);
         public void onError();
+    }
+
+    public interface CallbackAggregate{
+        public void onComplete(int count);
+
+        public void onError();
+
     }
 
 }

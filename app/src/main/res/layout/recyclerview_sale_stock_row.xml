@@ -15,9 +15,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_semibold"
+        android:includeFontPadding="false"
         android:text="Brand - Name"
         android:textColor="@color/neutral_700"
-        android:textSize="16sp"
+        android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,16 +28,17 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="4dp"
         android:fontFamily="@font/poppins"
+        android:includeFontPadding="false"
         android:text="40"
         android:textColor="@color/neutral_700"
-        android:textSize="16sp"
+        android:textSize="12sp"
         app:layout_constraintEnd_toStartOf="@+id/recyclerview_sale_list_item_image_size"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/recyclerview_sale_list_item_image_size"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="12dp"
+        android:layout_height="12dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/recyclerview_sale_list_item_text_size"
         app:layout_constraintEnd_toStartOf="@+id/recyclerview_sale_list_item_text_price"
@@ -45,13 +47,15 @@
 
     <TextView
         android:id="@+id/recyclerview_sale_list_item_text_price"
-        android:layout_width="wrap_content"
+        android:layout_width="30dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="4dp"
         android:fontFamily="@font/poppins"
+        android:includeFontPadding="false"
         android:text="120"
+        android:textAlignment="textEnd"
         android:textColor="@color/neutral_700"
-        android:textSize="16sp"
+        android:textSize="12sp"
         app:layout_constraintEnd_toStartOf="@+id/recyclerview_sale_list_item_text_labelprice"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -60,9 +64,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_semibold"
+        android:includeFontPadding="false"
         android:text="€"
         android:textColor="@color/blue_400"
-        android:textSize="16sp"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

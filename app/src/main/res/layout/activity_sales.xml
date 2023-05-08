@@ -24,172 +24,163 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <HorizontalScrollView
-            android:id="@+id/horizontalScrollView"
-            android:layout_width="match_parent"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/activity_sales_constraint_analyticssales"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/background_rounded_blue"
+            android:clipToPadding="false"
+            android:paddingStart="24dp"
+            android:paddingTop="16dp"
+            android:paddingEnd="24dp"
+            android:paddingBottom="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/activity_sales_constraint_sales_icon_analytics"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                app:layout_constraintBottom_toBottomOf="@+id/activity_sales_constraint_analyticssales_text_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/activity_sales_constraint_analyticssales_text_title"
+                app:layout_constraintVertical_bias="0.4"
+                app:srcCompat="@drawable/icon_sales_circled" />
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/activity_sales_constraint_analyticssales"
+            <TextView
+                android:id="@+id/activity_sales_constraint_analyticssales_text_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/activity_home_constraint_analyticssales_text_title"
+                android:textColor="@color/neutral_100"
+                android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@+id/activity_sales_constraint_sales_icon_analytics"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/activity_sales_constraint_analyticssales_layout_alltime"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toStartOf="@+id/activity_sales_constraint_analyticssales_layout_monthly"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/activity_sales_constraint_analyticssales_text_title">
+
+                <TextView
+                    android:id="@+id/activity_sales_constraint_sales_text_salestotal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/background_rounded_blue"
-                    android:clipToPadding="false"
-                    android:paddingStart="24dp"
-                    android:paddingTop="16dp"
-                    android:paddingEnd="24dp"
-                    android:paddingBottom="16dp">
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="12.360 €"
+                    android:textColor="@color/neutral_100"
+                    android:textSize="12sp" />
 
-                    <ImageView
-                        android:id="@+id/activity_sales_constraint_sales_icon_analytics"
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
-                        app:layout_constraintBottom_toBottomOf="@+id/activity_sales_constraint_analyticssales_text_title"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/activity_sales_constraint_analyticssales_text_title"
-                        app:layout_constraintVertical_bias="0.4"
-                        app:srcCompat="@drawable/icon_sales_circled" />
-
-                    <TextView
-                        android:id="@+id/activity_sales_constraint_analyticssales_text_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:fontFamily="@font/poppins_semibold"
-                        android:text="@string/activity_home_constraint_analyticssales_text_title"
-                        android:textColor="@color/neutral_100"
-                        android:textSize="14sp"
-                        app:layout_constraintStart_toEndOf="@+id/activity_sales_constraint_sales_icon_analytics"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <LinearLayout
-                        android:id="@+id/activity_sales_constraint_analyticssales_layout_alltime"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="32dp"
-                        android:orientation="vertical"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/activity_sales_constraint_analyticssales_text_title">
-
-                        <TextView
-                            android:id="@+id/activity_sales_constraint_sales_text_salestotal"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:text="12.360 €"
-                            android:textColor="@color/neutral_100"
-                            android:textSize="12sp" />
-
-                        <TextView
-                            android:id="@+id/activity_sales_constraint_sales_text_labelsalestotal"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins"
-                            android:text="@string/activity_home_text_analyticstotallabel"
-                            android:textColor="@color/blue_300"
-                            android:textSize="12sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/activity_sales_constraint_analyticssales_layout_monthly"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="48dp"
-                        android:orientation="vertical"
-                        app:layout_constraintStart_toEndOf="@+id/activity_sales_constraint_analyticssales_layout_alltime"
-                        app:layout_constraintTop_toTopOf="@+id/activity_sales_constraint_analyticssales_layout_alltime">
-
-                        <TextView
-                            android:id="@+id/activity_sales_constraint_sales_text_salesmonthly"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:text="2.500 €"
-                            android:textColor="@color/neutral_100"
-                            android:textSize="12sp" />
-
-                        <TextView
-                            android:id="@+id/activity_sales_constraint_sales_text_labelsalesmonthly"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins"
-                            android:text="@string/activity_sales_constraint_sales_text_labelsalesmonthly"
-                            android:textColor="@color/blue_300"
-                            android:textSize="12sp" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/activity_sales_constraint_analyticssales_layout_weekly"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="48dp"
-                        android:orientation="vertical"
-                        app:layout_constraintStart_toEndOf="@+id/activity_sales_constraint_analyticssales_layout_monthly"
-                        app:layout_constraintTop_toTopOf="@+id/activity_sales_constraint_analyticssales_layout_monthly">
-
-                        <TextView
-                            android:id="@+id/activity_sales_constraint_sales_text_salesweekly"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:text="552 €"
-                            android:textColor="@color/neutral_100"
-                            android:textSize="12sp" />
-
-                        <TextView
-                            android:id="@+id/activity_sales_constraint_sales_text_labelsalesweekly"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/activity_sales_constraint_sales_text_labelsalesweekly"
-                            android:textColor="@color/blue_300"
-                            android:textSize="12sp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/activity_sales_constraint_analyticssales_layout_daily"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="48dp"
-                        android:orientation="vertical"
-                        app:layout_constraintStart_toEndOf="@+id/activity_sales_constraint_analyticssales_layout_weekly"
-                        app:layout_constraintTop_toTopOf="@+id/activity_sales_constraint_analyticssales_layout_alltime">
-
-                        <TextView
-                            android:id="@+id/activity_sales_constraint_sales_text_salestoday"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins_semibold"
-                            android:text="12.360 €"
-                            android:textColor="@color/neutral_100"
-                            android:textSize="12sp" />
-
-                        <TextView
-                            android:id="@+id/activity_sales_constraint_sales_text_labelsalesoday"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppins"
-                            android:text="@string/activity_home_text_analyticstodaylabel"
-                            android:textColor="@color/blue_300"
-                            android:textSize="12sp" />
-                    </LinearLayout>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/activity_sales_constraint_sales_text_labelsalestotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:text="@string/activity_home_text_analyticstotallabel"
+                    android:textColor="@color/blue_300"
+                    android:textSize="12sp" />
             </LinearLayout>
-        </HorizontalScrollView>
+
+            <LinearLayout
+                android:id="@+id/activity_sales_constraint_analyticssales_layout_monthly"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toStartOf="@+id/activity_sales_constraint_analyticssales_layout_weekly"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/activity_sales_constraint_analyticssales_layout_alltime"
+                app:layout_constraintTop_toTopOf="@+id/activity_sales_constraint_analyticssales_layout_alltime">
+
+                <TextView
+                    android:id="@+id/activity_sales_constraint_sales_text_salesmonthly"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="2.500 €"
+                    android:textColor="@color/neutral_100"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/activity_sales_constraint_sales_text_labelsalesmonthly"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:text="@string/activity_sales_constraint_sales_text_labelsalesmonthly"
+                    android:textColor="@color/blue_300"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/activity_sales_constraint_analyticssales_layout_weekly"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toStartOf="@+id/activity_sales_constraint_analyticssales_layout_daily"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/activity_sales_constraint_analyticssales_layout_monthly"
+                app:layout_constraintTop_toTopOf="@+id/activity_sales_constraint_analyticssales_layout_monthly">
+
+                <TextView
+                    android:id="@+id/activity_sales_constraint_sales_text_salesweekly"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="552 €"
+                    android:textColor="@color/neutral_100"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/activity_sales_constraint_sales_text_labelsalesweekly"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activity_sales_constraint_sales_text_labelsalesweekly"
+                    android:textColor="@color/blue_300"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/activity_sales_constraint_analyticssales_layout_daily"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/activity_sales_constraint_analyticssales_layout_weekly"
+                app:layout_constraintTop_toTopOf="@+id/activity_sales_constraint_analyticssales_layout_alltime">
+
+                <TextView
+                    android:id="@+id/activity_sales_constraint_sales_text_salestoday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="12.360 €"
+                    android:textColor="@color/neutral_100"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/activity_sales_constraint_sales_text_labelsalesoday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:text="@string/activity_home_text_analyticstodaylabel"
+                    android:textColor="@color/blue_300"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/activity_stocks_constraint_filters"
@@ -201,13 +192,13 @@
             android:clipToPadding="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView">
+            app:layout_constraintTop_toBottomOf="@id/activity_sales_constraint_analyticssales">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/activity_stocks_constraint_filters_constraint_search"
                 android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginEnd="64dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
                 android:background="@drawable/background_rounded_blue"
                 android:baselineAligned="false"
                 android:gravity="center"
@@ -222,7 +213,7 @@
                     android:id="@+id/imageView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingEnd="8dp"
+                    android:paddingEnd="4dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/activity_stocks_constraint_filters_edittext_search"
                     app:layout_constraintStart_toStartOf="parent"
@@ -235,12 +226,13 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/blue_400"
                     android:ems="10"
-                    android:fontFamily="@font/poppins_semibold"
+                    android:fontFamily="@font/poppins"
                     android:hint="@string/activity_sales_constraint_filters_edittext_search"
+                    android:includeFontPadding="false"
                     android:inputType="text"
                     android:textColor="@color/neutral_100"
                     android:textColorHint="@color/blue_300"
-                    android:textSize="16sp"
+                    android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/imageView"
@@ -251,7 +243,7 @@
             <Button
                 android:id="@+id/activity_stocks_constraint_filters_button_filters"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:fontFamily="@font/poppins_semibold"
                 android:includeFontPadding="false"
                 android:insetTop="0dp"
@@ -261,8 +253,9 @@
                 android:textSize="12sp"
                 app:icon="@drawable/icon_filter"
                 app:iconTint="@color/neutral_100"
+                app:layout_constraintBottom_toBottomOf="@+id/activity_stocks_constraint_filters_constraint_search"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="@+id/activity_stocks_constraint_filters_constraint_search" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

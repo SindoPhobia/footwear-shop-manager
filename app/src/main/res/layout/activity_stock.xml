@@ -44,7 +44,6 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.35"
                 app:srcCompat="@drawable/icon_arrow_left" />
 
             <TextView
@@ -53,9 +52,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:fontFamily="@font/poppins_semibold"
+                android:includeFontPadding="false"
                 android:text="Details"
                 android:textColor="@color/neutral_900"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/activity_stock_container_header_back"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -98,9 +98,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_semibold"
+                android:includeFontPadding="false"
                 android:text="Brand - Name"
                 android:textColor="@color/neutral_900"
-                android:textSize="24sp"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -109,9 +110,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_semibold"
+                android:includeFontPadding="false"
                 android:text="120 €"
                 android:textColor="@color/blue_400"
-                android:textSize="24sp"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -120,14 +122,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:background="@drawable/background_rounded_blue"
+                android:background="@drawable/background_rounded_full_blue"
                 android:fontFamily="@font/poppins_semibold"
-                android:padding="4dp"
+                android:padding="1dp"
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
                 android:text="20%"
                 android:textColor="@color/neutral_100"
-                android:textSize="12sp"
+                android:textSize="8sp"
                 app:layout_constraintBottom_toBottomOf="@+id/activity_stock_container_details_text_currentprice"
                 app:layout_constraintEnd_toStartOf="@+id/activity_stock_container_details_text_currentprice"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -137,9 +139,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_semibold"
+                android:includeFontPadding="false"
                 android:text="120 €"
                 android:textColor="@color/neutral_700"
-                android:textSize="16sp"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/activity_stock_container_details_text_currentprice" />
 
@@ -150,7 +153,7 @@
                 android:fontFamily="@font/poppins"
                 android:text="#productcode"
                 android:textColor="@color/neutral_700"
-                android:textSize="16sp"
+                android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/activity_stock_container_details_text_name" />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -175,7 +178,7 @@
                 android:paddingEnd="8dp"
                 android:text="Category"
                 android:textColor="@color/neutral_100"
-                android:textSize="12sp"
+                android:textSize="8sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -191,7 +194,7 @@
                 android:paddingEnd="8dp"
                 android:text="Gender"
                 android:textColor="@color/neutral_100"
-                android:textSize="12sp"
+                android:textSize="8sp"
                 app:layout_constraintStart_toEndOf="@+id/activity_stock_container_categories_text_category"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -223,10 +226,11 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="4dp"
                         android:fontFamily="@font/poppins_semibold"
+                        android:includeFontPadding="false"
                         android:paddingEnd="24dp"
                         android:text="Colors"
                         android:textColor="@color/blue_300"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/activity_stock_list_header_image_colors"
                         app:layout_constraintTop_toTopOf="parent"
@@ -234,9 +238,10 @@
 
                     <ImageView
                         android:id="@+id/activity_stock_list_header_image_sizes"
-                        android:layout_width="12dp"
-                        android:layout_height="12dp"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
                         android:layout_marginStart="4dp"
+                        android:layout_marginTop="2dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/activity_stock_list_header_text_sizes"
                         app:layout_constraintTop_toTopOf="parent"
@@ -246,9 +251,9 @@
 
                     <ImageView
                         android:id="@+id/activity_stock_list_header_image_colors"
-                        android:layout_width="12dp"
-                        android:layout_height="12dp"
-                        android:layout_marginStart="4dp"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_marginStart="2dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/activity_stock_list_header_text_colors"
                         app:layout_constraintTop_toTopOf="parent"
@@ -261,12 +266,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="24dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginBottom="4dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
                         android:fontFamily="@font/poppins_semibold"
+                        android:includeFontPadding="false"
                         android:text="@string/activity_stock_list_header_text_title"
                         android:textColor="@color/neutral_100"
-                        android:textSize="20sp"
+                        android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -275,11 +281,12 @@
                         android:id="@+id/activity_stock_list_header_text_itemcount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="64dp"
+                        android:layout_marginStart="32dp"
                         android:fontFamily="@font/poppins_semibold"
+                        android:includeFontPadding="false"
                         android:text="00"
                         android:textColor="@color/neutral_100"
-                        android:textSize="16sp"
+                        android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/activity_stock_list_header_text_title"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -288,11 +295,12 @@
                         android:id="@+id/activity_stock_list_header_text_sizes"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="32dp"
+                        android:layout_marginStart="16dp"
                         android:fontFamily="@font/poppins_semibold"
+                        android:includeFontPadding="false"
                         android:text="00"
                         android:textColor="@color/neutral_100"
-                        android:textSize="16sp"
+                        android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/activity_stock_list_header_text_labelitemcount"
                         app:layout_constraintTop_toTopOf="parent"
@@ -302,11 +310,12 @@
                         android:id="@+id/activity_stock_list_header_text_colors"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="32dp"
+                        android:layout_marginStart="16dp"
                         android:fontFamily="@font/poppins_semibold"
+                        android:includeFontPadding="false"
                         android:text="00"
                         android:textColor="@color/neutral_100"
-                        android:textSize="16sp"
+                        android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/activity_stock_list_header_text_labelsizes"
                         app:layout_constraintTop_toTopOf="parent"
@@ -318,9 +327,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="4dp"
                         android:fontFamily="@font/poppins_semibold"
+                        android:includeFontPadding="false"
                         android:text="Items"
                         android:textColor="@color/blue_300"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/activity_stock_list_header_image_itemcount"
                         app:layout_constraintTop_toTopOf="parent"
@@ -332,9 +342,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="4dp"
                         android:fontFamily="@font/poppins_semibold"
+                        android:includeFontPadding="false"
                         android:text="Sizes"
                         android:textColor="@color/blue_300"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/activity_stock_list_header_image_sizes"
                         app:layout_constraintTop_toTopOf="parent"
@@ -342,9 +353,10 @@
 
                     <ImageView
                         android:id="@+id/activity_stock_list_header_image_itemcount"
-                        android:layout_width="12dp"
-                        android:layout_height="12dp"
-                        android:layout_marginStart="4dp"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="2dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/activity_stock_list_header_text_itemcount"
                         app:layout_constraintTop_toTopOf="parent"
@@ -360,13 +372,13 @@
 
                     <ImageView
                         android:id="@+id/activity_stock_list_item1_image_sizes"
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
-                        android:layout_marginStart="4dp"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="2dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/activity_stock_list_item1_text_totalsizes"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.45"
                         app:srcCompat="@drawable/icon_stock_amount"
                         app:tint="@color/blue_400" />
 
@@ -374,13 +386,14 @@
                         android:id="@+id/activity_stock_list_item1_text_totalsizes"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
+                        android:layout_marginStart="4dp"
                         android:layout_marginTop="6dp"
                         android:layout_marginBottom="4dp"
                         android:fontFamily="@font/poppins_semibold"
+                        android:includeFontPadding="false"
                         android:text="00"
                         android:textColor="@color/neutral_700"
-                        android:textSize="16sp"
+                        android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/activity_stock_list_item1_text_color"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -393,9 +406,10 @@
                         android:layout_marginTop="6dp"
                         android:layout_marginBottom="4dp"
                         android:fontFamily="@font/poppins_semibold"
+                        android:includeFontPadding="false"
                         android:text="Color"
                         android:textColor="@color/neutral_700"
-                        android:textSize="16sp"
+                        android:textSize="12sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -404,7 +418,7 @@
                         android:id="@+id/activity_stock_list_item1_list_sizes"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="32dp"
+                        android:layout_marginStart="26dp"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -420,7 +434,7 @@
                             android:paddingStart="8dp"
                             android:paddingTop="2dp"
                             android:paddingEnd="8dp"
-                            android:paddingBottom="0dp">
+                            android:paddingBottom="2dp">
 
                             <TextView
                                 android:id="@+id/activity_stock_list_item1_list_sizes_item_text_size"
@@ -428,9 +442,10 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:fontFamily="@font/poppins_semibold"
+                                android:includeFontPadding="false"
                                 android:text="00"
                                 android:textColor="@color/neutral_100"
-                                android:textSize="14sp" />
+                                android:textSize="10sp" />
 
                             <TextView
                                 android:id="@+id/activity_stock_list_item1_list_sizes_item_sizeamount"
@@ -439,15 +454,15 @@
                                 android:layout_marginLeft="4dp"
                                 android:layout_weight="1"
                                 android:fontFamily="@font/poppins_semibold"
+                                android:includeFontPadding="false"
                                 android:text="00"
                                 android:textColor="@color/blue_300"
-                                android:textSize="14sp" />
+                                android:textSize="10sp" />
 
                             <ImageView
                                 android:id="@+id/activity_stock_list_item1_list_sizes_item_image_sizes"
-                                android:layout_width="16dp"
-                                android:layout_height="16dp"
-                                android:layout_marginStart="2dp"
+                                android:layout_width="10dp"
+                                android:layout_height="10dp"
                                 android:layout_marginTop="2dp"
                                 android:layout_weight="1"
                                 android:tint="@color/blue_300"

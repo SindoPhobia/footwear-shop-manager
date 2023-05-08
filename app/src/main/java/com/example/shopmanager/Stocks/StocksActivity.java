@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.shopmanager.R;
@@ -13,7 +14,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class StocksActivity extends AppCompatActivity {
+public class StocksActivity extends AppCompatActivity implements StockRecyclerViewAdapter.StockOnClickInterface {
 
     RecyclerView stockRecyclerView;
 
@@ -30,7 +31,7 @@ public class StocksActivity extends AppCompatActivity {
         stockRecyclerView = findViewById(R.id.activity_stocks_recyclerview_stock);
 
         setupStock();
-        stockRecyclerViewAdapter = new StockRecyclerViewAdapter(this, stockModels);
+        stockRecyclerViewAdapter = new StockRecyclerViewAdapter(this, stockModels, this);
         stockRecyclerView.setAdapter(stockRecyclerViewAdapter);
         stockRecyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
@@ -60,5 +61,13 @@ public class StocksActivity extends AppCompatActivity {
 
         stockModels.add(stock1);
         stockModels.add(stock2);
+    }
+
+    @Override
+    public void onClick(int position) {
+        stockModels.get(position);
+
+        Intent intentStartStockActivity = new Intent(this, StockActivity.class);
+        startActivity(intentStartStockActivity);
     }
 }

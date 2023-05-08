@@ -22,16 +22,26 @@ public class StockRecyclerViewAdapter extends RecyclerView.Adapter<StockRecycler
     Context context;
     ArrayList<StockDisplayModel> stockModels;
 
-    public StockRecyclerViewAdapter(Context context, ArrayList<StockDisplayModel> stock) {
+    StockOnClickInterface onClickInterface;
+    public interface StockOnClickInterface {
+        void onClick(int position);
+    }
+
+    public StockRecyclerViewAdapter(
+            Context context,
+            ArrayList<StockDisplayModel> stock,
+            StockOnClickInterface onClickInterface
+    ) {
         this.context = context;
         this.stockModels = stock;
+        this.onClickInterface = onClickInterface;
     }
 
     @NonNull
     @Override
     public StockRecyclerViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.recyclerview_stock, parent, false);
-        return new StockRecyclerViewAdapter.ViewHolder(view);
+        return new StockRecyclerViewAdapter.ViewHolder(view, onClickInterface);
     }
 
     @Override
@@ -78,7 +88,7 @@ public class StockRecyclerViewAdapter extends RecyclerView.Adapter<StockRecycler
         LinearLayout sizesList;
         TextView totalStock;
 
-        public ViewHolder(@NonNull View view) {
+        public ViewHolder(@NonNull View view, StockOnClickInterface onClickInterface) {
             super(view);
             // TODO: SETUP HANDLE FOR SIZES
 
@@ -92,6 +102,13 @@ public class StockRecyclerViewAdapter extends RecyclerView.Adapter<StockRecycler
 
             sizesList = view.findViewById(R.id.recyclerview_stock_list_sizes);
             totalStock = view.findViewById(R.id.recyclerview_stock_text_totalstock);
+
+            view.setOnClickListener(v -> {
+                if(onClickInterface == null) return;
+                int pos = getAdapterPosition();
+                if(pos == RecyclerView.NO_POSITION) return;
+                onClickInterface.onClick(pos);
+            });
         }
     }
 

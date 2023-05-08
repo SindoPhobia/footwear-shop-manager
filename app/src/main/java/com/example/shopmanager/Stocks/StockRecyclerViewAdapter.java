@@ -4,10 +4,10 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
@@ -20,6 +20,8 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 public class StockRecyclerViewAdapter extends RecyclerView.Adapter<StockRecyclerViewAdapter.ViewHolder> {
+
+    private static final int SIZES_DISPLAY_COUNT = 3;
 
     Context context;
     ArrayList<StockDisplayModel> stockModels;
@@ -76,9 +78,26 @@ public class StockRecyclerViewAdapter extends RecyclerView.Adapter<StockRecycler
 
         holder.sizesList.removeAllViews();
 
-        element.getSizes().forEach((size, amount) -> {
-            holder.sizesList.addView(createSizeElement(size, amount));
-        });
+        int sizesCount = Math.min(element.getSizes().size(), SIZES_DISPLAY_COUNT);
+        Object[] keys = element.getSizes().keySet().toArray();
+        for(int i = 0; i < sizesCount; i++) {
+            holder.sizesList.addView(createSizeElement((String)keys[i], element.getSizes().get(keys[i])));
+        }
+
+        if(element.getSizes().size() > SIZES_DISPLAY_COUNT) {
+            LinearLayout moreView = new LinearLayout(context);
+            ImageView moreDotsView = new ImageView(context);
+            moreDotsView.setImageResource(R.drawable.icon_dots);
+
+            moreView.setBackground(ContextCompat.getDrawable(context, R.drawable.background_rounded_full_blue));
+            moreView.setPadding(8, 7, 8, 7);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            params.rightMargin = 8;
+            moreView.setLayoutParams(params);
+            moreView.addView(moreDotsView);
+
+            holder.sizesList.addView(moreView);
+        }
     }
 
     @Override
@@ -129,7 +148,7 @@ public class StockRecyclerViewAdapter extends RecyclerView.Adapter<StockRecycler
         TextView amountView = new TextView(context);
 
         stockItemView.setBackground(ContextCompat.getDrawable(context, R.drawable.background_rounded_full_blue));
-        stockItemView.setPadding(16, 4, 16, 4);
+        stockItemView.setPadding(32, 6, 32, 6);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         params.rightMargin = 8;
         stockItemView.setLayoutParams(params);

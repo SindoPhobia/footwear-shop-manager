@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_stock_list_item"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:showIn="@layout/activity_stock">
+
+    <ImageView
+        android:id="@+id/activity_stock_list_item_image_sizes"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/activity_stock_list_item_text_totalsizes"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/icon_stock_amount"
+        app:tint="@color/blue_400" />
+
+    <TextView
+        android:id="@+id/activity_stock_list_item_text_totalsizes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="4dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:includeFontPadding="false"
+        android:text="00"
+        android:textColor="@color/neutral_700"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/activity_stock_list_item_text_color"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/activity_stock_list_item_text_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="4dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:includeFontPadding="false"
+        android:text="Color"
+        android:textColor="@color/neutral_700"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/activity_stock_list_item_list_sizes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/activity_stock_list_item_image_sizes"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <include layout="@layout/activity_stock_inventory_row_size_tag" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

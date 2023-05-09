@@ -92,6 +92,19 @@ public class Shoe {
         this.gender = gender;
     }
 
+    public static String getGender(int gender) {
+        switch (gender) {
+            case 0:
+                return "Male";
+            case 1:
+                return "Female";
+            case 2:
+                return "Unisex";
+            default:
+                return "Null";
+        }
+    }
+
     public String getName() {
         return name;
     }

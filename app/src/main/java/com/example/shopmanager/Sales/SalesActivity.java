@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.inputmethod.EditorInfo;
 import android.widget.TextView;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -51,6 +52,7 @@ public class SalesActivity extends AppCompatActivity implements MainActivity.Sea
 
     public void setUpSearchFilter(){
         EditText search = findViewById(R.id.activity_stocks_constraint_filters_edittext_search);
+        search.setImeOptions(EditorInfo.IME_ACTION_DONE);
         search.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

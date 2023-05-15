@@ -27,6 +27,8 @@ public class Shoe {
         this.sizes = sizes;
     }
 
+    public Shoe(){}
+
 
     public Shoe(int id, String name, String code, long date, float price, boolean sale_enabled, float sale_price, String category, String brand, String color, String sizes, int gender) {
         this.id = id;

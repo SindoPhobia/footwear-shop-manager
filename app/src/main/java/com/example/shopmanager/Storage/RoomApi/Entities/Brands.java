@@ -12,6 +12,12 @@ public class Brands {
     @ColumnInfo (name = "name")
     private String name;
 
+    public Brands(){}
+    public Brands(String name, int id){
+        this.name = name;
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }

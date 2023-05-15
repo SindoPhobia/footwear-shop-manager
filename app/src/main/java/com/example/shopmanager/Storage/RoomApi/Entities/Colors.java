@@ -12,6 +12,13 @@ public class Colors {
     @ColumnInfo (name = "name")
     private String name;
 
+    public Colors(){}
+
+    public Colors(String name, int id){
+        this.name = name;
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }

@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 
 import com.example.shopmanager.MainActivity;
@@ -51,6 +52,7 @@ public class StocksActivity extends AppCompatActivity implements StockRecyclerVi
     @Override
     public void setUpSearchFilter() {
         EditText search = findViewById(R.id.activity_stocks_constraint_filters_edittext_search);
+        search.setImeOptions(EditorInfo.IME_ACTION_DONE);
         search.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

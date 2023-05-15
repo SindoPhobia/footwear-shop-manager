@@ -241,4 +241,18 @@ public interface StockDao{
             "where s2.code=:code")
     public List<Shoe> getShoesSameColor(String code);
 
+    @Query("select * from Stock s1 where s1.id==:stock_id")
+    public Stock getStockRaw(int stock_id);
+
+    @Query("select * from Colors c where c.name==:name")
+    public Colors getColorRaw(String name);
+
+    @Query("select * from Categories c where c.name==:name")
+    public Categories getCategoriesRaw(String name);
+
+    @Query("select * from Brands b where b.name==:name")
+    public Brands getBrandsRaw(String name);
+
+    @Query("select * from Shoes s where s.code=:code and s.date=:date")
+    public Shoes getShoeRaw(String code, long date);
 }

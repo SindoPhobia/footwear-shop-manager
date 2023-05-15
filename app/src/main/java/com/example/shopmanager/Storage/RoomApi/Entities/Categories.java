@@ -12,6 +12,13 @@ public class Categories {
     @ColumnInfo (name = "name")
     private String name;
 
+    public Categories(String name, int id){
+        this.name = name;
+        this.id = id;
+    }
+
+    public Categories(){}
+
     public int getId() {
         return id;
     }

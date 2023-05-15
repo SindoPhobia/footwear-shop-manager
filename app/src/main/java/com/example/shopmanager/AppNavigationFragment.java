@@ -30,7 +30,7 @@ public class AppNavigationFragment extends Fragment {
 
     BUTTON highlightedButton;
 
-    public static enum BUTTON { HOME, SALES, STOCK };
+    public static enum BUTTON { HOME, SALES, STOCK, OTHER };
 
     public AppNavigationFragment() {}
 
@@ -47,8 +47,6 @@ public class AppNavigationFragment extends Fragment {
                 buttonStock.setImageTintList(getContext().getColorStateList(R.color.blue_300));
 
                 root.setBackgroundColor(ContextCompat.getColor(getContext(), R.color.blue_400));
-
-
                 break;
             case SALES:
                 buttonSales.setImageTintList(getContext().getColorStateList(R.color.blue_400));
@@ -57,6 +55,8 @@ public class AppNavigationFragment extends Fragment {
             case STOCK:
                 buttonStock.setImageTintList(getContext().getColorStateList(R.color.blue_400));
                 indicatorStock.setVisibility(View.VISIBLE);
+                break;
+            case OTHER:
                 break;
         }
     }
@@ -71,7 +71,9 @@ public class AppNavigationFragment extends Fragment {
             highlightedButton = BUTTON.SALES;
         }else if(parentActivity instanceof StocksActivity || parentActivity instanceof StockActivity) {
                 highlightedButton = BUTTON.STOCK;
-            }
+        } else {
+            highlightedButton = BUTTON.OTHER;
+        }
     }
 
     @Override

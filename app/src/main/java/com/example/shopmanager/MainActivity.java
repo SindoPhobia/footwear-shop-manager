@@ -56,11 +56,20 @@ public class MainActivity extends AppCompatActivity {
         firestoreDB.init(FirebaseFirestore.getInstance());
 
         salesAnalytics = new SalesAnalytics();
-        salesAnalytics.init();
+        salesAnalytics.init(new FirestoreDB.CallbackAggregate() {
+            @Override
+            public void onComplete(int count) {
+                populateData(startActivityIntent);
+            }
+
+            @Override
+            public void onError() {
+
+            }
+        });
 
         // TODO: Grab data from both databases for the main recycler views
 
-        populateData(startActivityIntent);
         populateRoom();
     }
 
@@ -169,9 +178,10 @@ public class MainActivity extends AppCompatActivity {
                     }
                     saleDisplayModel.setStockDisplayModel(soldStock);
                     salesDisplayModel.add(saleDisplayModel);
+
+                    startActivity(intent);
+                    finish();
                 }
-                startActivity(intent);
-                finish();
                 if(salesDisplayModel==null || salesDisplayModel.size()==0) return;
                 sales = new ArrayList<>(salesDisplayModel);
             }

@@ -19,6 +19,8 @@ public class SalesAnalytics {
     private float monthly;
     private float weekly;
 
+    private FirestoreDB.CallbackAggregate cl;
+
     private long getStartToday(){
         String date = getFormattedDate();
         int hours = Integer.parseInt(date.substring(13, 15));
@@ -38,7 +40,8 @@ public class SalesAnalytics {
         return getStartToday() - (long)getDay()*86400000;
     }
 
-    public void init(){
+    public void init(FirestoreDB.CallbackAggregate cl){
+        this.cl = cl;
         updateToday();
     }
 
@@ -103,11 +106,12 @@ public class SalesAnalytics {
             public void onComplete(Sale[] sales) {
                 total = calculatePrice(sales) + monthly;
                 Log.d("sales", total+"-"+monthly+"-"+weekly+"-"+today);
+                cl.onComplete(0);
             }
 
             @Override
             public void onError() {
-
+                cl.onError();
             }
         });
     }

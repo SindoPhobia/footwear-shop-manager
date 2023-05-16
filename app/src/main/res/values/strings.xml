@@ -31,4 +31,22 @@
     <string name="activity_newsale_container_form_text_title">Products</string>
     <string name="activity_newsale_container_form_container_text_labelsoldby">Sold By</string>
     <string name="activity_newsale_button_addsale">Add Sale</string>
+    <string name="activity_newstock_header_text_title">Add new shoe</string>
+    <string name="activity_newstock_button_previoustab">Previous</string>
+    <string name="activity_newstock_button_nexttab">Next</string>
+    <string name="fragment_newstock_form_basicdetails_text_title">General shoe details</string>
+    <string name="fragment_newstock_form_basicdetails_edittext_name">Name</string>
+    <string name="fragment_newstock_form_basicdetails_edittext_brand">Brand</string>
+    <string name="fragment_newstock_form_basicdetails_edittext_code">Code</string>
+    <string name="fragment_newstock_form_basicdetails_edittext_color">Color</string>
+    <string name="fragment_newstock_form_basicdetails_button_addimage">Add Image</string>
+    <string name="fragment_newstock_form_categorizations_text_title">Categorizations</string>
+    <string name="fragment_newstock_form_categorizations_edittext_category">Category</string>
+    <string name="fragment_newstock_form_categorizations_edittext_gender">Gender</string>
+    <string name="recyclerview_sizeintentory_row_text_items">Items</string>
+    <string name="recyclerview_sizeintentory_row_button_size">Size 00</string>
+    <string name="fragment_newstock_form_price_text_title">Price</string>
+    <string name="fragment_newstock_form_price_edittext_discountprice">Discounted Price</string>
+    <string name="fragment_newstock_form_price_edittext_originalprice">Original Price</string>
+    <string name="activity_newstock_button_complete">Complete</string>
 </resources>

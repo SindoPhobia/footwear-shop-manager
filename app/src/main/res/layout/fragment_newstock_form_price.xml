@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Forms.NewStockFormPrice">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/fragment_newstock_form_price_text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:includeFontPadding="false"
+        android:text="@string/fragment_newstock_form_price_text_title"
+        android:textColor="@color/neutral_900"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/fragment_newstock_form_price_textinputlayout_originalprice"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginRight="16dp"
+        app:boxBackgroundColor="#00FFFFFF"
+        app:boxBackgroundMode="outline"
+        app:boxCornerRadiusBottomEnd="4dp"
+        app:boxCornerRadiusBottomStart="4dp"
+        app:boxCornerRadiusTopEnd="4dp"
+        app:boxCornerRadiusTopStart="4dp"
+        app:boxStrokeColor="@color/text_input_layout_box_stroke"
+        app:boxStrokeWidth="2dp"
+        app:hintTextColor="@color/blue_600"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_newstock_form_price_text_title">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/fragment_newstock_form_price_edittext_originalprice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:hint="@string/fragment_newstock_form_price_edittext_originalprice"
+            android:includeFontPadding="false"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:textColor="@color/blue_600"
+            android:textColorHighlight="@color/blue_600"
+            android:textColorHint="@color/blue_600"
+            android:textSize="12sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/fragment_newstock_form_price_textinputlayout_discountprice"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginRight="16dp"
+        app:boxBackgroundColor="#00FFFFFF"
+        app:boxBackgroundMode="outline"
+        app:boxCornerRadiusBottomEnd="4dp"
+        app:boxCornerRadiusBottomStart="4dp"
+        app:boxCornerRadiusTopEnd="4dp"
+        app:boxCornerRadiusTopStart="4dp"
+        app:boxStrokeColor="@color/text_input_layout_box_stroke"
+        app:boxStrokeWidth="2dp"
+        app:hintTextColor="@color/blue_600"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_newstock_form_price_textinputlayout_originalprice">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/fragment_newstock_form_price_edittext_discountprice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:hint="@string/fragment_newstock_form_price_edittext_discountprice"
+            android:includeFontPadding="false"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:textColor="@color/blue_600"
+            android:textColorHighlight="@color/blue_600"
+            android:textColorHint="@color/blue_600"
+            android:textSize="12sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

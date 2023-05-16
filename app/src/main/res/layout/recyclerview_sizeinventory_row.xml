@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/recyclerview_sizeintentory_row_container_element"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/recyclerview_sizeintentory_row_button_size"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/neutral_100"
+            android:fontFamily="@font/poppins"
+            android:includeFontPadding="false"
+            android:paddingTop="0dp"
+            android:paddingRight="0dp"
+            android:paddingBottom="0dp"
+            android:shadowColor="#00FFFFFF"
+            android:text="@string/recyclerview_sizeintentory_row_button_size"
+            android:textAlignment="textStart"
+            android:textColor="@color/neutral_900"
+            android:textSize="12sp"
+            app:icon="@drawable/icon_checkbox_off"
+            app:iconPadding="8dp"
+            app:iconTintMode="multiply"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/recyclerview_sizeintentory_row_edittext_count"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/recyclerview_sizeintentory_row_text_items"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/poppins"
+            android:includeFontPadding="false"
+            android:text="@string/recyclerview_sizeintentory_row_text_items"
+            android:textColor="@color/blue_300"
+            android:textSize="10dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/recyclerview_sizeintentory_row_image_items"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginEnd="4dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/recyclerview_sizeintentory_row_text_items"
+            app:layout_constraintEnd_toStartOf="@+id/recyclerview_sizeintentory_row_text_items"
+            app:layout_constraintTop_toTopOf="@+id/recyclerview_sizeintentory_row_text_items"
+            app:srcCompat="@drawable/icon_stock_amount"
+            app:tint="@color/blue_300" />
+
+        <EditText
+            android:id="@+id/recyclerview_sizeintentory_row_edittext_count"
+            android:layout_width="60dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/background_rounded_blue"
+            android:backgroundTint="#FFFFFF"
+            android:ems="10"
+            android:fontFamily="@font/poppins_semibold"
+            android:hint="0"
+            android:includeFontPadding="false"
+            android:inputType="text"
+            android:paddingRight="4dp"
+            android:textAlignment="textEnd"
+            android:textColor="@color/blue_400"
+            android:textColorHint="@color/blue_300"
+            android:textSize="10sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/recyclerview_sizeintentory_row_image_items"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,17 +11,15 @@ import android.text.TextWatcher;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 
+import com.example.shopmanager.Forms.NewStock;
 import com.example.shopmanager.MainActivity;
 import com.example.shopmanager.R;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class StocksActivity extends AppCompatActivity implements StockRecyclerViewAdapter.StockOnClickInterface, MainActivity.SearchFilter {
 
     RecyclerView stockRecyclerView;
+    FloatingActionButton buttonNewStock;
 
     StockRecyclerViewAdapter stockRecyclerViewAdapter;
 
@@ -32,11 +30,17 @@ public class StocksActivity extends AppCompatActivity implements StockRecyclerVi
 
 
         stockRecyclerView = findViewById(R.id.activity_stocks_recyclerview_stock);
+        buttonNewStock = findViewById(R.id.activity_stocks_button_createnew);
 
         stockRecyclerViewAdapter = new StockRecyclerViewAdapter(this, MainActivity.stock, this);
         stockRecyclerView.setAdapter(stockRecyclerViewAdapter);
         stockRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         setUpSearchFilter();
+
+        buttonNewStock.setOnClickListener(v -> {
+            Intent newStockIntent = new Intent(this, NewStock.class);
+            startActivity(newStockIntent);
+        });
     }
 
 

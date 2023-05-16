@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.shopmanager.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class NewStock extends AppCompatActivity {
 
@@ -20,6 +21,7 @@ public class NewStock extends AppCompatActivity {
 
     FragmentManager formTabsManager;
 
+    FloatingActionButton buttonBack;
     Button buttonNextTab, buttonPreviousTab;
     FragmentContainerView formFragments;
 
@@ -38,6 +40,11 @@ public class NewStock extends AppCompatActivity {
         tabProgress2 = findViewById(R.id.activity_newstock_header_progress2);
         tabProgress3 = findViewById(R.id.activity_newstock_header_progress3);
         tabProgress4 = findViewById(R.id.activity_newstock_header_progress4);
+
+        buttonBack = findViewById(R.id.activity_newsale_container_header_button_back);
+        buttonBack.setOnClickListener(v -> {
+            onBackPressed();
+        });
 
         formTabsManager = getSupportFragmentManager();
 

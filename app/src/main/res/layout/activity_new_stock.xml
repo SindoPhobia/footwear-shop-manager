@@ -16,21 +16,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/activity_newstock_header_button_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            app:layout_constraintBottom_toBottomOf="@+id/activity_newstock_header_text_title"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/activity_newstock_header_text_title"
-            app:srcCompat="@drawable/icon_arrow_left" />
-
         <TextView
             android:id="@+id/activity_newstock_header_text_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:fontFamily="@font/poppins_semibold"
@@ -81,6 +70,21 @@
             app:layout_constraintBottom_toBottomOf="@+id/activity_newstock_header_text_title"
             app:layout_constraintEnd_toStartOf="@+id/activity_newstock_header_progress2"
             app:layout_constraintTop_toTopOf="@+id/activity_newstock_header_text_title" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/activity_newstock_header_button_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:clickable="true"
+            app:backgroundTint="#FFFFFF"
+            app:elevation="0dp"
+            app:fabSize="mini"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:maxImageSize="16dp"
+            app:srcCompat="@drawable/icon_arrow_left" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

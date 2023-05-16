@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.shopmanager.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -27,6 +28,7 @@ public class NewSale extends AppCompatActivity {
     RecyclerView addStockRecyclerView;
 
     ConstraintLayout containerInputNewSale;
+    FloatingActionButton buttonBack;
     EditText inputNewSale;
     TextInputEditText inputSoldBy;
 
@@ -40,6 +42,10 @@ public class NewSale extends AppCompatActivity {
         containerInputNewSale = findViewById(R.id.activity_newsale_container_form_container_searchiteminputwrapper);
         inputNewSale = findViewById(R.id.activity_newsale_container_form_edittext_searchproduct);
         inputSoldBy = findViewById(R.id.activity_newsale_container_form_edittext_soldby);
+        buttonBack = findViewById(R.id.activity_newsale_container_header_button_back);
+        buttonBack.setOnClickListener(v -> {
+            onBackPressed();
+        });
 
         AddStockModel stockModel = new AddStockModel("Name", "Brand", "Category", "69", 1, 3, false, 1);
 

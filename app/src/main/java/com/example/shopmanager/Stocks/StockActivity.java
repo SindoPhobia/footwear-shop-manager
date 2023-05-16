@@ -7,17 +7,21 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.shopmanager.MainActivity;
 import com.example.shopmanager.R;
 import com.example.shopmanager.Storage.RoomApi.Shoe;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class StockActivity extends AppCompatActivity{
+
+    FloatingActionButton buttonBack;
 
     TextView name;
     TextView productCode;
@@ -35,6 +39,11 @@ public class StockActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stock);
+
+        buttonBack = findViewById(R.id.activity_stock_container_header_button_back);
+        buttonBack.setOnClickListener(v -> {
+            onBackPressed();
+        });
 
         name = findViewById(R.id.activity_stock_container_details_text_name);
         productCode = findViewById(R.id.activity_stock_container_details_text_productcode);

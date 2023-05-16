@@ -19,7 +19,7 @@ import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
 
-public class NewSale extends AppCompatActivity implements View.OnFocusChangeListener {
+public class NewSale extends AppCompatActivity {
 
     AddStockRecyclerViewAdapter addStockRecyclerViewAdapter;
     ArrayList<AddStockModel> addStockModelList;
@@ -53,32 +53,5 @@ public class NewSale extends AppCompatActivity implements View.OnFocusChangeList
         addStockRecyclerViewAdapter = new AddStockRecyclerViewAdapter(this, addStockModelList);
         addStockRecyclerView.setAdapter(addStockRecyclerViewAdapter);
         addStockRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        inputSoldBy.setOnClickListener(v -> {
-            Log.d("NEWSALE", "clicked");
-        });
-
-        inputSoldBy.setOnFocusChangeListener(this);
-
-    }
-
-    @Override
-    public boolean dispatchTouchEvent(MotionEvent event) {
-        if(event.getAction() == MotionEvent.ACTION_DOWN) {
-            View v = getCurrentFocus();
-
-        }
-
-        return super.dispatchTouchEvent(event);
-    }
-
-    @Override
-    public void onBackPressed() {
-        Log.d("NEWSALE", "back");
-    }
-
-    @Override
-    public void onFocusChange(View view, boolean hasFocus) {
-        Log.d("NEWSALE", "Focused: " + hasFocus + " " + view.toString());
     }
 }

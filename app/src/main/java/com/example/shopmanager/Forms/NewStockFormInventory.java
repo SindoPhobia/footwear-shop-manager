@@ -3,6 +3,8 @@ package com.example.shopmanager.Forms;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,10 +12,33 @@ import android.view.ViewGroup;
 
 import com.example.shopmanager.R;
 
+import java.util.ArrayList;
+
 public class NewStockFormInventory extends Fragment {
+
+    FormInventoryRecyclerViewAdapter inventoryRecyclerViewAdapter;
+    ArrayList<FormInventoryModel> inventoryList;
+
+    RecyclerView inventoryRecyclerView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_newstock_form_inventory, container, false);
+        View view = inflater.inflate(R.layout.fragment_newstock_form_inventory, container, false);
+
+        inventoryRecyclerView = view.findViewById(R.id.fragment_newstock_form_inventory_reyclerview_inventory);
+
+        setupInventoryList();
+        inventoryRecyclerViewAdapter = new FormInventoryRecyclerViewAdapter(getContext(), inventoryList);
+        inventoryRecyclerView.setAdapter(inventoryRecyclerViewAdapter);
+        inventoryRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        return view;
+    }
+
+    private void setupInventoryList() {
+        inventoryList = new ArrayList<>();
+
+        inventoryList.add(new FormInventoryModel("43", true, 0));
+        inventoryList.add(new FormInventoryModel("44"));
+        inventoryList.add(new FormInventoryModel("45"));
     }
 }

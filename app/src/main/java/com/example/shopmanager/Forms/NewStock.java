@@ -41,7 +41,7 @@ public class NewStock extends AppCompatActivity {
         tabProgress3 = findViewById(R.id.activity_newstock_header_progress3);
         tabProgress4 = findViewById(R.id.activity_newstock_header_progress4);
 
-        buttonBack = findViewById(R.id.activity_newsale_container_header_button_back);
+        buttonBack = findViewById(R.id.activity_newstock_header_button_back);
         buttonBack.setOnClickListener(v -> {
             onBackPressed();
         });

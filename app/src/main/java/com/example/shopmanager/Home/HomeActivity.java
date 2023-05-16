@@ -7,8 +7,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.shopmanager.Forms.NewSale;
+import com.example.shopmanager.Forms.NewStock;
 import com.example.shopmanager.MainActivity;
 import com.example.shopmanager.R;
 import com.example.shopmanager.Sales.SaleDisplayModel;
@@ -35,10 +38,26 @@ public class HomeActivity extends AppCompatActivity implements StockRecyclerView
     TextView analyticsStockTotal;
     TextView analyticsCategoriesTotal;
 
+    Button buttonNewSale;
+    Button buttonNewStock;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        buttonNewSale = findViewById(R.id.activity_home_constraint_latestsales_button_createnew);
+        buttonNewStock = findViewById(R.id.activity_home_constraint_stock_button_createnew);
+
+        buttonNewSale.setOnClickListener(v -> {
+          Intent intentNewSale = new Intent(this, NewSale.class);
+          startActivity(intentNewSale);
+        });
+
+        buttonNewStock.setOnClickListener(v -> {
+            Intent intentNewStock = new Intent(this, NewStock.class);
+            startActivity(intentNewStock);
+        });
 
         setAnalytics();
 

@@ -23,16 +23,22 @@ public class FormInventoryRecyclerViewAdapter extends RecyclerView.Adapter<FormI
     Context context;
     ArrayList<FormInventoryModel> inventoryList;
 
-    public FormInventoryRecyclerViewAdapter(Context context, ArrayList<FormInventoryModel> inventoryList) {
+    OnClickInterface onClickInterface;
+    public interface OnClickInterface {
+        public void onClick(int position);
+    }
+
+    public FormInventoryRecyclerViewAdapter(Context context, ArrayList<FormInventoryModel> inventoryList, OnClickInterface onClickInterface) {
         this.context = context;
         this.inventoryList = inventoryList;
+        this.onClickInterface = onClickInterface;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.recyclerview_sizeinventory_row, parent, false);
-        return new ViewHolder(view);
+        return new ViewHolder(view, onClickInterface);
     }
 
     @Override
@@ -56,7 +62,7 @@ public class FormInventoryRecyclerViewAdapter extends RecyclerView.Adapter<FormI
         ImageView imageItems;
         EditText editTextCount;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView, OnClickInterface onClickInterface) {
             super(itemView);
 
             root = itemView.findViewById(R.id.recyclerview_sizeintentory_row_container_element);
@@ -64,6 +70,13 @@ public class FormInventoryRecyclerViewAdapter extends RecyclerView.Adapter<FormI
             labelItems = itemView.findViewById(R.id.recyclerview_sizeintentory_row_text_items);
             imageItems = itemView.findViewById(R.id.recyclerview_sizeintentory_row_image_items);
             editTextCount = itemView.findViewById(R.id.recyclerview_sizeintentory_row_edittext_count);
+
+            buttonSize.setOnClickListener(v -> {
+                if(onClickInterface == null) return;
+                int pos = getAdapterPosition();
+                if(pos == RecyclerView.NO_POSITION) return;
+                onClickInterface.onClick(pos);
+            });
         }
 
         private void toggleSelected(boolean selected) {

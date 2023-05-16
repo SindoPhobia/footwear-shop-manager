@@ -21,6 +21,8 @@ public class NewStockFormInventory extends Fragment {
 
     RecyclerView inventoryRecyclerView;
 
+    FormInventoryRecyclerViewAdapter.OnClickInterface onClickInterface;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_newstock_form_inventory, container, false);
@@ -28,7 +30,16 @@ public class NewStockFormInventory extends Fragment {
         inventoryRecyclerView = view.findViewById(R.id.fragment_newstock_form_inventory_reyclerview_inventory);
 
         setupInventoryList();
-        inventoryRecyclerViewAdapter = new FormInventoryRecyclerViewAdapter(getContext(), inventoryList);
+
+        onClickInterface = new FormInventoryRecyclerViewAdapter.OnClickInterface() {
+            @Override
+            public void onClick(int position) {
+                inventoryList.get(position).setSelected(!inventoryList.get(position).isSelected());
+                inventoryRecyclerViewAdapter.notifyItemChanged(position);
+            }
+        };
+
+        inventoryRecyclerViewAdapter = new FormInventoryRecyclerViewAdapter(getContext(), inventoryList, onClickInterface);
         inventoryRecyclerView.setAdapter(inventoryRecyclerViewAdapter);
         inventoryRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         return view;

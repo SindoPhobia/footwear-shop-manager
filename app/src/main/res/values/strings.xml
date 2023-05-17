@@ -49,4 +49,7 @@
     <string name="fragment_newstock_form_price_edittext_discountprice">Discounted Price</string>
     <string name="fragment_newstock_form_price_edittext_originalprice">Original Price</string>
     <string name="activity_newstock_button_complete">Complete</string>
+    <string name="activity_newsale_contaienr_form_container_selectcolor_text_selectedlabel">Select color for</string>
+    <string name="activity_newsale_container_form_container_selectsize_text_selectlabel">Select size for</string>
+    <string name="activity_newsale_container_form_container_selectsize_text_selectcolor">Color</string>
 </resources>

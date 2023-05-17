@@ -32,6 +32,18 @@ public class AddStockRecyclerViewAdapter extends RecyclerView.Adapter<AddStockRe
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        AddStockModel entry = addStockModels.get(position);
+
+        holder.name.setText(new StringBuilder().append(entry.getBrand()).append(" - ").append(entry.getName()));
+        holder.category.setText(entry.getCategory());
+        holder.size.setText(entry.getSize());
+        if(entry.isSaleEnabled()) {
+            holder.price.setText(new StringBuilder().append(entry.getSalePrice()).append("€"));
+            int discountPercent = (int)((entry.getPrice() - entry.getSalePrice()) / entry.getPrice() * 100);
+            holder.discountPercent.setText(new StringBuilder().append(discountPercent).append("%"));
+        } else {
+            holder.price.setText(new StringBuilder().append(entry.getPrice()).append("€"));
+        }
 
     }
 

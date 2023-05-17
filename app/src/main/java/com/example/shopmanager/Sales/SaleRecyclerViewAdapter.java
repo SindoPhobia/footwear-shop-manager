@@ -14,8 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.shopmanager.MainActivity;
 import com.example.shopmanager.R;
 
-import org.checkerframework.checker.units.qual.A;
-
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

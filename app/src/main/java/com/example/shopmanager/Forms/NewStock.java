@@ -62,6 +62,46 @@ public class NewStock extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        setLocationPips(--currentFormLocationIndex);
+        super.onBackPressed();
+    }
+
+    private void setLocationPips(int location) {
+        switch(location) {
+            case 0:
+                tabProgress1.setBackground(ContextCompat.getDrawable(this, R.drawable.background_rounded_full_blue));
+                tabProgress2.setBackground(ContextCompat.getDrawable(this, R.drawable.background_rounded_full_outlined));
+                tabProgress3.setBackground(ContextCompat.getDrawable(this, R.drawable.background_rounded_full_outlined));
+                tabProgress4.setBackground(ContextCompat.getDrawable(this, R.drawable.background_rounded_full_outlined));
+                break;
+            case 1:
+                tabProgress1.setBackground(ContextCompat.getDrawable(this, R.drawable.background_rounded_full_blue));
+                tabProgress2.setBackground(ContextCompat.getDrawable(this, R.drawable.background_rounded_full_blue));
+                tabProgress3.setBackground(ContextCompat.getDrawable(this, R.drawable.background_rounded_full_outlined));
+                tabProgress4.setBackground(ContextCompat.getDrawable(this, R.drawable.background_rounded_full_outlined));
+                break;
+            case 2:
+                tabProgress1.setBackground(ContextCompat.getDrawable(this, R.drawable.background_rounded_full_blue));
+                tabProgress2.setBackground(ContextCompat.getDrawable(this, R.drawable.background_rounded_full_blue));
+                tabProgress3.setBackground(ContextCompat.getDrawable(this, R.drawable.background_rounded_full_blue));
+                tabProgress4.setBackground(ContextCompat.getDrawable(this, R.drawable.background_rounded_full_outlined));
+                break;
+            case 3:
+                tabProgress1.setBackground(ContextCompat.getDrawable(this, R.drawable.background_rounded_full_blue));
+                tabProgress2.setBackground(ContextCompat.getDrawable(this, R.drawable.background_rounded_full_blue));
+                tabProgress3.setBackground(ContextCompat.getDrawable(this, R.drawable.background_rounded_full_blue));
+                tabProgress4.setBackground(ContextCompat.getDrawable(this, R.drawable.background_rounded_full_blue));
+                break;
+            default:
+                tabProgress1.setBackground(ContextCompat.getDrawable(this, R.drawable.background_rounded_full_outlined));
+                tabProgress2.setBackground(ContextCompat.getDrawable(this, R.drawable.background_rounded_full_outlined));
+                tabProgress3.setBackground(ContextCompat.getDrawable(this, R.drawable.background_rounded_full_outlined));
+                tabProgress4.setBackground(ContextCompat.getDrawable(this, R.drawable.background_rounded_full_outlined));
+        }
+    }
+
     private void changeFormTab(int location) {
         Fragment fragmentFormTab;
 
@@ -77,33 +117,18 @@ public class NewStock extends AppCompatActivity {
             buttonNextTab.setText(getString(R.string.activity_newstock_button_nexttab));
         }
 
+        setLocationPips(location);
         switch(location) {
             case 0:
-                tabProgress1.setBackground(ContextCompat.getDrawable(this, R.drawable.background_rounded_full_blue));
-                tabProgress2.setBackground(ContextCompat.getDrawable(this, R.drawable.background_rounded_full_outlined));
-                tabProgress3.setBackground(ContextCompat.getDrawable(this, R.drawable.background_rounded_full_outlined));
-                tabProgress4.setBackground(ContextCompat.getDrawable(this, R.drawable.background_rounded_full_outlined));
                 fragmentFormTab = new NewStockFormBasicDetailsFragment();
                 break;
             case 1:
-                tabProgress1.setBackground(ContextCompat.getDrawable(this, R.drawable.background_rounded_full_blue));
-                tabProgress2.setBackground(ContextCompat.getDrawable(this, R.drawable.background_rounded_full_blue));
-                tabProgress3.setBackground(ContextCompat.getDrawable(this, R.drawable.background_rounded_full_outlined));
-                tabProgress4.setBackground(ContextCompat.getDrawable(this, R.drawable.background_rounded_full_outlined));
                 fragmentFormTab = new NewStockFormCategorizations();
                 break;
             case 2:
-                tabProgress1.setBackground(ContextCompat.getDrawable(this, R.drawable.background_rounded_full_blue));
-                tabProgress2.setBackground(ContextCompat.getDrawable(this, R.drawable.background_rounded_full_blue));
-                tabProgress3.setBackground(ContextCompat.getDrawable(this, R.drawable.background_rounded_full_blue));
-                tabProgress4.setBackground(ContextCompat.getDrawable(this, R.drawable.background_rounded_full_outlined));
                 fragmentFormTab = new NewStockFormInventory();
                 break;
             case 3:
-                tabProgress1.setBackground(ContextCompat.getDrawable(this, R.drawable.background_rounded_full_blue));
-                tabProgress2.setBackground(ContextCompat.getDrawable(this, R.drawable.background_rounded_full_blue));
-                tabProgress3.setBackground(ContextCompat.getDrawable(this, R.drawable.background_rounded_full_blue));
-                tabProgress4.setBackground(ContextCompat.getDrawable(this, R.drawable.background_rounded_full_blue));
                 fragmentFormTab = new NewStockFormPrice();
                 break;
             default:
@@ -111,6 +136,9 @@ public class NewStock extends AppCompatActivity {
         }
 
         FragmentTransaction transaction = formTabsManager.beginTransaction();
-        transaction.replace(R.id.activity_newstock_fragment_form, fragmentFormTab).commit();
+        transaction
+                .replace(R.id.activity_newstock_fragment_form, fragmentFormTab)
+                .addToBackStack(null)
+                .commit();
     }
 }

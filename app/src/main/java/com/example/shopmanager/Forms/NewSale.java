@@ -8,6 +8,7 @@ import androidx.core.graphics.TypefaceCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.Layout;
@@ -21,11 +22,17 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.shopmanager.MainActivity;
 import com.example.shopmanager.R;
+import com.example.shopmanager.Storage.RoomApi.Entities.Colors;
+import com.example.shopmanager.Storage.RoomApi.Entities.Shoes;
+import com.example.shopmanager.Storage.RoomApi.Shoe;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.function.BiConsumer;
 
 public class NewSale extends AppCompatActivity {
 
@@ -111,39 +118,39 @@ public class NewSale extends AppCompatActivity {
             containerResults.setVisibility(View.GONE);
         }
 
-        // TODO: Get all shoes that match input
-        String[] results = { "Nike - puma", "Adibas - cringe", "One salonica??" };
-
-
         listResults.removeAllViews();
 
-        for(String result : results) {
+        // TODO: Get all shoes that match input
+        ArrayList<Shoe> stock = (ArrayList<Shoe>) MainActivity.stockDatabase.stockDao().getStock(input);
+
+        int length = Math.min(stock.size(), 6);
+        for(int i = 0; i < length; i++) {
+            Shoe result = stock.get(i);
+            String name = new StringBuilder().append(result.getBrand()).append(" - ").append(result.getName()).toString();
+
             View resultView = getLayoutInflater().inflate(R.layout.view_result, null, false);
-            ((TextView)resultView.findViewById(R.id.view_result_text_result)).setText(result);
-            
+            ((TextView)resultView.findViewById(R.id.view_result_text_result)).setText(name);
+
             resultView.setOnClickListener(v -> {
                 prepareColorSelect(result);
             });
 
             listResults.addView(resultView);
         }
-
     }
 
-    private void prepareColorSelect(String selectedShoe) {
-        textResultColorSelectName.setText(selectedShoe);
-
-        // TODO: Get all colors of shoe
-        String[] colors = { "Black", "White", "Skati... kserwgw" };
-
+    private void prepareColorSelect(Shoe selectedShoe) {
+        textResultColorSelectName.setText(selectedShoe.getName());
         listResultsColors.removeAllViews();
 
-        for(String color : colors) {
+        ArrayList<Shoe> similarShoes = (ArrayList<Shoe>) MainActivity.stockDatabase.stockDao().getShoesSameColor(selectedShoe.getCode());
+
+        for(Shoe shoe : similarShoes) {
             TextView colorView = (TextView) LayoutInflater.from(getApplicationContext()).inflate(R.layout.view_colorselectrow, null, false);
-            colorView.setText(color);
+            colorView.setText(shoe.getColor());
 
             colorView.setOnClickListener(v -> {
-                prepareSizeSelect(selectedShoe, color);
+                prepareSizeSelect(shoe);
             });
 
             listResultsColors.addView(colorView);
@@ -154,21 +161,18 @@ public class NewSale extends AppCompatActivity {
         containerResultsColorSelect.setVisibility(View.VISIBLE);
     }
 
-    private void prepareSizeSelect(String selectedShoe, String selectedColor) {
-        textResultSizeSelectName.setText(selectedShoe);
-        textResultSizeSelectColor.setText(selectedColor);
-
-        // TODO: Get all sizes of shoe
-        String[] sizes = { "41" , "42", "43" };
-
+    private void prepareSizeSelect(Shoe selectedShoe) {
+        textResultSizeSelectName.setText(selectedShoe.getName());
+        textResultSizeSelectColor.setText(selectedShoe.getColor());
         listResultsSizes.removeAllViews();
 
-        for(String size : sizes) {
+        HashMap<String, Integer> sizes = selectedShoe.getSizesFormatted();
+        sizes.forEach((size, count) -> {
             TextView sizeView = (TextView) LayoutInflater.from(getApplicationContext()).inflate(R.layout.view_sizeselectorrow, null, false);
             sizeView.setText(size);
 
             sizeView.setOnClickListener(v -> {
-                addSaleEntry(selectedShoe, selectedColor, size);
+                addSaleEntry(selectedShoe, size);
                 inputSearchProduct.setText("");
                 containerResults.setVisibility(View.GONE);
                 containerResultsColorSelect.setVisibility(View.GONE);
@@ -176,15 +180,14 @@ public class NewSale extends AppCompatActivity {
             });
 
             listResultsSizes.addView(sizeView);
-        }
+        });
 
         containerResultsColorSelect.setVisibility(View.GONE);
         containerResultsSizeSelect.setVisibility(View.VISIBLE);
     }
 
-    private void addSaleEntry(String selectedShoe, String selectedColor, String selectedSize) {
-        // TODO: Get all shoe data
-        AddStockModel entry = new AddStockModel("", selectedShoe, "Category", selectedSize, 1, 420, false, 0);
+    private void addSaleEntry(Shoe selectedShoe, String selectedSize) {
+        AddStockModel entry = new AddStockModel(selectedShoe.getName(), selectedShoe.getBrand(), selectedShoe.getCategory(), selectedSize, selectedShoe.getId(), selectedShoe.getPrice(), selectedShoe.isSale_enabled(), selectedShoe.getSale_price());
 
         addStockModelList.add(entry);
         addStockRecyclerViewAdapter.notifyItemChanged(addStockModelList.size() - 1);

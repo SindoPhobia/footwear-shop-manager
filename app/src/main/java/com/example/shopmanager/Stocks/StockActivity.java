@@ -15,6 +15,8 @@ import android.widget.TextView;
 
 import com.example.shopmanager.MainActivity;
 import com.example.shopmanager.R;
+import com.example.shopmanager.Storage.RoomApi.Entities.Shoes;
+import com.example.shopmanager.Storage.RoomApi.Entities.Stock;
 import com.example.shopmanager.Storage.RoomApi.Shoe;
 import com.example.shopmanager.Storage.RoomApi.StockDB;
 import com.example.shopmanager.Storage.RoomApi.StockDao;
@@ -53,6 +55,11 @@ public class StockActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stock);
 
+        String code = getIntent().getExtras().getString("code");
+        ArrayList<Shoe> shoes = (ArrayList<Shoe>) MainActivity.stockDatabase.stockDao().getShoesSameColor(code);
+
+        Shoe initial = shoes.get(0);
+
         buttonBack = findViewById(R.id.activity_stock_container_header_button_back);
         buttonEdit = findViewById(R.id.activity_stock_container_header_button_edit);
         buttonDelete = findViewById(R.id.activity_stock_container_header_button_delete);
@@ -62,11 +69,14 @@ public class StockActivity extends AppCompatActivity{
         });
 
         buttonEdit.setOnClickListener(v -> {
-
         });
 
         buttonDelete.setOnClickListener(v -> {
+            Stock deletedStock = MainActivity.stockDatabase.stockDao().getStockRaw(initial.getId());
+            Shoes deletedShoe = MainActivity.stockDatabase.stockDao().getShoeRaw(initial.getCode());
 
+            MainActivity.stockDatabase.stockDao().deleteStock(deletedStock);
+            MainActivity.stockDatabase.stockDao().deleteShoe(deletedShoe);
         });
 
         name = findViewById(R.id.activity_stock_container_details_text_name);
@@ -85,11 +95,6 @@ public class StockActivity extends AppCompatActivity{
         shoeImg = findViewById(R.id.activity_stock_container_image_image_stock);
 
         stockList = findViewById(R.id.activity_stock_list);
-
-        String code = getIntent().getExtras().getString("code");
-        ArrayList<Shoe> shoes = (ArrayList<Shoe>) MainActivity.stockDatabase.stockDao().getShoesSameColor(code);
-
-        Shoe initial = shoes.get(0);
 
         if(initial.getImg()!=null){
             shoeImg.setImageBitmap(StockDB.decodeBlob(initial.getImg()));

@@ -34,6 +34,28 @@ public class NewStockFormCategorizations extends Fragment implements NewStock.Fo
         errorCategory = view.findViewById(R.id.fragment_newstock_form_categorizations_constraint_categoryerror);
         errorGender = view.findViewById(R.id.fragment_newstock_form_categorizations_constraint_gendererror);
 
+        Shoe state = NewStock.shoe;
+        if (state.getCategory() != null) editTextCategories.setText(state.getCategory());
+        if (
+                state.getGender() == Shoe.getGenderCode("Male") ||
+                        state.getGender() == Shoe.getGenderCode("Female") ||
+                        state.getGender() == Shoe.getGenderCode("Unisex")
+        ) {
+            int selectedGenderId;
+            switch (state.getGender()) {
+                case 1:
+                    selectedGenderId = R.id.fragment_newstock_form_categorizations_radiogroup_gender_female;
+                    break;
+                case 2:
+                    selectedGenderId = R.id.fragment_newstock_form_categorizations_radiogroup_gender_unisex;
+                    break;
+                default:
+                    selectedGenderId = R.id.fragment_newstock_form_categorizations_radiogroup_gender_male;
+            }
+
+            ((RadioButton) radioGroupGender.findViewById(selectedGenderId)).setSelected(true);
+        }
+
         return view;
     }
 
@@ -64,10 +86,6 @@ public class NewStockFormCategorizations extends Fragment implements NewStock.Fo
         RadioButton btn = radioGroupGender.findViewById(radioGroupGender.getCheckedRadioButtonId());
         String text = btn.getText().toString();
         data.setGender(Shoe.getGenderCode(text));
-    }
-
-    @Override
-    public void useState(Shoe state) {
-
+        Log.d("NEWSTOCK", "Store state of categorizations");
     }
 }

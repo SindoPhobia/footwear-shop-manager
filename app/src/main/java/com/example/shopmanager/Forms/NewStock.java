@@ -24,7 +24,7 @@ public class NewStock extends AppCompatActivity {
     static final int TOTAL_FORM_LOCATIONS = 4;
     int currentFormLocationIndex;
 
-    private Shoe shoe;
+    public static Shoe shoe;
 
     FragmentManager formTabsManager;
 
@@ -37,7 +37,6 @@ public class NewStock extends AppCompatActivity {
     public interface FormFragment {
         boolean validateForm();
         void fillData(Shoe data);
-        void useState(Shoe state);
     }
 
     @Override
@@ -66,9 +65,12 @@ public class NewStock extends AppCompatActivity {
         changeFormTab(currentFormLocationIndex);
 
         buttonNextTab.setOnClickListener(v -> {
+            Log.d("NEWSTOCK", "Ade gamh");
             try {
                 FormFragment currentTab = (FormFragment) formTabsManager.findFragmentById(R.id.activity_newstock_fragment_form);
+                Log.d("NEWSTOCK", "DDDDDD");
                 if(!currentTab.validateForm()) return;
+                Log.d("NEWSTOCK", "papaki %");
                 currentTab.fillData(shoe);
                 if(currentFormLocationIndex == TOTAL_FORM_LOCATIONS - 1) {
                     // TODO: complete new stock form
@@ -84,19 +86,10 @@ public class NewStock extends AppCompatActivity {
 
         buttonPreviousTab.setOnClickListener(v -> {
             if(currentFormLocationIndex == 0) return;
-            onBackPressed();
+            currentFormLocationIndex--;
+            changeFormTab(currentFormLocationIndex);
         });
 
-    }
-
-    @Override
-    public void onBackPressed() {
-        currentFormLocationIndex--;
-        setLocationPips(currentFormLocationIndex);
-        updateFormControls(currentFormLocationIndex);
-        super.onBackPressed();
-        FormFragment currentTab = (FormFragment) formTabsManager.findFragmentById(R.id.activity_newstock_fragment_form);
-        currentTab.useState(shoe);
     }
 
     private void setLocationPips(int location) {
@@ -153,11 +146,9 @@ public class NewStock extends AppCompatActivity {
                 fragmentFormTab = new NewStockFormBasicDetailsFragment();
         }
 
-        ((FormFragment)fragmentFormTab).useState(shoe);
         FragmentTransaction transaction = formTabsManager.beginTransaction();
         transaction
                 .replace(R.id.activity_newstock_fragment_form, fragmentFormTab)
-                .addToBackStack(null)
                 .commit();
     }
 

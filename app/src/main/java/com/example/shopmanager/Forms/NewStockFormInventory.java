@@ -104,9 +104,4 @@ public class NewStockFormInventory extends Fragment implements NewStock.FormFrag
         }
         data.setSizes(data.parseSizes(sizesMap));
     }
-
-    @Override
-    public void useState(Shoe state) {
-
-    }
 }

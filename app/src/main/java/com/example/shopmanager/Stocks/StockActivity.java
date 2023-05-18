@@ -27,6 +27,8 @@ import java.util.Map;
 public class StockActivity extends AppCompatActivity{
 
     FloatingActionButton buttonBack;
+    FloatingActionButton buttonEdit;
+    FloatingActionButton buttonDelete;
 
     TextView name;
     TextView productCode;
@@ -52,8 +54,19 @@ public class StockActivity extends AppCompatActivity{
         setContentView(R.layout.activity_stock);
 
         buttonBack = findViewById(R.id.activity_stock_container_header_button_back);
+        buttonEdit = findViewById(R.id.activity_stock_container_header_button_edit);
+        buttonDelete = findViewById(R.id.activity_stock_container_header_button_delete);
+
         buttonBack.setOnClickListener(v -> {
             onBackPressed();
+        });
+
+        buttonEdit.setOnClickListener(v -> {
+
+        });
+
+        buttonDelete.setOnClickListener(v -> {
+
         });
 
         name = findViewById(R.id.activity_stock_container_details_text_name);

@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Sales.SalesActivity">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/activity_sales_fragment_navigation"
+        android:name="com.example.shopmanager.AppNavigationFragment"
+        android:layout_width="64dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout="@layout/fragment_app_navigation" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/activity_sales_fragment_navigation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/activity_sales_constraint_analyticssales"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/background_rounded_blue"
+            android:clipToPadding="false"
+            android:paddingStart="24dp"
+            android:paddingTop="16dp"
+            android:paddingEnd="24dp"
+            android:paddingBottom="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/activity_sales_constraint_sales_icon_analytics"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                app:layout_constraintBottom_toBottomOf="@+id/activity_sales_constraint_analyticssales_text_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/activity_sales_constraint_analyticssales_text_title"
+                app:layout_constraintVertical_bias="0.4"
+                app:srcCompat="@drawable/icon_sales_circled" />
+
+            <TextView
+                android:id="@+id/activity_sales_constraint_analyticssales_text_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/activity_home_constraint_analyticssales_text_title"
+                android:textColor="@color/neutral_100"
+                android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@+id/activity_sales_constraint_sales_icon_analytics"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/activity_sales_constraint_analyticssales_layout_alltime"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/activity_sales_constraint_analyticssales_text_title">
+
+                <TextView
+                    android:id="@+id/activity_sales_constraint_sales_text_salestotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="12.360 €"
+                    android:textColor="@color/neutral_100"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/activity_sales_constraint_sales_text_labelsalestotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:text="@string/activity_sales_text_analyticstotallabel"
+                    android:textColor="@color/blue_300"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/activity_sales_constraint_analyticssales_layout_monthly"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="@+id/activity_sales_constraint_analyticssales_layout_alltime"
+                app:layout_constraintStart_toStartOf="@+id/activity_sales_constraint_analyticssales_layout_alltime"
+                app:layout_constraintTop_toBottomOf="@+id/activity_sales_constraint_analyticssales_layout_alltime">
+
+                <TextView
+                    android:id="@+id/activity_sales_constraint_sales_text_salesmonthly"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="2.500 €"
+                    android:textColor="@color/neutral_100"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/activity_sales_constraint_sales_text_labelsalesmonthly"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:text="@string/activity_sales_constraint_sales_text_labelsalesmonthly"
+                    android:textColor="@color/blue_300"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/activity_sales_constraint_analyticssales_layout_weekly"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="@+id/activity_sales_constraint_analyticssales_layout_monthly"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/activity_sales_constraint_analyticssales_layout_monthly"
+                app:layout_constraintTop_toBottomOf="@+id/activity_sales_constraint_analyticssales_layout_monthly">
+
+                <TextView
+                    android:id="@+id/activity_sales_constraint_sales_text_salesweekly"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="552 €"
+                    android:textColor="@color/neutral_100"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/activity_sales_constraint_sales_text_labelsalesweekly"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activity_sales_constraint_sales_text_labelsalesweekly"
+                    android:textColor="@color/blue_300"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/activity_sales_constraint_analyticssales_layout_daily"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="@+id/activity_sales_constraint_analyticssales_layout_weekly"
+                app:layout_constraintStart_toStartOf="@+id/activity_sales_constraint_analyticssales_layout_weekly"
+                app:layout_constraintTop_toBottomOf="@+id/activity_sales_constraint_analyticssales_layout_weekly">
+
+                <TextView
+                    android:id="@+id/activity_sales_constraint_sales_text_salestoday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="12.360 €"
+                    android:textColor="@color/neutral_100"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/activity_sales_constraint_sales_text_labelsalesoday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:text="@string/activity_home_text_analyticstodaylabel"
+                    android:textColor="@color/blue_300"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/activity_stocks_constraint_filters"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:clipToPadding="false"
+            app:layout_constraintEnd_toStartOf="@+id/activity_sales_constraint_analyticssales"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/activity_stocks_constraint_filters_constraint_search"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:background="@drawable/background_rounded_blue"
+                android:baselineAligned="false"
+                android:gravity="center"
+                android:paddingStart="24dp"
+                android:paddingEnd="24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="4dp"
+                    android:tint="@color/neutral_100"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/activity_stocks_constraint_filters_edittext_search"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/icon_search" />
+
+                <EditText
+                    android:id="@+id/activity_stocks_constraint_filters_edittext_search"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/blue_400"
+                    android:ems="10"
+                    android:fontFamily="@font/poppins"
+                    android:hint="@string/activity_sales_constraint_filters_edittext_search"
+                    android:includeFontPadding="false"
+                    android:inputType="text"
+                    android:textColor="@color/neutral_100"
+                    android:textColorHint="@color/blue_300"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/activity_sales_recyclerview_sales"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/activity_sales_constraint_analyticssales"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_stocks_constraint_filters"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/activity_sales_button_createnew"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:clickable="true"
+            app:backgroundTint="@color/blue_700"
+            app:layout_constraintBottom_toBottomOf="@+id/activity_sales_recyclerview_sales"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/icon_plus"
+            app:tint="@color/neutral_100" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

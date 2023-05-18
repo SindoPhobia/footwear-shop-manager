@@ -1,6 +1,9 @@
 package com.example.shopmanager.Forms;
 
 import android.content.Context;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,22 +26,23 @@ public class FormInventoryRecyclerViewAdapter extends RecyclerView.Adapter<FormI
     Context context;
     ArrayList<FormInventoryModel> inventoryList;
 
-    OnClickInterface onClickInterface;
-    public interface OnClickInterface {
+    InventoryRowInterface inventoryRowInterface;
+    public interface InventoryRowInterface {
         public void onClick(int position);
+        public void onKeyPress(int position, int number);
     }
 
-    public FormInventoryRecyclerViewAdapter(Context context, ArrayList<FormInventoryModel> inventoryList, OnClickInterface onClickInterface) {
+    public FormInventoryRecyclerViewAdapter(Context context, ArrayList<FormInventoryModel> inventoryList, InventoryRowInterface inventoryRowInterface) {
         this.context = context;
         this.inventoryList = inventoryList;
-        this.onClickInterface = onClickInterface;
+        this.inventoryRowInterface = inventoryRowInterface;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.recyclerview_sizeinventory_row, parent, false);
-        return new ViewHolder(view, onClickInterface);
+        return new ViewHolder(view, inventoryRowInterface);
     }
 
     @Override
@@ -62,7 +66,7 @@ public class FormInventoryRecyclerViewAdapter extends RecyclerView.Adapter<FormI
         ImageView imageItems;
         EditText editTextCount;
 
-        public ViewHolder(@NonNull View itemView, OnClickInterface onClickInterface) {
+        public ViewHolder(@NonNull View itemView, InventoryRowInterface inventoryRowInterface) {
             super(itemView);
 
             root = itemView.findViewById(R.id.recyclerview_sizeintentory_row_container_element);
@@ -72,10 +76,28 @@ public class FormInventoryRecyclerViewAdapter extends RecyclerView.Adapter<FormI
             editTextCount = itemView.findViewById(R.id.recyclerview_sizeintentory_row_edittext_count);
 
             buttonSize.setOnClickListener(v -> {
-                if(onClickInterface == null) return;
+                if(inventoryRowInterface == null) return;
                 int pos = getAdapterPosition();
                 if(pos == RecyclerView.NO_POSITION) return;
-                onClickInterface.onClick(pos);
+                inventoryRowInterface.onClick(pos);
+            });
+
+            editTextCount.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    if(inventoryRowInterface == null) return;
+                    int pos = getAdapterPosition();
+                    if(pos == RecyclerView.NO_POSITION) return;
+
+                    int number = Integer.parseInt(s.toString());
+                    inventoryRowInterface.onKeyPress(pos, number);
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {}
             });
         }
 

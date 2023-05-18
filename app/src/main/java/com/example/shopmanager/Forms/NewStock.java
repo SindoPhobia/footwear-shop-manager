@@ -65,12 +65,9 @@ public class NewStock extends AppCompatActivity {
         changeFormTab(currentFormLocationIndex);
 
         buttonNextTab.setOnClickListener(v -> {
-            Log.d("NEWSTOCK", "Ade gamh");
             try {
                 FormFragment currentTab = (FormFragment) formTabsManager.findFragmentById(R.id.activity_newstock_fragment_form);
-                Log.d("NEWSTOCK", "DDDDDD");
                 if(!currentTab.validateForm()) return;
-                Log.d("NEWSTOCK", "papaki %");
                 currentTab.fillData(shoe);
                 if(currentFormLocationIndex == TOTAL_FORM_LOCATIONS - 1) {
                     // TODO: complete new stock form

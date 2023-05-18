@@ -181,7 +181,6 @@ public class NewStockFormBasicDetailsFragment extends Fragment implements NewSto
         }catch (NullPointerException e){
             isValid = false;
         }
-        Log.d("NEWSTOCK", "GAMW THN EIKONA");
 
         return isValid;
     }

@@ -158,8 +158,7 @@ public class NewSale extends AppCompatActivity {
                 @Override
                 public void onComplete(Sale[] sales) {
                     //TODO: REDIRECT USER TO SALES PAGE
-                    Intent i = new Intent(getApplicationContext(), SalesActivity.class);
-                    startActivity(i);
+                    finish();
                     notifySaleUpload(Integer.parseInt(sales[0].getId()));
                 }
 
@@ -172,7 +171,7 @@ public class NewSale extends AppCompatActivity {
     }
 
     private void notifySaleUpload(int id){
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), "CHANNEL_ID")
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), "SHOP_MANAGER_CHANNEL_ID")
                 .setStyle(new NotificationCompat.BigTextStyle()).setSmallIcon(R.drawable.icon_sales)
                 .setContentTitle("Sale Creation")
                 .setContentText("Sale successfully uploaded!")

@@ -80,8 +80,7 @@ public class NewStock extends AppCompatActivity {
                     MainActivity.stockDatabase.createShoe(shoe);
                     MainActivity.updateStock();
                     notifyStockUpload(0);
-                    Intent i = new Intent(this, StockActivity.class);
-                    startActivity(i);
+                    finish();
                     return;
                 }
             } catch(Exception e) {
@@ -105,7 +104,7 @@ public class NewStock extends AppCompatActivity {
     }
 
     private void notifyStockUpload(int id) {
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), "CHANNEL_ID")
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), "SHOP_MANAGER_CHANNEL_ID")
                 .setStyle(new NotificationCompat.BigTextStyle()).setSmallIcon(R.drawable.icon_stock)
                 .setContentTitle("Stock Creation")
                 .setContentText("Stock has been added!")

@@ -84,7 +84,7 @@ public class SaleRecyclerViewAdapter extends RecyclerView.Adapter<SaleRecyclerVi
     }
 
     private void notifyDelete(int id){
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(context.getApplicationContext(), "CHANNEL_ID")
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context.getApplicationContext(), "SHOP_MANAGER_CHANNEL_ID")
                 .setStyle(new NotificationCompat.BigTextStyle()).setSmallIcon(R.drawable.icon_sales)
                 .setContentTitle("Sale Deleted")
                 .setContentText("Sale successfully deleted!")

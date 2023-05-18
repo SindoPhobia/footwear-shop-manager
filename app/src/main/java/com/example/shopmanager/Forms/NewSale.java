@@ -2,13 +2,22 @@ package com.example.shopmanager.Forms;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.core.graphics.TypefaceCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.Manifest;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.Layout;
@@ -25,6 +34,8 @@ import android.widget.Toast;
 import com.example.shopmanager.MainActivity;
 import com.example.shopmanager.R;
 import com.example.shopmanager.Sales.SaleDisplayModel;
+import com.example.shopmanager.Sales.SalesActivity;
+import com.example.shopmanager.Stocks.StockActivity;
 import com.example.shopmanager.Stocks.StockDisplayModel;
 import com.example.shopmanager.Storage.Firestore.Collections.Sale;
 import com.example.shopmanager.Storage.Firestore.Collections.SoldStock;
@@ -125,14 +136,14 @@ public class NewSale extends AppCompatActivity {
         buttonAddSale.setOnClickListener(v -> {
             boolean hasError = false;
 
-            if(inputSoldBy.getText().length() == 0) {
+            if (inputSoldBy.getText().length() == 0) {
                 soldByError.setVisibility(View.VISIBLE);
                 hasError = true;
             } else {
                 soldByError.setVisibility(View.GONE);
             }
 
-            if(addStockModelList.size() == 0) {
+            if (addStockModelList.size() == 0) {
                 stockError.setVisibility(View.VISIBLE);
                 hasError = true;
             } else {
@@ -140,13 +151,16 @@ public class NewSale extends AppCompatActivity {
             }
 
 
-            if(hasError) return;
+            if (hasError) return;
             // TODO: ftiaxnei to sale kai na to vazei sto server
             SoldStock[] sold = addStockModelList.stream().map(item -> new SoldStock(item.getId(), item.getSize(), item.getPrice())).toArray(SoldStock[]::new);
             FirestoreDB.addSale(new Sale(inputSoldBy.getText().toString(), new Date().getTime(), sold), new FirestoreDB.Callback() {
                 @Override
                 public void onComplete(Sale[] sales) {
                     //TODO: REDIRECT USER TO SALES PAGE
+                    Intent i = new Intent(getApplicationContext(), SalesActivity.class);
+                    startActivity(i);
+                    notifySaleUpload(Integer.parseInt(sales[0].getId()));
                 }
 
                 @Override
@@ -155,6 +169,28 @@ public class NewSale extends AppCompatActivity {
                 }
             });
         });
+    }
+
+    private void notifySaleUpload(int id){
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), "CHANNEL_ID")
+                .setStyle(new NotificationCompat.BigTextStyle()).setSmallIcon(R.drawable.icon_sales)
+                .setContentTitle("Sale Creation")
+                .setContentText("Sale successfully uploaded!")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(getApplicationContext());
+
+// notificationId is a unique int for each notification that you must define
+        if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+//                           public void onRequestPermissionsResult(int requestCode, String[] permissions,
+//                                                                  int[] grantResults)
+//                         to handle the case where the user grants the permission. See the documentation
+//                         for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        notificationManager.notify(id, builder.build());
     }
 
     private void hideContainers(){

@@ -194,7 +194,7 @@ public interface StockDao{
             "where s2.code=:code and c1.name=:color and b1.name=:brand")
     public List<Shoe> getExistingStock(String brand, String code, String color);
 
-    @Query("select s2.name as name, s2.code as code, s2.gender as gender, " +
+    @Query("select s2.image as img, s2.name as name, s2.code as code, s2.gender as gender, " +
             "s2.date as date, s2.sale_enabled as sale_enabled," +
             "s2.sale_price as sale_price, s2.price as price," +
             "c1.name as color, c2.name as category," +

@@ -1,13 +1,18 @@
 package com.example.shopmanager.Forms;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentContainerView;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,6 +21,7 @@ import android.widget.Button;
 
 import com.example.shopmanager.MainActivity;
 import com.example.shopmanager.R;
+import com.example.shopmanager.Stocks.StockActivity;
 import com.example.shopmanager.Storage.RoomApi.Shoe;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -73,6 +79,9 @@ public class NewStock extends AppCompatActivity {
                     // TODO: complete new stock form
                     MainActivity.stockDatabase.createShoe(shoe);
                     MainActivity.updateStock();
+                    notifyStockUpload(0);
+                    Intent i = new Intent(this, StockActivity.class);
+                    startActivity(i);
                     return;
                 }
             } catch(Exception e) {
@@ -93,6 +102,28 @@ public class NewStock extends AppCompatActivity {
             changeFormTab(currentFormLocationIndex);
         });
 
+    }
+
+    private void notifyStockUpload(int id) {
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), "CHANNEL_ID")
+                .setStyle(new NotificationCompat.BigTextStyle()).setSmallIcon(R.drawable.icon_stock)
+                .setContentTitle("Stock Creation")
+                .setContentText("Stock has been added!")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(getApplicationContext());
+
+// notificationId is a unique int for each notification that you must define
+        if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+//                           public void onRequestPermissionsResult(int requestCode, String[] permissions,
+//                                                                  int[] grantResults)
+//                         to handle the case where the user grants the permission. See the documentation
+//                         for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        notificationManager.notify(id, builder.build());
     }
 
 

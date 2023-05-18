@@ -34,6 +34,8 @@
     <string name="activity_newstock_header_text_title">Add new shoe</string>
     <string name="activity_newstock_button_previoustab">Previous</string>
     <string name="activity_newstock_button_nexttab">Next</string>
+    <string name="channel_name">Notifications Channel</string>
+    <string name="channel_description">Notifications Description</string>
     <string name="fragment_newstock_form_basicdetails_text_title">General shoe details</string>
     <string name="fragment_newstock_form_basicdetails_edittext_name">Name</string>
     <string name="fragment_newstock_form_basicdetails_edittext_brand">Brand</string>

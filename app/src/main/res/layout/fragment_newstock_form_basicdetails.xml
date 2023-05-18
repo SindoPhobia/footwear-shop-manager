@@ -387,13 +387,11 @@
 
     <ImageView
         android:id="@+id/fragment_newstock_form_basicdetails_imageview"
-        android:layout_width="358dp"
-        android:layout_height="234dp"
-        android:layout_marginTop="44dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_newstock_form_basicdetails_textinputlayout_color"
-        app:srcCompat="@drawable/background_input" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_newstock_form_basicdetails_button_addimage"
+        app:layout_constraintEnd_toEndOf="@+id/fragment_newstock_form_basicdetails_button_addimage"
+        app:layout_constraintStart_toStartOf="@+id/fragment_newstock_form_basicdetails_button_addimage"
+        app:layout_constraintTop_toTopOf="@+id/fragment_newstock_form_basicdetails_button_addimage" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

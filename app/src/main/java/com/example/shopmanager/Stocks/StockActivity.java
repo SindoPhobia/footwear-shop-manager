@@ -18,6 +18,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class StockActivity extends AppCompatActivity{
 
@@ -32,6 +33,10 @@ public class StockActivity extends AppCompatActivity{
     TextView currentPrice;
     TextView originalPrice;
     TextView discountPercent;
+
+    TextView inventoryCount;
+    TextView sizesCount;
+    TextView colorCount;
 
     LinearLayout stockList;
 
@@ -54,6 +59,10 @@ public class StockActivity extends AppCompatActivity{
         currentPrice = findViewById(R.id.activity_stock_container_details_text_currentprice);
         originalPrice = findViewById(R.id.activity_stock_container_details_text_originalprice);
         discountPercent = findViewById(R.id.activity_stock_container_details_text_salepercent);
+
+        inventoryCount = findViewById(R.id.activity_stock_list_header_text_itemcount);
+        sizesCount = findViewById(R.id.activity_stock_list_header_text_sizes);
+        colorCount = findViewById(R.id.activity_stock_list_header_text_colors);
 
         stockList = findViewById(R.id.activity_stock_list);
 
@@ -79,9 +88,26 @@ public class StockActivity extends AppCompatActivity{
             discountPercent.setVisibility(View.INVISIBLE);
         }
 
-        shoes.forEach(shoe -> {
-            stockList.addView(createInventoryRow(shoe.getColor(), shoe.getSizesFormatted()));
-        });
+
+        int totalInventory = 0;
+        int totalColors = 0;
+        int totalSizes = 0;
+        for(int i =  0; i < shoes.size(); i++) {
+            Shoe shoe = shoes.get(i);
+            HashMap<String, Integer> sizes = shoe.getSizesFormatted();
+
+            totalColors++;
+            for(Map.Entry<String, Integer> entry : sizes.entrySet()) {
+                totalInventory += entry.getValue();
+                totalSizes++;
+            }
+
+            stockList.addView(createInventoryRow(shoe.getColor(), sizes));
+        }
+
+        inventoryCount.setText(new StringBuilder().append(totalInventory));
+        colorCount.setText(new StringBuilder().append(totalColors));
+        sizesCount.setText(new StringBuilder().append(totalSizes));
     }
 
     private View createInventoryRow(String color, HashMap<String, Integer> sizes) {
@@ -104,7 +130,7 @@ public class StockActivity extends AppCompatActivity{
         }
 
         colorView.setText(color);
-        totalSizesView.setText(String.valueOf(10));
+        totalSizesView.setText(String.valueOf(totalCount));
 
         return view;
     }

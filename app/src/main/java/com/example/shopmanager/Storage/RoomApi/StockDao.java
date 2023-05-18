@@ -93,7 +93,7 @@ public interface StockDao{
             "inner join Colors c1 on c1.id=s1.color_id " +
             "inner join Categories c2 on c2.id=s1.category_id " +
             "inner join Brands b1 on b1.id=s1.brand_id " +
-            "where s2.name like '%' || :shoeName || '%'")
+            "where s2.name like '%' || :shoeName || '%' or b1.name like '%' || :shoeName || '%' ")
     public List<Shoe> getStock(String shoeName);
 
     @Query("select s2.image as img, s2.name as name, s2.code as code, s2.gender as gender, " +

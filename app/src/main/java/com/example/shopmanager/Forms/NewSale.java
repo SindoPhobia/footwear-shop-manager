@@ -139,6 +139,7 @@ public class NewSale extends AppCompatActivity {
                 stockError.setVisibility(View.GONE);
             }
 
+
             if(hasError) return;
             // TODO: ftiaxnei to sale kai na to vazei sto server
             SoldStock[] sold = addStockModelList.stream().map(item -> new SoldStock(item.getId(), item.getSize(), item.getPrice())).toArray(SoldStock[]::new);
@@ -156,21 +157,29 @@ public class NewSale extends AppCompatActivity {
         });
     }
 
+    private void hideContainers(){
+        containerResultsColorSelect.setVisibility(View.GONE);
+        containerResultsSizeSelect.setVisibility(View.GONE);
+        containerResults.setVisibility(View.GONE);
+    }
+
     private void searchForResults(String input) {
         if(input.length() > 0) {
             containerResultsColorSelect.setVisibility(View.GONE);
             containerResultsSizeSelect.setVisibility(View.GONE);
             containerResults.setVisibility(View.VISIBLE);
         } else {
-            containerResultsColorSelect.setVisibility(View.GONE);
-            containerResultsSizeSelect.setVisibility(View.GONE);
-            containerResults.setVisibility(View.GONE);
+            hideContainers();
         }
 
         listResults.removeAllViews();
 
         // TODO: Get all shoes that match input
-        ArrayList<Shoe> stock = (ArrayList<Shoe>) MainActivity.stockDatabase.stockDao().getStock(input);
+        ArrayList<Shoe> stock = (ArrayList<Shoe>) MainActivity.stockDatabase.stockDao().getStock(input.replaceAll("-| ", ""));
+
+        if(stock.size()==0){
+            hideContainers();
+        }
 
         int length = Math.min(stock.size(), 6);
         for(int i = 0; i < length; i++) {

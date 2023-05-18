@@ -1,6 +1,7 @@
 package com.example.shopmanager.Forms;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,12 +63,21 @@ public class AddStockRecyclerViewAdapter extends RecyclerView.Adapter<AddStockRe
 
         public ViewHolder(@NonNull View view) {
             super(view);
+            view.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    int pos = getAdapterPosition();
+                    addStockModels.remove(pos);
+                    notifyItemRemoved(pos);
+                    return true;
+                }
+            });
 
              name = view.findViewById(R.id.recyclerview_addstock_text_name);
              category = view.findViewById(R.id.recyclerview_addstock_text_category);
              size = view.findViewById(R.id.recyclerview_addstock_text_size);
-            price = view.findViewById(R.id.recyclerview_addstock_text_currentprice);
-            discountPercent = view.findViewById(R.id.recyclerview_addstock_text_discountprice);
+             price = view.findViewById(R.id.recyclerview_addstock_text_currentprice);
+             discountPercent = view.findViewById(R.id.recyclerview_addstock_text_discountprice);
         }
     }
 }

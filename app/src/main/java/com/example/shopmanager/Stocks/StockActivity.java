@@ -2,7 +2,13 @@ package com.example.shopmanager.Stocks;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
+import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,6 +19,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.shopmanager.Forms.NewSale;
+import com.example.shopmanager.Forms.NewStock;
+import com.example.shopmanager.Home.HomeActivity;
 import com.example.shopmanager.MainActivity;
 import com.example.shopmanager.R;
 import com.example.shopmanager.Storage.RoomApi.Entities.Shoes;
@@ -50,6 +59,20 @@ public class StockActivity extends AppCompatActivity{
 
     LinearLayout stockList;
 
+    private void notifyDelete(int id){
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), "SHOP_MANAGER_CHANNEL_ID")
+                .setStyle(new NotificationCompat.BigTextStyle()).setSmallIcon(R.drawable.icon_stock)
+                .setContentTitle("Stock Deleted")
+                .setContentText("Stock successfully deleted!")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(getApplicationContext());
+
+        if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+        notificationManager.notify(id, builder.build());
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,14 +92,23 @@ public class StockActivity extends AppCompatActivity{
         });
 
         buttonEdit.setOnClickListener(v -> {
+            Intent i = new Intent(getApplicationContext(), NewStock.class);
+            startActivity(i);
+            NewStock.shoe = initial;
         });
 
         buttonDelete.setOnClickListener(v -> {
             Stock deletedStock = MainActivity.stockDatabase.stockDao().getStockRaw(initial.getId());
             Shoes deletedShoe = MainActivity.stockDatabase.stockDao().getShoeRaw(initial.getCode());
 
+
             MainActivity.stockDatabase.stockDao().deleteStock(deletedStock);
             MainActivity.stockDatabase.stockDao().deleteShoe(deletedShoe);
+            Intent i = new Intent(getApplicationContext(), HomeActivity.class);
+            MainActivity.updateStock();
+            notifyDelete(5);
+            startActivity(i);
+            finish();
         });
 
         name = findViewById(R.id.activity_stock_container_details_text_name);

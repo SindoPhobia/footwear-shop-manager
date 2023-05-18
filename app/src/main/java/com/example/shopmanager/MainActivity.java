@@ -230,10 +230,13 @@ public class MainActivity extends AppCompatActivity {
                     saleDisplayModel.setStockDisplayModel(soldStock);
                     salesDisplayModel.add(saleDisplayModel);
 
-                    startActivity(intent);
-                    finish();
                 }
-                if(salesDisplayModel==null || salesDisplayModel.size()==0) return;
+                startActivity(intent);
+                finish();
+                if(salesDisplayModel==null || salesDisplayModel.size()==0) {
+                    sales = new ArrayList<>();
+                    return;
+                }
                 sales = new ArrayList<>(salesDisplayModel);
             }
 

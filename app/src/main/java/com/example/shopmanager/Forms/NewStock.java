@@ -30,7 +30,7 @@ public class NewStock extends AppCompatActivity {
     static final int TOTAL_FORM_LOCATIONS = 4;
     int currentFormLocationIndex;
 
-    public static Shoe shoe;
+    public static Shoe shoe = new Shoe();
 
     FragmentManager formTabsManager;
 
@@ -49,8 +49,6 @@ public class NewStock extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_stock);
-
-        shoe = new Shoe();
 
         buttonNextTab = findViewById(R.id.activity_newstock_button_nexttab);
         buttonPreviousTab = findViewById(R.id.activity_newstock_button_previoustab);

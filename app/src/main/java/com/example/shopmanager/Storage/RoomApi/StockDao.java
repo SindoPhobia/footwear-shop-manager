@@ -68,7 +68,7 @@ public interface StockDao{
     @Query("select * from Stock")
     public List<Stock> getStock();
 
-    @Query("select s2.name as name, s2.code as code, s2.gender as gender, " +
+    @Query("select s2.image as img, s2.name as name, s2.code as code, s2.gender as gender, " +
             "s2.date as date, s2.sale_enabled as sale_enabled," +
             "s2.sale_price as sale_price, s2.price as price," +
             "c1.name as color, c2.name as category, " +
@@ -82,7 +82,7 @@ public interface StockDao{
             "where s1.id=:stockId")
     public List<Shoe> getStock(int stockId);
 
-    @Query("select s2.name as name, s2.code as code, s2.gender as gender, " +
+    @Query("select s2.image as img, s2.name as name, s2.code as code, s2.gender as gender, " +
             "s2.date as date, s2.sale_enabled as sale_enabled," +
             "s2.sale_price as sale_price, s2.price as price," +
             "c1.name as color, c2.name as category," +
@@ -96,7 +96,7 @@ public interface StockDao{
             "where s2.name like '%' || :shoeName || '%'")
     public List<Shoe> getStock(String shoeName);
 
-    @Query("select s2.name as name, s2.code as code, s2.gender as gender, " +
+    @Query("select s2.image as img, s2.name as name, s2.code as code, s2.gender as gender, " +
             "s2.date as date, s2.sale_enabled as sale_enabled," +
             "s2.sale_price as sale_price, s2.price as price," +
             "c1.name as color, c2.name as category," +
@@ -110,7 +110,7 @@ public interface StockDao{
             "where c2.name=:category")
     public List<Shoe> getStockCategory(String category);
 
-    @Query("select s2.name as name, s2.code as code, s2.gender as gender, " +
+    @Query("select s2.image as img, s2.name as name, s2.code as code, s2.gender as gender, " +
             "s2.date as date, s2.sale_enabled as sale_enabled," +
             "s2.sale_price as sale_price, s2.price as price," +
             "c1.name as color, c2.name as category," +
@@ -124,7 +124,7 @@ public interface StockDao{
             "where s2.gender=:gender")
     public List<Shoe> getStockGender(String gender);
 
-    @Query("select s2.name as name, s2.code as code, s2.gender as gender, " +
+    @Query("select s2.image as img, s2.name as name, s2.code as code, s2.gender as gender, " +
             "s2.date as date, s2.sale_enabled as sale_enabled," +
             "s2.sale_price as sale_price, s2.price as price," +
             "c1.name as color, c2.name as category," +
@@ -138,7 +138,7 @@ public interface StockDao{
             "where c1.name=:color")
     public List<Shoe> getStockColor(String color);
 
-    @Query("select s2.name as name, s2.code as code, s2.gender as gender, " +
+    @Query("select s2.image as img, s2.name as name, s2.code as code, s2.gender as gender, " +
             "s2.date as date, s2.sale_enabled as sale_enabled," +
             "s2.sale_price as sale_price, s2.price as price," +
             "c1.name as color, c2.name as category," +
@@ -152,7 +152,7 @@ public interface StockDao{
             "where b1.name=:brand")
     public List<Shoe> getStockBrand(String brand);
 
-    @Query("select s2.name as name, s2.code as code, s2.gender as gender, " +
+    @Query("select s2.image as img, s2.name as name, s2.code as code, s2.gender as gender, " +
             "s2.date as date, s2.sale_enabled as sale_enabled," +
             "s2.sale_price as sale_price, s2.price as price," +
             "c1.name as color, c2.name as category," +
@@ -166,7 +166,7 @@ public interface StockDao{
             "where s2.price<=:ending and s2.price>=:starting")
     public List<Shoe> getStockPrice(float starting, float ending);
 
-    @Query("select s2.name as name, s2.code as code, s2.gender as gender, " +
+    @Query("select s2.image as img, s2.name as name, s2.code as code, s2.gender as gender, " +
             "s2.date as date, s2.sale_enabled as sale_enabled," +
             "s2.sale_price as sale_price, s2.price as price," +
             "c1.name as color, c2.name as category," +
@@ -180,7 +180,7 @@ public interface StockDao{
             "where s2.date<=:ending and s2.date>=:starting")
     public List<Shoe> getStockDate(long starting, long ending);
 
-    @Query("select s2.name as name, s2.code as code, s2.gender as gender, " +
+    @Query("select s2.image as img, s2.name as name, s2.code as code, s2.gender as gender, " +
             "s2.date as date, s2.sale_enabled as sale_enabled," +
             "s2.sale_price as sale_price, s2.price as price," +
             "c1.name as color, c2.name as category," +
@@ -194,7 +194,7 @@ public interface StockDao{
             "order by s2.date desc")
     public List<Shoe> getStockDesc();
 
-    @Query("select s2.name as name, s2.code as code, s2.gender as gender, " +
+    @Query("select s2.image as img, s2.name as name, s2.code as code, s2.gender as gender, " +
             "s2.date as date, s2.sale_enabled as sale_enabled," +
             "s2.sale_price as sale_price, s2.price as price," +
             "c1.name as color, c2.name as category," +
@@ -208,7 +208,7 @@ public interface StockDao{
             "order by s2.date desc limit :limit")
     public List<Shoe> getStockDesc(int limit);
 
-    @Query("select s2.name as name, s2.code as code, s2.gender as gender, " +
+    @Query("select s2.image as img, s2.name as name, s2.code as code, s2.gender as gender, " +
             "s2.date as date, s2.sale_enabled as sale_enabled," +
             "s2.sale_price as sale_price, s2.price as price," +
             "c1.name as color, c2.name as category," +
@@ -227,7 +227,7 @@ public interface StockDao{
             "(select count(*) from Categories) as categoriesTotal")
     public StockAnalytics getStockAnalytics();
 
-    @Query("select s2.name as name, s2.code as code, s2.gender as gender, " +
+    @Query("select s2.image as img, s2.name as name, s2.code as code, s2.gender as gender, " +
             "s2.date as date, s2.sale_enabled as sale_enabled," +
             "s2.sale_price as sale_price, s2.price as price," +
             "c1.name as color, c2.name as category," +
@@ -255,4 +255,7 @@ public interface StockDao{
 
     @Query("select * from Shoes s where s.code=:code and s.date=:date")
     public Shoes getShoeRaw(String code, long date);
+
+    @Query("select * from Shoes s where s.code=:code")
+    public Shoes getShoeRaw(String code);
 }

@@ -28,6 +28,17 @@ public class Shoes {
     @ColumnInfo (name="code")
     private String code;
 
+    @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
+    private byte[] image;
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
     @ColumnInfo (name="sizes")
     private String sizes;
 

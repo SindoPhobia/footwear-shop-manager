@@ -1,11 +1,20 @@
 package com.example.shopmanager;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.PickVisualMediaRequest;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
 import android.content.Intent;
+import android.database.CursorWindow;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.shopmanager.Home.HomeActivity;
 import com.example.shopmanager.Sales.SaleDisplayModel;
@@ -23,6 +32,14 @@ import com.example.shopmanager.Storage.RoomApi.Shoe;
 import com.example.shopmanager.Storage.RoomApi.StockDB;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.lang.reflect.Field;
+import java.net.URI;
+import java.nio.channels.FileChannel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -37,10 +54,11 @@ public class MainActivity extends AppCompatActivity {
     public static ArrayList<SaleDisplayModel> sales;
     public static ArrayList<StockDisplayModel> stock;
 
+
+
     public interface SearchFilter{
         public void setUpSearchFilter();
     }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +85,14 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        try {
+            Field field = CursorWindow.class.getDeclaredField("sCursorWindowSize");
+            field.setAccessible(true);
+            field.set(null, 32 * 1024 * 1024); //the 32MB is the new size
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         // TODO: Grab data from both databases for the main recycler views
 
@@ -107,9 +133,9 @@ public class MainActivity extends AppCompatActivity {
         Shoes shoe1 = new Shoes( "adibas", 42.5f,
                 false, 42.5f, "ntelos123", new Date().getTime(), 0);
         Shoes shoe2 = new Shoes( "Adibas", 62.5f,
-                false, 22.5f, "ntelos123", new Date().getTime(), 0);
+                false, 22.5f, "ntelos456", new Date().getTime(), 0);
         Shoes shoe3 = new Shoes( "Adibas", 12.5f,
-                false, 12.5f, "ntelos123", new Date().getTime(), 0);
+                false, 12.5f, "ntelos789", new Date().getTime(), 0);
 
         Stock stock1 = new Stock( 1, 1, 1, 1);
         Stock stock2 = new Stock( 2, 2, 2, 2);

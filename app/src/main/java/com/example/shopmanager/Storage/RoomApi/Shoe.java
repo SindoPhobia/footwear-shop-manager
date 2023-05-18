@@ -16,6 +16,16 @@ public class Shoe {
     private String brand;
     private String color;
 
+    private byte[] img;
+
+    public byte[] getImg() {
+        return img;
+    }
+
+    public void setImg(byte[] img) {
+        this.img = img;
+    }
+
     private String sizes;
     private int gender;
 

@@ -1,5 +1,8 @@
 package com.example.shopmanager.Storage.RoomApi;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
 import androidx.room.Database;
 import androidx.room.RoomDatabase;
 
@@ -10,9 +13,31 @@ import com.example.shopmanager.Storage.RoomApi.Entities.Colors;
 import com.example.shopmanager.Storage.RoomApi.Entities.Shoes;
 import com.example.shopmanager.Storage.RoomApi.Entities.Stock;
 
+import java.io.ByteArrayOutputStream;
+import java.nio.ByteBuffer;
+
 @Database(entities = {Shoes.class, Colors.class, Categories.class, Brands.class, Stock.class}, version = 1)
 public abstract class StockDB extends RoomDatabase{
     public abstract StockDao stockDao();
+
+    public static byte[] decodeBitmap(Bitmap bitmap){
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
+        return outputStream.toByteArray();
+    }
+
+    public static Bitmap decodeBlob(byte[] bytes){
+        return BitmapFactory.decodeByteArray(bytes, 0 ,bytes.length);
+    }
+
+    public void updateImage(String shoeCode, Bitmap bitmap){
+        Shoes s = MainActivity.stockDatabase.stockDao().getShoeRaw(shoeCode);
+        int size = bitmap.getRowBytes() * bitmap.getHeight();
+        ByteBuffer byteBuffer = ByteBuffer.allocate(size);
+        bitmap.copyPixelsToBuffer(byteBuffer);
+        s.setImage(decodeBitmap(bitmap));
+        MainActivity.stockDatabase.stockDao().updateShoe(s);
+    }
     public void createShoe(Shoe data){
         int stock_id = data.getId();
         Shoes s = getShoe(data);

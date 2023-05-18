@@ -4,16 +4,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.shopmanager.MainActivity;
 import com.example.shopmanager.R;
 import com.example.shopmanager.Storage.RoomApi.Shoe;
+import com.example.shopmanager.Storage.RoomApi.StockDB;
+import com.example.shopmanager.Storage.RoomApi.StockDao;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -37,6 +41,8 @@ public class StockActivity extends AppCompatActivity{
     TextView inventoryCount;
     TextView sizesCount;
     TextView colorCount;
+
+    ImageView shoeImg;
 
     LinearLayout stockList;
 
@@ -63,6 +69,7 @@ public class StockActivity extends AppCompatActivity{
         inventoryCount = findViewById(R.id.activity_stock_list_header_text_itemcount);
         sizesCount = findViewById(R.id.activity_stock_list_header_text_sizes);
         colorCount = findViewById(R.id.activity_stock_list_header_text_colors);
+        shoeImg = findViewById(R.id.activity_stock_container_image_image_stock);
 
         stockList = findViewById(R.id.activity_stock_list);
 
@@ -70,6 +77,12 @@ public class StockActivity extends AppCompatActivity{
         ArrayList<Shoe> shoes = (ArrayList<Shoe>) MainActivity.stockDatabase.stockDao().getShoesSameColor(code);
 
         Shoe initial = shoes.get(0);
+
+        if(initial.getImg()!=null){
+            Log.d("img", "nonull");
+            Log.d("img", String.valueOf(initial.getImg().length));
+            shoeImg.setImageBitmap(StockDB.decodeBlob(initial.getImg()));
+        }
 
         name.setText(new StringBuilder().append(initial.getBrand()).append(" - ").append(initial.getName()));
         productCode.setText(new StringBuilder().append("#").append(initial.getCode()));

@@ -32,9 +32,6 @@ public abstract class StockDB extends RoomDatabase{
 
     public void updateImage(String shoeCode, Bitmap bitmap){
         Shoes s = MainActivity.stockDatabase.stockDao().getShoeRaw(shoeCode);
-        int size = bitmap.getRowBytes() * bitmap.getHeight();
-        ByteBuffer byteBuffer = ByteBuffer.allocate(size);
-        bitmap.copyPixelsToBuffer(byteBuffer);
         s.setImage(decodeBitmap(bitmap));
         MainActivity.stockDatabase.stockDao().updateShoe(s);
     }
@@ -66,7 +63,8 @@ public abstract class StockDB extends RoomDatabase{
         return new Shoes(
                 data.getName(), data.getPrice(), data.isSale_enabled(),
                 data.getSale_price(), data.getCode(),
-                data.getDate(), data.getGender(), data.getSizes()
+                data.getDate(), data.getGender(), data.getSizes(),
+                data.getImg()
         );
     }
 

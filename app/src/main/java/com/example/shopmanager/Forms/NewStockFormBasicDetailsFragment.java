@@ -27,6 +27,7 @@ import com.example.shopmanager.Storage.RoomApi.StockDao;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 public class NewStockFormBasicDetailsFragment extends Fragment implements NewStock.FormFragment {
@@ -83,6 +84,8 @@ public class NewStockFormBasicDetailsFragment extends Fragment implements NewSto
         startActivityForResult(Intent.createChooser(i, "Select Picture"), 200);
     }
 
+    Bitmap bitmap;
+
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
@@ -100,7 +103,7 @@ public class NewStockFormBasicDetailsFragment extends Fragment implements NewSto
                 if (null != selectedImageUri) {
                     // update the preview image in the layout
                     try {
-                        Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContext().getContentResolver(), selectedImageUri);
+                        bitmap = MediaStore.Images.Media.getBitmap(this.getContext().getContentResolver(), selectedImageUri);
                         img.setImageBitmap(bitmap);
                         try{
 //                            MainActivity.stockDatabase.updateImage("ntelos123", bitmap);
@@ -161,8 +164,7 @@ public class NewStockFormBasicDetailsFragment extends Fragment implements NewSto
         }
 
         try{
-            Bitmap map = getBitmap();
-            if(map==null){
+            if(bitmap==null){
                 isValid = false;
             }
         }catch (NullPointerException e){
@@ -172,9 +174,6 @@ public class NewStockFormBasicDetailsFragment extends Fragment implements NewSto
         return isValid;
     }
 
-    private Bitmap getBitmap(){
-        return (((BitmapDrawable)img.getDrawable()).getBitmap());
-    }
 
     @Override
     public void fillData(Shoe data) {
@@ -182,6 +181,7 @@ public class NewStockFormBasicDetailsFragment extends Fragment implements NewSto
         data.setBrand(editTextBrand.getText().toString());
         data.setColor(editTextColor.getText().toString());
         data.setCode(editTextCode.getText().toString());
-        data.setImg(StockDB.decodeBitmap(getBitmap()));
+        data.setImg(StockDB.decodeBitmap(bitmap));
+        data.setDate(new Date().getTime());
     }
 }

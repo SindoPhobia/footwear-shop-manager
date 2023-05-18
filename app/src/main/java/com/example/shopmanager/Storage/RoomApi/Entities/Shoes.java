@@ -72,7 +72,7 @@ public class Shoes {
         this.gender = gender;
     }
 
-    public Shoes(String name, float price, boolean saleEnabled, float salePrice, String code, long date, int gender, String sizes) {
+    public Shoes(String name, float price, boolean saleEnabled, float salePrice, String code, long date, int gender, String sizes, byte[] image) {
         this.name = name;
         this.price = price;
         this.saleEnabled = saleEnabled;
@@ -81,6 +81,7 @@ public class Shoes {
         this.date = date;
         this.gender = gender;
         this.sizes = sizes;
+        this.image = image;
     }
 
     public void setGender(int gender) {

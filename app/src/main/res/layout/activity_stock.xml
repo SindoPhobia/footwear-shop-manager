@@ -66,6 +66,31 @@
                 app:srcCompat="@drawable/icon_arrow_left"
                 app:useCompatPadding="false" />
 
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floatingActionButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                app:backgroundTint="@color/neutral_100"
+                app:elevation="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:maxImageSize="16dp"
+                app:srcCompat="@drawable/icon_trash" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floatingActionButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                app:backgroundTint="@color/neutral_100"
+                app:elevation="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/floatingActionButton"
+                app:layout_constraintTop_toTopOf="parent"
+                app:maxImageSize="16dp"
+                app:srcCompat="@drawable/icon_edit" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout

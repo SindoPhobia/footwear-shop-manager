@@ -13,6 +13,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.example.shopmanager.R;
+import com.example.shopmanager.Storage.RoomApi.Shoe;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class NewStockFormCategorizations extends Fragment implements NewStock.FormFragment {
@@ -22,10 +23,11 @@ public class NewStockFormCategorizations extends Fragment implements NewStock.Fo
 
     TextInputEditText editTextCategories;
     RadioGroup radioGroupGender;
+    View view;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_newstock_form_categorizations, container, false);
+        view = inflater.inflate(R.layout.fragment_newstock_form_categorizations, container, false);
 
         radioGroupGender = view.findViewById(R.id.fragment_newstock_form_categorizations_radiogroup_gender);
         editTextCategories = view.findViewById(R.id.fragment_newstock_form_categorizations_edittext_category);
@@ -54,5 +56,13 @@ public class NewStockFormCategorizations extends Fragment implements NewStock.Fo
         }
 
         return isValid;
+    }
+
+    @Override
+    public void fillData(Shoe data) {
+        data.setCategory(editTextCategories.getText().toString());
+        RadioButton btn = radioGroupGender.findViewById(radioGroupGender.getCheckedRadioButtonId());
+        String text = btn.getText().toString();
+        data.setGender(Shoe.getGenderCode(text));
     }
 }

@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 import com.example.shopmanager.R;
 import com.google.android.material.textfield.TextInputEditText;
+import com.example.shopmanager.Storage.RoomApi.Shoe;
 
 public class NewStockFormPrice extends Fragment implements NewStock.FormFragment {
 
@@ -59,5 +60,15 @@ public class NewStockFormPrice extends Fragment implements NewStock.FormFragment
         }
 
         return isValid;
+    }
+
+    @Override
+    public void fillData(Shoe data) {
+        data.setPrice(Float.parseFloat(editTextOriginalPrice.getText().toString()));
+        float discountedPrice = (editTextDiscountedPrice.getText().length() == 0) ?
+                0.0F : Float.parseFloat(editTextDiscountedPrice.getText().toString());
+        data.setSale_price(discountedPrice);
+        data.setSale_enabled(discountedPrice > 0.0F);
+
     }
 }

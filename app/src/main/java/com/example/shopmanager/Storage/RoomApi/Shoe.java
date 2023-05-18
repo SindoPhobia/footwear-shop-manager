@@ -104,6 +104,19 @@ public class Shoe {
         this.gender = gender;
     }
 
+    public static int getGenderCode(String text){
+        switch(text){
+            case "Male":
+                return 0;
+            case "Female":
+                return 1;
+            case "Unisex":
+                return 2;
+            default:
+                return -1;
+        }
+    }
+
     public static String getGender(int gender) {
         switch (gender) {
             case 0:

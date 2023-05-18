@@ -13,8 +13,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.shopmanager.R;
+import com.example.shopmanager.Storage.RoomApi.Shoe;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class NewStockFormInventory extends Fragment implements NewStock.FormFragment {
 
@@ -90,5 +92,16 @@ public class NewStockFormInventory extends Fragment implements NewStock.FormFrag
         }
 
         return isValid;
+    }
+
+    @Override
+    public void fillData(Shoe data) {
+        HashMap<String, Integer> sizesMap = new HashMap<>();
+        for (int i = 0; i < inventoryList.size(); i++) {
+            FormInventoryModel inventoryItem = inventoryList.get(i);
+            if(!inventoryItem.isSelected() || inventoryItem.getCount()<=0) continue;
+            sizesMap.put(inventoryItem.getSize(), inventoryItem.getCount());
+        }
+        data.setSizes(data.parseSizes(sizesMap));
     }
 }

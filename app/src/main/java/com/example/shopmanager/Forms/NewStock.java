@@ -15,12 +15,15 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.shopmanager.R;
+import com.example.shopmanager.Storage.RoomApi.Shoe;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class NewStock extends AppCompatActivity {
 
     static final int TOTAL_FORM_LOCATIONS = 4;
     int currentFormLocationIndex;
+
+    private Shoe shoe;
 
     FragmentManager formTabsManager;
 
@@ -32,12 +35,15 @@ public class NewStock extends AppCompatActivity {
 
     public interface FormFragment {
         boolean validateForm();
+        void fillData(Shoe data);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_stock);
+
+        shoe = new Shoe();
 
         buttonNextTab = findViewById(R.id.activity_newstock_button_nexttab);
         buttonPreviousTab = findViewById(R.id.activity_newstock_button_previoustab);
@@ -61,6 +67,7 @@ public class NewStock extends AppCompatActivity {
             try {
                 FormFragment currentTab = (FormFragment) formTabsManager.findFragmentById(R.id.activity_newstock_fragment_form);
                 if(!currentTab.validateForm()) return;
+                currentTab.fillData(shoe);
                 if(currentFormLocationIndex == TOTAL_FORM_LOCATIONS - 1) {
                     // TODO: complete new stock form
                     return;

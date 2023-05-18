@@ -4,6 +4,7 @@ import static android.app.Activity.RESULT_OK;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -21,6 +22,8 @@ import android.widget.ImageView;
 import com.example.shopmanager.MainActivity;
 import com.example.shopmanager.R;
 import com.example.shopmanager.Storage.RoomApi.Shoe;
+import com.example.shopmanager.Storage.RoomApi.StockDB;
+import com.example.shopmanager.Storage.RoomApi.StockDao;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.io.IOException;
@@ -157,6 +160,28 @@ public class NewStockFormBasicDetailsFragment extends Fragment implements NewSto
             errorGlobal.setVisibility(View.GONE);
         }
 
+        try{
+            Bitmap map = getBitmap();
+            if(map==null){
+                isValid = false;
+            }
+        }catch (NullPointerException e){
+            isValid = false;
+        }
+
         return isValid;
+    }
+
+    private Bitmap getBitmap(){
+        return (((BitmapDrawable)img.getDrawable()).getBitmap());
+    }
+
+    @Override
+    public void fillData(Shoe data) {
+        data.setName(editTextName.getText().toString());
+        data.setBrand(editTextBrand.getText().toString());
+        data.setColor(editTextColor.getText().toString());
+        data.setCode(editTextCode.getText().toString());
+        data.setImg(StockDB.decodeBitmap(getBitmap()));
     }
 }

@@ -24,7 +24,7 @@ public class NewStock extends AppCompatActivity {
     static final int TOTAL_FORM_LOCATIONS = 4;
     int currentFormLocationIndex;
 
-    private Shoe shoe;
+    public static Shoe shoe;
 
     FragmentManager formTabsManager;
 
@@ -37,7 +37,6 @@ public class NewStock extends AppCompatActivity {
     public interface FormFragment {
         boolean validateForm();
         void fillData(Shoe data);
-        void useState(Shoe state);
     }
 
     @Override
@@ -96,7 +95,6 @@ public class NewStock extends AppCompatActivity {
         updateFormControls(currentFormLocationIndex);
         super.onBackPressed();
         FormFragment currentTab = (FormFragment) formTabsManager.findFragmentById(R.id.activity_newstock_fragment_form);
-        currentTab.useState(shoe);
     }
 
     private void setLocationPips(int location) {
@@ -153,7 +151,6 @@ public class NewStock extends AppCompatActivity {
                 fragmentFormTab = new NewStockFormBasicDetailsFragment();
         }
 
-        ((FormFragment)fragmentFormTab).useState(shoe);
         FragmentTransaction transaction = formTabsManager.beginTransaction();
         transaction
                 .replace(R.id.activity_newstock_fragment_form, fragmentFormTab)

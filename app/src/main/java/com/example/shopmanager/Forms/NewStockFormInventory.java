@@ -20,6 +20,9 @@ import java.util.HashMap;
 
 public class NewStockFormInventory extends Fragment implements NewStock.FormFragment {
 
+    private static final int MIN_SIZE = 34;
+    private static final int MAX_SIZE = 49;
+
     ConstraintLayout errorInventory;
     FormInventoryRecyclerViewAdapter inventoryRecyclerViewAdapter;
     ArrayList<FormInventoryModel> inventoryList;
@@ -52,15 +55,24 @@ public class NewStockFormInventory extends Fragment implements NewStock.FormFrag
         inventoryRecyclerViewAdapter = new FormInventoryRecyclerViewAdapter(getContext(), inventoryList, inventoryRowInterface);
         inventoryRecyclerView.setAdapter(inventoryRecyclerViewAdapter);
         inventoryRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        Shoe state = NewStock.shoe;
+        if(state.getSizes()!=null){
+            HashMap<String, Integer> map = state.getSizesFormatted();
+            if(map.size()==0) return view;
+            state.getSizesFormatted().forEach(
+                    (size, count) -> {
+                        inventoryList.add(new FormInventoryModel(size, false, count));
+                    });
+        }
         return view;
     }
 
     private void setupInventoryList() {
         inventoryList = new ArrayList<>();
-
-        inventoryList.add(new FormInventoryModel("43"));
-        inventoryList.add(new FormInventoryModel("44"));
-        inventoryList.add(new FormInventoryModel("45"));
+        for (int i = MIN_SIZE;i<=MAX_SIZE;i++){
+            inventoryList.add(new FormInventoryModel(String.valueOf(i)));
+        }
     }
 
     @Override
@@ -105,8 +117,4 @@ public class NewStockFormInventory extends Fragment implements NewStock.FormFrag
         data.setSizes(data.parseSizes(sizesMap));
     }
 
-    @Override
-    public void useState(Shoe state) {
-
-    }
 }

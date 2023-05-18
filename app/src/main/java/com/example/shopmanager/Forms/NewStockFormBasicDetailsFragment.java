@@ -186,6 +186,7 @@ public class NewStockFormBasicDetailsFragment extends Fragment implements NewSto
     }
 
     public void useState(Shoe state) {
+        Log.d("state", state.toString());
         try {
             if(state.getName() != null) editTextName.setText(state.getName());
             if(state.getBrand() != null) editTextBrand.setText(state.getBrand());

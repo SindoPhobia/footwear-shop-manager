@@ -202,10 +202,12 @@ public class Shoe {
         this.color = color;
     }
 
+
     @Override
     public String toString() {
         return "Shoe{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", code='" + code + '\'' +
                 ", date=" + date +
                 ", price=" + price +
@@ -214,6 +216,8 @@ public class Shoe {
                 ", category='" + category + '\'' +
                 ", brand='" + brand + '\'' +
                 ", color='" + color + '\'' +
+                ", img=" + Arrays.toString(img) +
+                ", sizes='" + sizes + '\'' +
                 ", gender=" + gender +
                 '}';
     }

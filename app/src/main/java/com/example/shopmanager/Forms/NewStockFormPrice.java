@@ -32,6 +32,18 @@ public class NewStockFormPrice extends Fragment implements NewStock.FormFragment
         errorOriginalPrice = view.findViewById(R.id.fragment_newstock_form_price_priceerror);
         errorDiscountedPrice = view.findViewById(R.id.fragment_newstock_form_price_discountpriceerror);
 
+        Shoe state = NewStock.shoe;
+        try{
+            if(state.getPrice()!=0.0f){
+                editTextOriginalPrice.setText(String.valueOf(state.getPrice()));
+            }
+            if(state.getSale_price()!=0.0f){
+                editTextDiscountedPrice.setText(String.valueOf(state.getSale_price()));
+            }
+        }catch(Exception e){
+            Log.w("state", e);
+        }
+
         return view;
     }
 
@@ -72,8 +84,4 @@ public class NewStockFormPrice extends Fragment implements NewStock.FormFragment
 
     }
 
-    @Override
-    public void useState(Shoe state) {
-
-    }
 }

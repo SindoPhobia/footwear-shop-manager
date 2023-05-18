@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
     private void populateRoom(){
         Brands brand1 = new Brands();
 //        brand1.setId(1);
-        brand1.setName("Nike");
+        brand1.setName("    ");
         Brands brand2 = new Brands();
 //        brand2.setId(2);
         brand2.setName("Adidas");

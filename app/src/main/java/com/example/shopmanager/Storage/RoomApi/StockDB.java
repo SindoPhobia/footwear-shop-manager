@@ -71,14 +71,32 @@ public abstract class StockDB extends RoomDatabase{
     }
 
     private Colors getColor(Shoe data){
+        Colors c = MainActivity.stockDatabase.stockDao().getColorRaw(data.getColor());
+        if(c==null){
+            c = new Colors();
+            c.setName(data.getColor());
+            MainActivity.stockDatabase.stockDao().insertColors(c);
+        }
         return MainActivity.stockDatabase.stockDao().getColorRaw(data.getColor());
     }
 
     private Brands getBrand(Shoe data){
+        Brands b = MainActivity.stockDatabase.stockDao().getBrandsRaw(data.getBrand());
+        if(b==null){
+            b = new Brands();
+            b.setName(data.getBrand());
+            MainActivity.stockDatabase.stockDao().insertBrands(b);
+        }
         return MainActivity.stockDatabase.stockDao().getBrandsRaw(data.getBrand());
     }
 
     private Categories getCategory(Shoe data){
+        Categories c = MainActivity.stockDatabase.stockDao().getCategoriesRaw(data.getCategory());
+        if(c==null){
+            c = new Categories();
+            c.setName(data.getCategory());
+            MainActivity.stockDatabase.stockDao().insertCategories(c);
+        }
         return MainActivity.stockDatabase.stockDao().getCategoriesRaw(data.getCategory());
     }
 }

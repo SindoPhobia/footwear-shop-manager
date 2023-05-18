@@ -39,9 +39,10 @@ public class NewStockFormBasicDetailsFragment extends Fragment implements NewSto
     ConstraintLayout errorCode;
     ConstraintLayout errorColor;
 
+    ImageView img;
+
     Button imageBtn;
 
-    ImageView img;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_newstock_form_basicdetails, container, false);
@@ -57,6 +58,8 @@ public class NewStockFormBasicDetailsFragment extends Fragment implements NewSto
         errorCode = view.findViewById(R.id.fragment_newstock_form_basicdetails_constraint_codeerror);
         errorColor = view.findViewById(R.id.fragment_newstock_form_basicdetails_constraint_colorerror);
 
+        img = view.findViewById(R.id.fragment_newstock_form_basicdetails_imageview);
+
         imageBtn = view.findViewById(R.id.fragment_newstock_form_basicdetails_button_addimage);
         imageBtn.setOnClickListener(c -> {
             chooseImage();
@@ -64,7 +67,6 @@ public class NewStockFormBasicDetailsFragment extends Fragment implements NewSto
         return view;
     }
 
-    ImageView IVPreviewImage;
 
     private void chooseImage(){
         // create an instance of the
@@ -96,8 +98,9 @@ public class NewStockFormBasicDetailsFragment extends Fragment implements NewSto
                     // update the preview image in the layout
                     try {
                         Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContext().getContentResolver(), selectedImageUri);
+                        img.setImageBitmap(bitmap);
                         try{
-                            MainActivity.stockDatabase.updateImage("ntelos123", bitmap);
+//                            MainActivity.stockDatabase.updateImage("ntelos123", bitmap);
                         }catch(Exception e) {
                             Log.w("error", e);
                         }

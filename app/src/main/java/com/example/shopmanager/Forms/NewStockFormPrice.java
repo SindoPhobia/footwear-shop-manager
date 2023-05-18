@@ -10,10 +10,15 @@ import android.view.ViewGroup;
 
 import com.example.shopmanager.R;
 
-public class NewStockFormPrice extends Fragment {
+public class NewStockFormPrice extends Fragment implements NewStock.FormFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_newstock_form_price, container, false);
+    }
+
+    @Override
+    public boolean validateForm() {
+        return true;
     }
 }

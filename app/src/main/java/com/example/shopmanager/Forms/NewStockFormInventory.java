@@ -14,7 +14,7 @@ import com.example.shopmanager.R;
 
 import java.util.ArrayList;
 
-public class NewStockFormInventory extends Fragment {
+public class NewStockFormInventory extends Fragment implements NewStock.FormFragment {
 
     FormInventoryRecyclerViewAdapter inventoryRecyclerViewAdapter;
     ArrayList<FormInventoryModel> inventoryList;
@@ -51,5 +51,10 @@ public class NewStockFormInventory extends Fragment {
         inventoryList.add(new FormInventoryModel("43", true, 0));
         inventoryList.add(new FormInventoryModel("44"));
         inventoryList.add(new FormInventoryModel("45"));
+    }
+
+    @Override
+    public boolean validateForm() {
+        return true;
     }
 }

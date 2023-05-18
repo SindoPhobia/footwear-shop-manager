@@ -65,4 +65,9 @@ public class NewStockFormCategorizations extends Fragment implements NewStock.Fo
         String text = btn.getText().toString();
         data.setGender(Shoe.getGenderCode(text));
     }
+
+    @Override
+    public void useState(Shoe state) {
+
+    }
 }

@@ -37,6 +37,7 @@ public class NewStock extends AppCompatActivity {
     public interface FormFragment {
         boolean validateForm();
         void fillData(Shoe data);
+        void useState(Shoe state);
     }
 
     @Override
@@ -61,8 +62,8 @@ public class NewStock extends AppCompatActivity {
         });
 
         formTabsManager = getSupportFragmentManager();
-
         currentFormLocationIndex = 0;
+        changeFormTab(currentFormLocationIndex);
 
         buttonNextTab.setOnClickListener(v -> {
             try {
@@ -94,6 +95,8 @@ public class NewStock extends AppCompatActivity {
         setLocationPips(currentFormLocationIndex);
         updateFormControls(currentFormLocationIndex);
         super.onBackPressed();
+        FormFragment currentTab = (FormFragment) formTabsManager.findFragmentById(R.id.activity_newstock_fragment_form);
+        currentTab.useState(shoe);
     }
 
     private void setLocationPips(int location) {
@@ -137,9 +140,6 @@ public class NewStock extends AppCompatActivity {
 
         setLocationPips(location);
         switch(location) {
-            case 0:
-                fragmentFormTab = new NewStockFormBasicDetailsFragment();
-                break;
             case 1:
                 fragmentFormTab = new NewStockFormCategorizations();
                 break;
@@ -153,6 +153,7 @@ public class NewStock extends AppCompatActivity {
                 fragmentFormTab = new NewStockFormBasicDetailsFragment();
         }
 
+        ((FormFragment)fragmentFormTab).useState(shoe);
         FragmentTransaction transaction = formTabsManager.beginTransaction();
         transaction
                 .replace(R.id.activity_newstock_fragment_form, fragmentFormTab)

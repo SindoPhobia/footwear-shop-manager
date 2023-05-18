@@ -71,4 +71,9 @@ public class NewStockFormPrice extends Fragment implements NewStock.FormFragment
         data.setSale_enabled(discountedPrice > 0.0F);
 
     }
+
+    @Override
+    public void useState(Shoe state) {
+
+    }
 }

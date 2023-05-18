@@ -58,7 +58,7 @@ public class NewStockFormInventory extends Fragment implements NewStock.FormFrag
     private void setupInventoryList() {
         inventoryList = new ArrayList<>();
 
-        inventoryList.add(new FormInventoryModel("43", true, 0));
+        inventoryList.add(new FormInventoryModel("43"));
         inventoryList.add(new FormInventoryModel("44"));
         inventoryList.add(new FormInventoryModel("45"));
     }
@@ -103,5 +103,10 @@ public class NewStockFormInventory extends Fragment implements NewStock.FormFrag
             sizesMap.put(inventoryItem.getSize(), inventoryItem.getCount());
         }
         data.setSizes(data.parseSizes(sizesMap));
+    }
+
+    @Override
+    public void useState(Shoe state) {
+
     }
 }

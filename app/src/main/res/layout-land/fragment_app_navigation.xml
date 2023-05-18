@@ -9,69 +9,66 @@
 
     <ImageButton
         android:id="@+id/fragment_appnavigation_button_home"
-        android:layout_width="0dp"
+        android:layout_width="64dp"
         android:layout_height="0dp"
         android:backgroundTint="#00FFFFFF"
         android:src="@drawable/icon_home"
         app:layout_constraintBottom_toTopOf="@+id/fragment_appnavigation_button_sales"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/fragment_appnavigation_button_sales"
-        android:layout_width="0dp"
+        android:layout_width="64dp"
         android:layout_height="0dp"
         android:backgroundTint="#00FFFFFF"
         android:src="@drawable/icon_sales"
         app:layout_constraintBottom_toTopOf="@+id/fragment_appnavigation_button_stock"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fragment_appnavigation_button_home" />
 
     <ImageButton
         android:id="@+id/fragment_appnavigation_button_stock"
-        android:layout_width="0dp"
+        android:layout_width="64dp"
         android:layout_height="0dp"
         android:backgroundTint="#00FFFFFF"
         android:src="@drawable/icon_stock"
-        app:layout_constraintBottom_toTopOf="@+id/fragment_appnavigation_indicator_sales"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fragment_appnavigation_button_sales" />
 
     <View
         android:id="@+id/fragment_appnavigation_indicator_home"
         android:layout_width="20dp"
         android:layout_height="2dp"
-        android:layout_marginBottom="16dp"
         android:background="@drawable/background_rounded_blue"
         android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_appnavigation_button_home"
         app:layout_constraintEnd_toEndOf="@+id/fragment_appnavigation_button_home"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/fragment_appnavigation_button_home"
+        app:layout_constraintVertical_bias="0.60" />
 
     <View
         android:id="@+id/fragment_appnavigation_indicator_sales"
         android:layout_width="20dp"
         android:layout_height="2dp"
-        android:layout_marginBottom="16dp"
         android:background="@drawable/background_rounded_blue"
         android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_appnavigation_button_sales"
         app:layout_constraintEnd_toEndOf="@+id/fragment_appnavigation_button_sales"
-        app:layout_constraintStart_toEndOf="@+id/fragment_appnavigation_button_home" />
+        app:layout_constraintStart_toStartOf="@+id/fragment_appnavigation_button_sales"
+        app:layout_constraintTop_toTopOf="@+id/fragment_appnavigation_button_sales"
+        app:layout_constraintVertical_bias="0.60" />
 
     <View
         android:id="@+id/fragment_appnavigation_indicator_stock"
         android:layout_width="20dp"
         android:layout_height="2dp"
-        android:layout_marginBottom="16dp"
         android:background="@drawable/background_rounded_blue"
         android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_appnavigation_button_stock"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toEndOf="@+id/fragment_appnavigation_button_sales" />
+        app:layout_constraintStart_toStartOf="@+id/fragment_appnavigation_button_stock"
+        app:layout_constraintTop_toTopOf="@+id/fragment_appnavigation_button_stock"
+        app:layout_constraintVertical_bias="0.60" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

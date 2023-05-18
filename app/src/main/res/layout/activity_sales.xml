@@ -197,15 +197,14 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/activity_stocks_constraint_filters_constraint_search"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="32dp"
+                android:layout_height="36dp"
                 android:background="@drawable/background_rounded_blue"
                 android:baselineAligned="false"
                 android:gravity="center"
                 android:paddingStart="24dp"
                 android:paddingEnd="24dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/activity_stocks_constraint_filters_button_filters"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -240,23 +239,6 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <Button
-                android:id="@+id/activity_stocks_constraint_filters_button_filters"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:fontFamily="@font/poppins_semibold"
-                android:includeFontPadding="false"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:text="@string/activity_sales_constraint_filters_button_filters"
-                android:textColor="@color/neutral_100"
-                android:textSize="12sp"
-                app:icon="@drawable/icon_filter"
-                app:iconTint="@color/neutral_100"
-                app:layout_constraintBottom_toBottomOf="@+id/activity_stocks_constraint_filters_constraint_search"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/activity_stocks_constraint_filters_constraint_search" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

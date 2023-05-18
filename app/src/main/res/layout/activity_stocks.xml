@@ -39,15 +39,14 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/activity_stocks_constraint_filters_constraint_search"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="32dp"
+                android:layout_height="36dp"
                 android:background="@drawable/background_rounded_blue"
                 android:baselineAligned="false"
                 android:gravity="center"
                 android:paddingStart="24dp"
                 android:paddingEnd="24dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/activity_stocks_constraint_filters_button_filters"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -83,95 +82,6 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <Button
-                android:id="@+id/activity_stocks_constraint_filters_button_filters"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:fontFamily="@font/poppins_semibold"
-                android:includeFontPadding="false"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:text="@string/activity_sales_constraint_filters_button_filters"
-                android:textColor="@color/neutral_100"
-                android:textSize="12sp"
-                app:icon="@drawable/icon_filter"
-                app:iconTint="@color/neutral_100"
-                app:layout_constraintBottom_toBottomOf="@+id/activity_stocks_constraint_filters_constraint_search"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/activity_stocks_constraint_filters_constraint_search" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/activity_stocks_constraint_filterlist"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/activity_stocks_constraint_filters">
-
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/activity_stocks_filterlist_filter_category"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:background="@drawable/background_rounded_blue"
-                        android:fontFamily="@font/poppins"
-                        android:padding="2dp"
-                        android:paddingStart="8dp"
-                        android:paddingEnd="8dp"
-                        android:text="Sneaker"
-                        android:textColor="@color/neutral_100"
-                        android:textSize="10sp" />
-
-                    <TextView
-                        android:id="@+id/activity_stocks_filterlist_filter_category3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/background_rounded_blue"
-                        android:fontFamily="@font/poppins"
-                        android:padding="2dp"
-                        android:paddingStart="8dp"
-                        android:paddingEnd="8dp"
-                        android:text="Date: Ascending"
-                        android:textColor="@color/neutral_100"
-                        android:textSize="10sp" />
-
-                    <TextView
-                        android:id="@+id/activity_stocks_filterlist_filter_category4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/background_rounded_blue"
-                        android:fontFamily="@font/poppins"
-                        android:padding="2dp"
-                        android:paddingStart="8dp"
-                        android:paddingEnd="8dp"
-                        android:text="Price: 20 € - 100 €"
-                        android:textColor="@color/neutral_100"
-                        android:textSize="10sp" />
-
-                </LinearLayout>
-            </HorizontalScrollView>
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -179,14 +89,13 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/activity_stocks_constraint_filterlist"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintTop_toBottomOf="@+id/activity_stocks_constraint_filters" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/activity_stocks_button_createnew"

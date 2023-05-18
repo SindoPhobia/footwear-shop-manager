@@ -5,7 +5,6 @@ import android.os.Bundle;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +22,10 @@ public class NewStockFormCategorizations extends Fragment implements NewStock.Fo
 
     TextInputEditText editTextCategories;
     RadioGroup radioGroupGender;
+    RadioButton radioButtonMale;
+    RadioButton radioButtonFemale;
+    RadioButton radioButtonUnisex;
+
     View view;
 
     @Override
@@ -30,6 +33,10 @@ public class NewStockFormCategorizations extends Fragment implements NewStock.Fo
         view = inflater.inflate(R.layout.fragment_newstock_form_categorizations, container, false);
 
         radioGroupGender = view.findViewById(R.id.fragment_newstock_form_categorizations_radiogroup_gender);
+        radioButtonMale = view.findViewById(R.id.fragment_newstock_form_categorizations_radiogroup_gender_male);
+        radioButtonFemale = view.findViewById(R.id.fragment_newstock_form_categorizations_radiogroup_gender_female);
+        radioButtonUnisex = view.findViewById(R.id.fragment_newstock_form_categorizations_radiogroup_gender_unisex);
+
         editTextCategories = view.findViewById(R.id.fragment_newstock_form_categorizations_edittext_category);
         errorCategory = view.findViewById(R.id.fragment_newstock_form_categorizations_constraint_categoryerror);
         errorGender = view.findViewById(R.id.fragment_newstock_form_categorizations_constraint_gendererror);
@@ -38,8 +45,8 @@ public class NewStockFormCategorizations extends Fragment implements NewStock.Fo
         if (state.getCategory() != null) editTextCategories.setText(state.getCategory());
         if (
                 state.getGender() == Shoe.getGenderCode("Male") ||
-                        state.getGender() == Shoe.getGenderCode("Female") ||
-                        state.getGender() == Shoe.getGenderCode("Unisex")
+                state.getGender() == Shoe.getGenderCode("Female") ||
+                state.getGender() == Shoe.getGenderCode("Unisex")
         ) {
             int selectedGenderId;
             switch (state.getGender()) {
@@ -53,7 +60,7 @@ public class NewStockFormCategorizations extends Fragment implements NewStock.Fo
                     selectedGenderId = R.id.fragment_newstock_form_categorizations_radiogroup_gender_male;
             }
 
-            ((RadioButton) radioGroupGender.findViewById(selectedGenderId)).setSelected(true);
+            radioGroupGender.check(selectedGenderId);
         }
 
         return view;
@@ -86,6 +93,5 @@ public class NewStockFormCategorizations extends Fragment implements NewStock.Fo
         RadioButton btn = radioGroupGender.findViewById(radioGroupGender.getCheckedRadioButtonId());
         String text = btn.getText().toString();
         data.setGender(Shoe.getGenderCode(text));
-        Log.d("NEWSTOCK", "Store state of categorizations");
     }
 }

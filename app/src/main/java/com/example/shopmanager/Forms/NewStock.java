@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -57,14 +58,16 @@ public class NewStock extends AppCompatActivity {
 
         buttonPreviousTab.setOnClickListener(v -> {
             if(currentFormLocationIndex == 0) return;
-            changeFormTab(--currentFormLocationIndex);
+            onBackPressed();
         });
 
     }
 
     @Override
     public void onBackPressed() {
-        setLocationPips(--currentFormLocationIndex);
+        currentFormLocationIndex--;
+        setLocationPips(currentFormLocationIndex);
+        updateFormControls(currentFormLocationIndex);
         super.onBackPressed();
     }
 
@@ -105,17 +108,7 @@ public class NewStock extends AppCompatActivity {
     private void changeFormTab(int location) {
         Fragment fragmentFormTab;
 
-        if(location == 0) {
-            buttonPreviousTab.setVisibility(View.GONE);
-        } else {
-            buttonPreviousTab.setVisibility(View.VISIBLE);
-        }
-
-        if(location == TOTAL_FORM_LOCATIONS - 1) {
-            buttonNextTab.setText(getString(R.string.activity_newstock_button_complete));
-        } else {
-            buttonNextTab.setText(getString(R.string.activity_newstock_button_nexttab));
-        }
+        updateFormControls(location);
 
         setLocationPips(location);
         switch(location) {
@@ -140,5 +133,19 @@ public class NewStock extends AppCompatActivity {
                 .replace(R.id.activity_newstock_fragment_form, fragmentFormTab)
                 .addToBackStack(null)
                 .commit();
+    }
+
+    private void updateFormControls(int location) {
+        if(location == 0) {
+            buttonPreviousTab.setVisibility(View.GONE);
+        } else {
+            buttonPreviousTab.setVisibility(View.VISIBLE);
+        }
+
+        if(location == TOTAL_FORM_LOCATIONS - 1) {
+            buttonNextTab.setText(getString(R.string.activity_newstock_button_complete));
+        } else {
+            buttonNextTab.setText(getString(R.string.activity_newstock_button_nexttab));
+        }
     }
 }

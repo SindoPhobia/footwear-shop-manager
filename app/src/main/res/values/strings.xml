@@ -54,4 +54,6 @@
     <string name="activity_newsale_container_form_container_selectsize_text_selectcolor">Color</string>
     <string name="activity_newsale_container_form_container_searcherror_text_error">Add at least one item in the list</string>
     <string name="activity_newsale_container_form_container_soldbyerror_text_error">Add the name of the seller</string>
+    <string name="input_error_noinput">Please fill input</string>
+    <string name="input_error_similarstockfound"><![CDATA[The brand, code & color combination already exists]]></string>
 </resources>

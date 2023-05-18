@@ -30,6 +30,10 @@ public class NewStock extends AppCompatActivity {
 
     View tabProgress1, tabProgress2, tabProgress3, tabProgress4;
 
+    public interface FormFragment {
+        boolean validateForm();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +59,8 @@ public class NewStock extends AppCompatActivity {
 
         buttonNextTab.setOnClickListener(v -> {
             if(currentFormLocationIndex == TOTAL_FORM_LOCATIONS - 1) return;
+            FormFragment currentTab = (FormFragment) formTabsManager.findFragmentById(R.id.activity_newstock_fragment_form);
+            if(!currentTab.validateForm()) return;
             changeFormTab(++currentFormLocationIndex);
         });
 

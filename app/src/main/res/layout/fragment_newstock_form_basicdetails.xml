@@ -12,6 +12,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/poppins_semibold"
+        android:includeFontPadding="false"
         android:text="@string/fragment_newstock_form_basicdetails_text_title"
         android:textColor="@color/neutral_900"
         android:textSize="18sp"
@@ -187,5 +188,201 @@
         app:layout_constraintVertical_bias="0.0"
         app:strokeColor="@color/neutral_300"
         app:strokeWidth="2dp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fragment_newstock_form_basicdetails_constraint_nameerror"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/background_input"
+        android:backgroundTint="@color/red_400"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/fragment_newstock_form_basicdetails_textinputlayout_name"
+        app:layout_constraintStart_toStartOf="@+id/fragment_newstock_form_basicdetails_textinputlayout_name"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_newstock_form_basicdetails_textinputlayout_name">
+
+        <ImageView
+            android:id="@+id/fragment_newstock_form_basicdetails_constraint_nameerror_image_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/icon_error" />
+
+        <TextView
+            android:id="@+id/fragment_newstock_form_basicdetails_constraint_nameerror_text_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="9dp"
+            android:fontFamily="@font/poppins"
+            android:includeFontPadding="false"
+            android:text="@string/input_error_noinput"
+            android:textColor="@color/red_400"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/fragment_newstock_form_basicdetails_constraint_nameerror_image_error"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fragment_newstock_form_basicdetails_constraint_branderror"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/background_input"
+        android:backgroundTint="@color/red_400"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/fragment_newstock_form_basicdetails_textinputlayout_brand"
+        app:layout_constraintStart_toStartOf="@+id/fragment_newstock_form_basicdetails_textinputlayout_brand"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_newstock_form_basicdetails_textinputlayout_brand">
+
+        <ImageView
+            android:id="@+id/fragment_newstock_form_basicdetails_constraint_branderror_image_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/icon_error" />
+
+        <TextView
+            android:id="@+id/fragment_newstock_form_basicdetails_constraint_branderror_text_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/poppins"
+            android:includeFontPadding="false"
+            android:text="@string/input_error_noinput"
+            android:textColor="@color/red_400"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/fragment_newstock_form_basicdetails_constraint_branderror_image_error"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fragment_newstock_form_basicdetails_constraint_codeerror"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/background_input"
+        android:backgroundTint="@color/red_400"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/fragment_newstock_form_basicdetails_textinputlayout_code"
+        app:layout_constraintStart_toStartOf="@+id/fragment_newstock_form_basicdetails_textinputlayout_code"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_newstock_form_basicdetails_textinputlayout_code">
+
+        <ImageView
+            android:id="@+id/fragment_newstock_form_basicdetails_constraint_codeerror_image_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/icon_error" />
+
+        <TextView
+            android:id="@+id/fragment_newstock_form_basicdetails_constraint_codeerror_text_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/poppins"
+            android:includeFontPadding="false"
+            android:text="@string/input_error_noinput"
+            android:textColor="@color/red_400"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/fragment_newstock_form_basicdetails_constraint_codeerror_image_error"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fragment_newstock_form_basicdetails_constraint_colorerror"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/background_input"
+        android:backgroundTint="@color/red_400"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/fragment_newstock_form_basicdetails_textinputlayout_color"
+        app:layout_constraintStart_toStartOf="@+id/fragment_newstock_form_basicdetails_textinputlayout_color"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_newstock_form_basicdetails_textinputlayout_color">
+
+        <ImageView
+            android:id="@+id/fragment_newstock_form_basicdetails_constraint_colorerror_image_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/icon_error" />
+
+        <TextView
+            android:id="@+id/fragment_newstock_form_basicdetails_constraint_colorerror_text_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/poppins"
+            android:includeFontPadding="false"
+            android:text="@string/input_error_noinput"
+            android:textColor="@color/red_400"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/fragment_newstock_form_basicdetails_constraint_colorerror_image_error"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fragment_newstock_form_basicdetails_constraint_globalerror"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/background_input"
+        android:backgroundTint="@color/red_400"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/fragment_newstock_form_basicdetails_text_title"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_newstock_form_basicdetails_text_title">
+
+        <ImageView
+            android:id="@+id/fragment_newstock_form_basicdetails_constraint_globalerror_image_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/icon_error" />
+
+        <TextView
+            android:id="@+id/fragment_newstock_form_basicdetails_constraint_globalerror_text_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/poppins"
+            android:includeFontPadding="false"
+            android:text="@string/input_error_similarstockfound"
+            android:textColor="@color/red_400"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/fragment_newstock_form_basicdetails_constraint_globalerror_image_error"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

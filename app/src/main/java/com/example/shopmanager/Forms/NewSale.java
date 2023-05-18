@@ -132,7 +132,7 @@ public class NewSale extends AppCompatActivity {
             }
 
             if(hasError) return;
-
+            // TODO: ftiaxnei to sale kai na to vazei sto server
         });
     }
 

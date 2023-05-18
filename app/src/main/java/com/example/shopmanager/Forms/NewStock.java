@@ -83,7 +83,14 @@ public class NewStock extends AppCompatActivity {
 
         buttonPreviousTab.setOnClickListener(v -> {
             if(currentFormLocationIndex == 0) return;
-            onBackPressed();
+            currentFormLocationIndex--;
+            try {
+                FormFragment currentTab = (FormFragment) formTabsManager.findFragmentById(R.id.activity_newstock_fragment_form);
+                currentTab.fillData(shoe);
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
+            changeFormTab(currentFormLocationIndex);
         });
 
     }
@@ -154,7 +161,6 @@ public class NewStock extends AppCompatActivity {
         FragmentTransaction transaction = formTabsManager.beginTransaction();
         transaction
                 .replace(R.id.activity_newstock_fragment_form, fragmentFormTab)
-                .addToBackStack(null)
                 .commit();
     }
 

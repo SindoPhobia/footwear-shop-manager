@@ -62,7 +62,7 @@ public class NewStockFormInventory extends Fragment implements NewStock.FormFrag
             if(map.size()==0) return view;
             state.getSizesFormatted().forEach(
                     (size, count) -> {
-                        inventoryList.add(new FormInventoryModel(size, false, count));
+                        inventoryList.add(new FormInventoryModel(size, count > 0, count));
                     });
         }
         return view;

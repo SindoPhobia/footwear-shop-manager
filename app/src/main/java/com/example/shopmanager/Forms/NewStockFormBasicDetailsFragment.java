@@ -68,6 +68,17 @@ public class NewStockFormBasicDetailsFragment extends Fragment implements NewSto
         imageBtn.setOnClickListener(c -> {
             chooseImage();
         });
+
+        Shoe state = NewStock.shoe;
+        if(state.getName() != null) editTextName.setText(state.getName());
+        if(state.getBrand() != null) editTextBrand.setText(state.getBrand());
+        if(state.getCode() != null) editTextCode.setText(state.getColor());
+        if(state.getColor() != null) editTextColor.setText(state.getColor());
+        if(state.getImg() != null) {
+            bitmap = StockDB.decodeBlob(state.getImg());
+            img.setImageBitmap(bitmap);
+        }
+
         return view;
     }
 
@@ -185,16 +196,4 @@ public class NewStockFormBasicDetailsFragment extends Fragment implements NewSto
         data.setDate(new Date().getTime());
     }
 
-    public void useState(Shoe state) {
-        Log.d("state", state.toString());
-        try {
-            if(state.getName() != null) editTextName.setText(state.getName());
-            if(state.getBrand() != null) editTextBrand.setText(state.getBrand());
-            if(state.getCode() != null) editTextCode.setText(state.getColor());
-            if(state.getColor() != null) editTextColor.setText(state.getColor());
-            if(state.getImg() != null) img.setImageBitmap(StockDB.decodeBlob(state.getImg()));
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
-    }
 }

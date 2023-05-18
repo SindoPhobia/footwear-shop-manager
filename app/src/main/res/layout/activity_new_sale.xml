@@ -129,7 +129,7 @@
                     android:backgroundTint="#00FFFFFF"
                     android:ems="10"
                     android:fontFamily="@font/poppins"
-                    android:hint="Search for a product code"
+                    android:hint="@string/activity_newsale_container_form_edittext_searchproduct"
                     android:includeFontPadding="false"
                     android:inputType="text"
                     android:textColor="@color/blue_600"

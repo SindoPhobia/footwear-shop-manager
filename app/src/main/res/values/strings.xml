@@ -61,4 +61,5 @@
     <string name="fragment_newstock_form_categorizations_radiogroup_gender_unisex">Unisex</string>
     <string name="fragment_newstock_form_categorizations_text_genderlabel">Gender</string>
     <string name="input_error_sizenoinput">Please select and fill the stock count of your inventory</string>
+    <string name="activity_newsale_container_form_edittext_searchproduct">Search for a product</string>
 </resources>

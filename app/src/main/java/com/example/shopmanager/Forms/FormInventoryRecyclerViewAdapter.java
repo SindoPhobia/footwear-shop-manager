@@ -50,7 +50,7 @@ public class FormInventoryRecyclerViewAdapter extends RecyclerView.Adapter<FormI
         FormInventoryModel item = inventoryList.get(position);
 
         holder.buttonSize.setText(new StringBuilder().append("Size ").append(item.getSize()));
-        holder.editTextCount.setText(String.valueOf(item.getCount()));
+        if(item.getCount() != 0) holder.editTextCount.setText(String.valueOf(item.getCount()));
         holder.toggleSelected(item.isSelected());
     }
 

@@ -38,8 +38,7 @@ public class HomeActivity extends AppCompatActivity implements StockRecyclerView
     TextView analyticsStockTotal;
     TextView analyticsCategoriesTotal;
 
-    Button buttonNewSale;
-    Button buttonNewStock;
+    Button buttonNewSale, buttonNewStock;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

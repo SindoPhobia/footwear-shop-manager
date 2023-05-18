@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.shopmanager.MainActivity;
 import com.example.shopmanager.R;
 import com.example.shopmanager.Storage.RoomApi.Shoe;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -70,6 +71,8 @@ public class NewStock extends AppCompatActivity {
                 currentTab.fillData(shoe);
                 if(currentFormLocationIndex == TOTAL_FORM_LOCATIONS - 1) {
                     // TODO: complete new stock form
+                    MainActivity.stockDatabase.createShoe(shoe);
+                    MainActivity.updateStock();
                     return;
                 }
             } catch(Exception e) {

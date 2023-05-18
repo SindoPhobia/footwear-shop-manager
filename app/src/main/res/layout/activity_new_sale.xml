@@ -102,154 +102,6 @@
             app:layout_constraintTop_toBottomOf="@+id/activity_newsale_container_form_recyclerview_products">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/activity_newsale_container_form_container_selectsize"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/background_input"
-                android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/activity_newsale_container_form_container_searchiteminput">
-
-                <TextView
-                    android:id="@+id/activity_newsale_container_form_container_selectsize_text_selectlabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="40dp"
-                    android:layout_marginTop="8dp"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:includeFontPadding="false"
-                    android:text="@string/activity_newsale_container_form_container_selectsize_text_selectlabel"
-                    android:textColor="@color/neutral_700"
-                    android:textSize="12sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/activity_newsale_container_form_container_selectsize_text_selectname"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:fontFamily="sans-serif"
-                    android:includeFontPadding="false"
-                    android:text="Name"
-                    android:textColor="@color/neutral_700"
-                    android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/activity_newsale_container_form_container_selectsize_text_selectlabel"
-                    app:layout_constraintStart_toEndOf="@+id/activity_newsale_container_form_container_selectsize_text_selectlabel"
-                    app:layout_constraintTop_toTopOf="@+id/activity_newsale_container_form_container_selectsize_text_selectlabel" />
-
-                <TextView
-                    android:id="@+id/activity_newsale_container_form_container_selectsize_text_selectcolor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:fontFamily="sans-serif"
-                    android:includeFontPadding="false"
-                    android:text="@string/activity_newsale_container_form_container_selectsize_text_selectcolor"
-                    android:textColor="@color/neutral_700"
-                    android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/activity_newsale_container_form_container_selectsize_text_selectname"
-                    app:layout_constraintStart_toEndOf="@+id/activity_newsale_container_form_container_selectsize_text_selectname"
-                    app:layout_constraintTop_toTopOf="@+id/activity_newsale_container_form_container_selectsize_text_selectname" />
-
-                <LinearLayout
-                    android:id="@+id/activity_newsale_container_form_container_selectsize_list_sizes"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="40dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="40dp"
-                    android:layout_marginBottom="2dp"
-                    android:orientation="vertical"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/activity_newsale_container_form_container_selectsize_text_selectlabel" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/activity_newsale_container_form_container_selectcolor"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/background_input"
-                android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/activity_newsale_container_form_container_searchiteminput">
-
-                <TextView
-                    android:id="@+id/activity_newsale_container_form_container_selectcolor_text_selectedlabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="40dp"
-                    android:layout_marginTop="8dp"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:includeFontPadding="false"
-                    android:text="@string/activity_newsale_contaienr_form_container_selectcolor_text_selectedlabel"
-                    android:textColor="@color/neutral_700"
-                    android:textSize="12sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/activity_newsale_container_form_container_selectcolor_text_selectedname"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:fontFamily="@font/poppins"
-                    android:includeFontPadding="false"
-                    android:text="Name"
-                    android:textColor="@color/neutral_700"
-                    android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/activity_newsale_container_form_container_selectcolor_text_selectedlabel"
-                    app:layout_constraintStart_toEndOf="@+id/activity_newsale_container_form_container_selectcolor_text_selectedlabel"
-                    app:layout_constraintTop_toTopOf="@+id/activity_newsale_container_form_container_selectcolor_text_selectedlabel" />
-
-                <LinearLayout
-                    android:id="@+id/activity_newsale_container_form_container_selectcolor_list_colors"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="40dp"
-                    android:layout_marginBottom="2dp"
-                    android:orientation="vertical"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/activity_newsale_container_form_container_selectcolor_text_selectedlabel"
-                    app:layout_constraintTop_toBottomOf="@+id/activity_newsale_container_form_container_selectcolor_text_selectedlabel" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/activity_newsale_container_form_container_results"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/background_input"
-                android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/activity_newsale_container_form_container_searchiteminput">
-
-                <ScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <LinearLayout
-                        android:id="@+id/activity_newsale_container_form_list_results"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical" />
-                </ScrollView>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/activity_newsale_container_form_container_searchiteminput"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
@@ -289,9 +141,196 @@
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/activity_newsale_container_form_container_searchiteminput">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/activity_newsale_container_form_container_selectcolor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/background_input"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/activity_newsale_container_form_container_selectcolor_text_selectedlabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:includeFontPadding="false"
+                        android:text="@string/activity_newsale_contaienr_form_container_selectcolor_text_selectedlabel"
+                        android:textColor="@color/neutral_700"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/activity_newsale_container_form_container_selectcolor_text_selectedname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/poppins"
+                        android:includeFontPadding="false"
+                        android:text="Name"
+                        android:textColor="@color/neutral_700"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/activity_newsale_container_form_container_selectcolor_text_selectedlabel"
+                        app:layout_constraintStart_toEndOf="@+id/activity_newsale_container_form_container_selectcolor_text_selectedlabel"
+                        app:layout_constraintTop_toTopOf="@+id/activity_newsale_container_form_container_selectcolor_text_selectedlabel" />
+
+                    <LinearLayout
+                        android:id="@+id/activity_newsale_container_form_container_selectcolor_list_colors"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="40dp"
+                        android:layout_marginBottom="2dp"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/activity_newsale_container_form_container_selectcolor_text_selectedlabel"
+                        app:layout_constraintTop_toBottomOf="@+id/activity_newsale_container_form_container_selectcolor_text_selectedlabel" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/activity_newsale_container_form_container_results"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/background_input"
+                    android:visibility="gone">
+
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <LinearLayout
+                            android:id="@+id/activity_newsale_container_form_list_results"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical" />
+                    </ScrollView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/activity_newsale_container_form_container_selectsize"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/background_input"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/activity_newsale_container_form_container_selectsize_text_selectlabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:includeFontPadding="false"
+                        android:text="@string/activity_newsale_container_form_container_selectsize_text_selectlabel"
+                        android:textColor="@color/neutral_700"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/activity_newsale_container_form_container_selectsize_text_selectname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="sans-serif"
+                        android:includeFontPadding="false"
+                        android:text="Name"
+                        android:textColor="@color/neutral_700"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/activity_newsale_container_form_container_selectsize_text_selectlabel"
+                        app:layout_constraintStart_toEndOf="@+id/activity_newsale_container_form_container_selectsize_text_selectlabel"
+                        app:layout_constraintTop_toTopOf="@+id/activity_newsale_container_form_container_selectsize_text_selectlabel" />
+
+                    <TextView
+                        android:id="@+id/activity_newsale_container_form_container_selectsize_text_selectcolor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="sans-serif"
+                        android:includeFontPadding="false"
+                        android:text="@string/activity_newsale_container_form_container_selectsize_text_selectcolor"
+                        android:textColor="@color/neutral_700"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/activity_newsale_container_form_container_selectsize_text_selectname"
+                        app:layout_constraintStart_toEndOf="@+id/activity_newsale_container_form_container_selectsize_text_selectname"
+                        app:layout_constraintTop_toTopOf="@+id/activity_newsale_container_form_container_selectsize_text_selectname" />
+
+                    <LinearLayout
+                        android:id="@+id/activity_newsale_container_form_container_selectsize_list_sizes"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="40dp"
+                        android:layout_marginBottom="2dp"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/activity_newsale_container_form_container_selectsize_text_selectlabel" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/activity_newsale_container_form_container_searcherror"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/background_input"
+                    android:backgroundTint="@color/red_400"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/activity_newsale_container_form_container_searcherror_image_error"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/icon_error" />
+
+                    <TextView
+                        android:id="@+id/activity_newsale_container_form_container_searcherror_text_error"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:fontFamily="@font/poppins"
+                        android:includeFontPadding="false"
+                        android:text="@string/activity_newsale_container_form_container_searcherror_text_error"
+                        android:textColor="@color/red_400"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/activity_newsale_container_form_container_searcherror_image_error"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -326,6 +365,45 @@
                 android:textColor="@color/blue_600"
                 android:textSize="12sp" />
         </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/activity_newsale_container_form_container_soldbyerror"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/background_input"
+            android:backgroundTint="@color/red_400"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+
+            <ImageView
+                android:id="@+id/activity_newsale_container_form_container_soldbyerror_image_error"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/icon_error" />
+
+            <TextView
+                android:id="@+id/activity_newsale_container_form_container_soldbyerror_text_error"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/poppins"
+                android:includeFontPadding="false"
+                android:text="@string/activity_newsale_container_form_container_soldbyerror_text_error"
+                android:textColor="@color/red_400"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/activity_newsale_container_form_container_soldbyerror_image_error"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button

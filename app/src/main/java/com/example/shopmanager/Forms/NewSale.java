@@ -57,6 +57,10 @@ public class NewSale extends AppCompatActivity {
     FloatingActionButton buttonBack;
     EditText inputSearchProduct;
     TextInputEditText inputSoldBy;
+    Button buttonAddSale;
+
+    ConstraintLayout stockError;
+    ConstraintLayout soldByError;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +83,10 @@ public class NewSale extends AppCompatActivity {
         inputSearchProduct = findViewById(R.id.activity_newsale_container_form_edittext_searchproduct);
         inputSoldBy = findViewById(R.id.activity_newsale_container_form_edittext_soldby);
         buttonBack = findViewById(R.id.activity_newsale_container_header_button_back);
+        buttonAddSale = findViewById(R.id.activity_newsale_button_addsale);
+
+        stockError = findViewById(R.id.activity_newsale_container_form_container_searcherror);
+        soldByError = findViewById(R.id.activity_newsale_container_form_container_soldbyerror);
 
         buttonBack.setOnClickListener(v -> {
             onBackPressed();
@@ -105,6 +113,27 @@ public class NewSale extends AppCompatActivity {
         addStockRecyclerViewAdapter = new AddStockRecyclerViewAdapter(this, addStockModelList);
         addStockRecyclerView.setAdapter(addStockRecyclerViewAdapter);
         addStockRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        buttonAddSale.setOnClickListener(v -> {
+            boolean hasError = false;
+
+            if(inputSoldBy.getText().length() == 0) {
+                soldByError.setVisibility(View.VISIBLE);
+                hasError = true;
+            } else {
+                soldByError.setVisibility(View.GONE);
+            }
+
+            if(addStockModelList.size() == 0) {
+                stockError.setVisibility(View.VISIBLE);
+                hasError = true;
+            } else {
+                stockError.setVisibility(View.GONE);
+            }
+
+            if(hasError) return;
+
+        });
     }
 
     private void searchForResults(String input) {

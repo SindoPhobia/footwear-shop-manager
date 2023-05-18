@@ -52,4 +52,6 @@
     <string name="activity_newsale_contaienr_form_container_selectcolor_text_selectedlabel">Select color for</string>
     <string name="activity_newsale_container_form_container_selectsize_text_selectlabel">Select size for</string>
     <string name="activity_newsale_container_form_container_selectsize_text_selectcolor">Color</string>
+    <string name="activity_newsale_container_form_container_searcherror_text_error">Add at least one item in the list</string>
+    <string name="activity_newsale_container_form_container_soldbyerror_text_error">Add the name of the seller</string>
 </resources>

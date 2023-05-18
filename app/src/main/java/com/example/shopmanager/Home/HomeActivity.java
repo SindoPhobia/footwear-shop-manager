@@ -16,9 +16,11 @@ import com.example.shopmanager.MainActivity;
 import com.example.shopmanager.R;
 import com.example.shopmanager.Sales.SaleDisplayModel;
 import com.example.shopmanager.Sales.SaleRecyclerViewAdapter;
+import com.example.shopmanager.Sales.SalesActivity;
 import com.example.shopmanager.Stocks.StockActivity;
 import com.example.shopmanager.Stocks.StockDisplayModel;
 import com.example.shopmanager.Stocks.StockRecyclerViewAdapter;
+import com.example.shopmanager.Stocks.StocksActivity;
 import com.example.shopmanager.Storage.Analytics.StockAnalytics;
 import com.example.shopmanager.Storage.RoomApi.Shoe;
 
@@ -38,7 +40,7 @@ public class HomeActivity extends AppCompatActivity implements StockRecyclerView
     TextView analyticsStockTotal;
     TextView analyticsCategoriesTotal;
 
-    Button buttonNewSale, buttonNewStock;
+    Button buttonNewSale, buttonNewStock, buttonMoreSale, buttonMoreStock;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,19 @@ public class HomeActivity extends AppCompatActivity implements StockRecyclerView
 
         buttonNewSale = findViewById(R.id.activity_home_constraint_latestsales_button_createnew);
         buttonNewStock = findViewById(R.id.activity_home_constraint_stock_button_createnew);
+
+        buttonMoreSale = findViewById(R.id.activity_home_constraint_latestsales_button_viewmore);
+        buttonMoreStock = findViewById(R.id.activity_home_constraint_stock_button_viewmore);
+
+        buttonMoreSale.setOnClickListener(c -> {
+            Intent intentNewSale = new Intent(this, SalesActivity.class);
+            startActivity(intentNewSale);
+        });
+
+        buttonMoreStock.setOnClickListener(c -> {
+            Intent intentNewSale = new Intent(this, StocksActivity.class);
+            startActivity(intentNewSale);
+        });
 
         buttonNewSale.setOnClickListener(v -> {
           Intent intentNewSale = new Intent(this, NewSale.class);

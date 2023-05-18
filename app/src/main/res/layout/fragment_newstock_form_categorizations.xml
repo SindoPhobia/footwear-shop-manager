@@ -33,6 +33,8 @@
         app:boxCornerRadiusBottomStart="4dp"
         app:boxCornerRadiusTopEnd="4dp"
         app:boxCornerRadiusTopStart="4dp"
+        app:boxStrokeColor="@color/text_input_layout_box_stroke"
+        app:boxStrokeWidth="2sp"
         app:hintTextColor="@color/blue_600"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,38 +53,146 @@
             android:textColorHint="@color/blue_600" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/fragment_newstock_form_categorizations_textinputlayout_gender"
+    <RadioGroup
+        android:id="@+id/fragment_newstock_form_categorizations_radiogroup_gender"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        app:boxBackgroundColor="#00FFFFFF"
-        app:boxBackgroundMode="outline"
-        app:boxCornerRadiusBottomEnd="4dp"
-        app:boxCornerRadiusBottomStart="4dp"
-        app:boxCornerRadiusTopEnd="4dp"
-        app:boxCornerRadiusTopStart="4dp"
-        app:boxStrokeColor="@color/text_input_layout_box_stroke"
-        app:boxStrokeWidth="2dp"
-        app:boxStrokeWidthFocused="2dp"
-        app:hintTextColor="@color/blue_600"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_newstock_form_categorizations_textinputlayout_category">
+        app:layout_constraintStart_toStartOf="@+id/fragment_newstock_form_categorizations_text_genderlabel"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_newstock_form_categorizations_text_genderlabel">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/fragment_newstock_form_categorizations_edittext_gender"
+        <RadioButton
+            android:id="@+id/fragment_newstock_form_categorizations_radiogroup_gender_male"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/fragment_newstock_form_categorizations_edittext_gender"
+            android:buttonTint="@color/blue_400"
+            android:fontFamily="@font/poppins"
             android:includeFontPadding="false"
-            android:paddingTop="16dp"
-            android:paddingBottom="16dp"
-            android:textColor="@color/blue_600"
-            android:textColorHighlight="@color/blue_600"
-            android:textColorHint="@color/blue_600" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:text="@string/fragment_newstock_form_categorizations_radiogroup_gender_male"
+            android:textColor="@color/neutral_700"
+            android:textColorHighlight="@color/blue_400"
+            android:textColorLink="@color/blue_400"
+            android:textSize="14sp" />
+
+        <RadioButton
+            android:id="@+id/fragment_newstock_form_categorizations_radiogroup_gender_female"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/blue_400"
+            android:fontFamily="@font/poppins"
+            android:includeFontPadding="false"
+            android:text="@string/fragment_newstock_form_categorizations_radiogroup_gender_female"
+            android:textColor="@color/neutral_700"
+            android:textColorHighlight="@color/blue_400"
+            android:textColorLink="@color/blue_400"
+            android:textSize="14sp" />
+
+        <RadioButton
+            android:id="@+id/fragment_newstock_form_categorizations_radiogroup_gender_unisex"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/blue_400"
+            android:fontFamily="@font/poppins"
+            android:includeFontPadding="false"
+            android:text="@string/fragment_newstock_form_categorizations_radiogroup_gender_unisex"
+            android:textColor="@color/neutral_700"
+            android:textColorHighlight="@color/blue_400"
+            android:textColorLink="@color/blue_400"
+            android:textSize="14sp" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/fragment_newstock_form_categorizations_text_genderlabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:includeFontPadding="false"
+        android:text="@string/fragment_newstock_form_categorizations_text_genderlabel"
+        android:textColor="@color/neutral_700"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/fragment_newstock_form_categorizations_textinputlayout_category"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_newstock_form_categorizations_textinputlayout_category" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fragment_newstock_form_categorizations_constraint_categoryerror"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/background_input"
+        android:backgroundTint="@color/red_400"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/fragment_newstock_form_categorizations_textinputlayout_category"
+        app:layout_constraintStart_toStartOf="@+id/fragment_newstock_form_categorizations_textinputlayout_category"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_newstock_form_categorizations_textinputlayout_category">
+
+        <ImageView
+            android:id="@+id/fragment_newstock_form_categorizations_constraint_categoryerror_image_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/icon_error"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/fragment_newstock_form_categorizations_constraint_categoryerror_text_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:fontFamily="@font/poppins"
+            android:includeFontPadding="false"
+            android:text="@string/input_error_noinput"
+            android:textColor="@color/red_400"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/fragment_newstock_form_categorizations_constraint_categoryerror_image_error"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fragment_newstock_form_categorizations_constraint_gendererror"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/background_input"
+        android:backgroundTint="@color/red_400"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/fragment_newstock_form_categorizations_radiogroup_gender"
+        app:layout_constraintStart_toStartOf="@+id/fragment_newstock_form_categorizations_radiogroup_gender"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_newstock_form_categorizations_radiogroup_gender">
+
+        <ImageView
+            android:id="@+id/fragment_newstock_form_categorizations_constraint_gendererror_image_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/icon_error"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/fragment_newstock_form_categorizations_constraint_gendererror_text_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:fontFamily="@font/poppins"
+            android:includeFontPadding="false"
+            android:text="@string/input_error_noinput"
+            android:textColor="@color/red_400"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/fragment_newstock_form_categorizations_constraint_gendererror_image_error"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -56,4 +56,8 @@
     <string name="activity_newsale_container_form_container_soldbyerror_text_error">Add the name of the seller</string>
     <string name="input_error_noinput">Please fill input</string>
     <string name="input_error_similarstockfound"><![CDATA[The brand, code & color combination already exists]]></string>
+    <string name="fragment_newstock_form_categorizations_radiogroup_gender_male">Male</string>
+    <string name="fragment_newstock_form_categorizations_radiogroup_gender_female">Female</string>
+    <string name="fragment_newstock_form_categorizations_radiogroup_gender_unisex">Unisex</string>
+    <string name="fragment_newstock_form_categorizations_text_genderlabel">Gender</string>
 </resources>

@@ -216,7 +216,6 @@ public class Shoe {
                 ", category='" + category + '\'' +
                 ", brand='" + brand + '\'' +
                 ", color='" + color + '\'' +
-                ", img=" + Arrays.toString(img) +
                 ", sizes='" + sizes + '\'' +
                 ", gender=" + gender +
                 '}';

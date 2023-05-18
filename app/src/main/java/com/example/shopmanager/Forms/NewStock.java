@@ -95,14 +95,6 @@ public class NewStock extends AppCompatActivity {
 
     }
 
-    @Override
-    public void onBackPressed() {
-        currentFormLocationIndex--;
-        setLocationPips(currentFormLocationIndex);
-        updateFormControls(currentFormLocationIndex);
-        super.onBackPressed();
-        FormFragment currentTab = (FormFragment) formTabsManager.findFragmentById(R.id.activity_newstock_fragment_form);
-    }
 
     private void setLocationPips(int location) {
         switch(location) {

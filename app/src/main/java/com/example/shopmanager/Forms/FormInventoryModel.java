@@ -22,4 +22,13 @@ public class FormInventoryModel {
     public String getSize() { return size; }
     public int getCount() { return count; }
     public boolean isSelected() { return selected; }
+
+    @Override
+    public String toString() {
+        return "FormInventoryModel{" +
+                "size='" + size + '\'' +
+                ", selected=" + selected +
+                ", count=" + count +
+                '}';
+    }
 }

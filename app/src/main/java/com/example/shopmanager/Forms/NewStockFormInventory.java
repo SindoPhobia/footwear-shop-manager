@@ -17,6 +17,7 @@ import com.example.shopmanager.Storage.RoomApi.Shoe;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class NewStockFormInventory extends Fragment implements NewStock.FormFragment {
 
@@ -57,13 +58,17 @@ public class NewStockFormInventory extends Fragment implements NewStock.FormFrag
         inventoryRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         Shoe state = NewStock.shoe;
+        Log.d("state", state.toString());
         if(state.getSizes()!=null){
             HashMap<String, Integer> map = state.getSizesFormatted();
+            Log.d("state", String.valueOf(map.size()));
             if(map.size()==0) return view;
-            state.getSizesFormatted().forEach(
+            map.forEach(
                     (size, count) -> {
-                        inventoryList.add(new FormInventoryModel(size, count > 0, count));
+                        inventoryList.set(inventoryList.size()-(MAX_SIZE-Integer.parseInt(size)+1),new FormInventoryModel(size, count > 0, count));
                     });
+            inventoryRecyclerViewAdapter.notifyDataSetChanged();
+            Log.d("state", inventoryList.toString());
         }
         return view;
     }
@@ -116,5 +121,4 @@ public class NewStockFormInventory extends Fragment implements NewStock.FormFrag
         }
         data.setSizes(data.parseSizes(sizesMap));
     }
-
 }

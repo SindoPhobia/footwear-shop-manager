@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
         Stock stock1 = new Stock( 1, 1, 1, 1);
         Stock stock2 = new Stock( 2, 2, 2, 2);
         Stock stock3 = new Stock( 3, 3, 3, 3);
-        shoe1.setSizes("1-2,2-2,3-2,4-2,5-2,6-2,7-2,8-2,9-2");
+        shoe1.setSizes("41-2,42-2,43-2,44-2,5-2,6-2,7-2,8-2,9-2");
         shoe2.setSizes("1-3,2-3,3-3,4-3,5-3,6-3,7-3,8-3,9-3");
         shoe3.setSizes("1-5,2-4");
 
@@ -164,8 +164,7 @@ public class MainActivity extends AppCompatActivity {
 //        stockDatabase.stockDao().insertStock(stock3);
     }
 
-
-    public void populateData(Intent intent){
+    public static void updateStock(){
         List<StockDisplayModel> stockModel = new ArrayList<>(Arrays.asList(StockDisplayModel.parseStockToDisplayModel(
                 (ArrayList<Shoe>) MainActivity.stockDatabase.stockDao().getStockDesc())));
         if(stockModel.size()>=1){
@@ -173,6 +172,11 @@ public class MainActivity extends AppCompatActivity {
         }else{
             stock = new ArrayList<>();
         }
+    }
+
+
+    public void populateData(Intent intent){
+        updateStock();
 
         FirestoreDB.getLatestSales(50, new FirestoreDB.Callback() {
             @Override

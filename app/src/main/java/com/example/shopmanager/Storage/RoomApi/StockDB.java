@@ -66,7 +66,7 @@ public abstract class StockDB extends RoomDatabase{
         return new Shoes(
                 data.getName(), data.getPrice(), data.isSale_enabled(),
                 data.getSale_price(), data.getCode(),
-                data.getDate(), data.getGender()
+                data.getDate(), data.getGender(), data.getSizes()
         );
     }
 

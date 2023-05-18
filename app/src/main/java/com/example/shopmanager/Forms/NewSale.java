@@ -139,6 +139,7 @@ public class NewSale extends AppCompatActivity {
                 stockError.setVisibility(View.GONE);
             }
 
+
             if(hasError) return;
             // TODO: ftiaxnei to sale kai na to vazei sto server
             SoldStock[] sold = addStockModelList.stream().map(item -> new SoldStock(item.getId(), item.getSize(), item.getPrice())).toArray(SoldStock[]::new);

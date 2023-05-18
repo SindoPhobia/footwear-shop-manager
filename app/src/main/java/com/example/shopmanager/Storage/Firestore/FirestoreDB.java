@@ -77,6 +77,21 @@ public class FirestoreDB {
                     }
                     SaleDisplayModel.StockDisplayModel[] saleDisplayModel = Arrays.stream(sales[0].getSoldStock()).map(item -> {
                         Shoe s = ((ArrayList<Shoe>)MainActivity.stockDatabase.stockDao().getStock(item.getStock_id())).get(0);
+                        HashMap<String, Integer> sizes =  s.getSizesFormatted();
+                        try{
+                            int newTotal = sizes.get(item.getSize()) - 1;
+                            if(newTotal <= 0){
+                                sizes.remove(item.getSize());
+                            }else{
+                                sizes.put(item.getSize(), newTotal);
+                            }
+                            s.setSizes(s.parseSizes(sizes));
+                            MainActivity.stockDatabase.createShoe(s);
+                            //TODO: LIVE UPDATE STOCK LIST
+                            MainActivity.updateStock();
+                        }catch(NullPointerException e){
+                            Log.w("sizes", e);
+                        }
                         return new SaleDisplayModel.StockDisplayModel(item.getStock_id(), s.getName(), s.getBrand(), s.getColor(), item.getSize(),
                                 s.isSale_enabled() ? s.getSale_price() : s.getPrice());
                     }).toArray(SaleDisplayModel.StockDisplayModel[]::new);
@@ -97,6 +112,7 @@ public class FirestoreDB {
                         cl.onError();
                         return;
                     }
+
                     MainActivity.salesAnalytics.onNewSale(sale);
                     cl.onComplete(sales);
                 });

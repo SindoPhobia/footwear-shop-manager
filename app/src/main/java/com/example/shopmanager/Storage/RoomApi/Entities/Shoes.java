@@ -2,6 +2,7 @@ package com.example.shopmanager.Storage.RoomApi.Entities;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import java.util.Arrays;
@@ -60,6 +61,7 @@ public class Shoes {
         return gender;
     }
 
+    @Ignore
     public Shoes(String name, float price, boolean saleEnabled, float salePrice, String code, long date, int gender) {
         this.name = name;
         this.price = price;
@@ -68,6 +70,17 @@ public class Shoes {
         this.code = code;
         this.date = date;
         this.gender = gender;
+    }
+
+    public Shoes(String name, float price, boolean saleEnabled, float salePrice, String code, long date, int gender, String sizes) {
+        this.name = name;
+        this.price = price;
+        this.saleEnabled = saleEnabled;
+        this.salePrice = salePrice;
+        this.code = code;
+        this.date = date;
+        this.gender = gender;
+        this.sizes = sizes;
     }
 
     public void setGender(int gender) {

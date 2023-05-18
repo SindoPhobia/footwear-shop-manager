@@ -92,7 +92,7 @@ public class FormInventoryRecyclerViewAdapter extends RecyclerView.Adapter<FormI
                     int pos = getAdapterPosition();
                     if(pos == RecyclerView.NO_POSITION) return;
 
-                    int number = Integer.parseInt(s.toString());
+                    int number = (s.length() > 0) ? Integer.parseInt(s.toString()) : 0;
                     inventoryRowInterface.onKeyPress(pos, number);
                 }
 

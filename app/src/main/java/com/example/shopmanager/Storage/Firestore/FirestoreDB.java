@@ -5,9 +5,11 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 import com.example.shopmanager.MainActivity;
+import com.example.shopmanager.Sales.SaleDisplayModel;
 import com.example.shopmanager.Storage.Analytics.SalesAnalytics;
 import com.example.shopmanager.Storage.Firestore.Collections.Sale;
 import com.example.shopmanager.Storage.Firestore.Collections.SoldStock;
+import com.example.shopmanager.Storage.RoomApi.Shoe;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.AggregateField;
@@ -20,6 +22,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
 
 import java.text.Format;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -66,10 +69,36 @@ public class FirestoreDB {
                         cl.onError();
                         return;
                     }
-                    Sale[] saleAr = new Sale[1];
-                    saleAr[0] = sale;
-                    cl.onComplete(saleAr);
+                    Sale[] sales = new Sale[1];
+                    sales[0] = sale;
+                    if(sales.length != 1) {
+                        cl.onError();
+                        return;
+                    }
+                    SaleDisplayModel.StockDisplayModel[] saleDisplayModel = Arrays.stream(sales[0].getSoldStock()).map(item -> {
+                        Shoe s = ((ArrayList<Shoe>)MainActivity.stockDatabase.stockDao().getStock(item.getStock_id())).get(0);
+                        return new SaleDisplayModel.StockDisplayModel(item.getStock_id(), s.getName(), s.getBrand(), s.getColor(), item.getSize(),
+                                s.isSale_enabled() ? s.getSale_price() : s.getPrice());
+                    }).toArray(SaleDisplayModel.StockDisplayModel[]::new);
+
+                    SaleDisplayModel m = new SaleDisplayModel(sales[0].getId(), sales[0].getSeller(), sales[0].getDate(),
+                            saleDisplayModel);
+
+                    SaleDisplayModel lastItem = MainActivity.sales.get(MainActivity.sales.size()-1);
+
+                    try{
+                        for (int i = MainActivity.sales.size()-1; i > 0; i--) {
+                            MainActivity.sales.set(i, MainActivity.sales.get(i-1));
+                        }
+                        MainActivity.sales.set(0, m);
+                        MainActivity.sales.add(lastItem);
+                    }catch(Exception e ){
+                        Log.w("sales", e);
+                        cl.onError();
+                        return;
+                    }
                     MainActivity.salesAnalytics.onNewSale(sale);
+                    cl.onComplete(sales);
                 });
             }
 

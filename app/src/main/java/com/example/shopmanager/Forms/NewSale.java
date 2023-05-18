@@ -145,33 +145,12 @@ public class NewSale extends AppCompatActivity {
             FirestoreDB.addSale(new Sale(inputSoldBy.getText().toString(), new Date().getTime(), sold), new FirestoreDB.Callback() {
                 @Override
                 public void onComplete(Sale[] sales) {
-                    if(sales.length != 1) return;
-                    SaleDisplayModel.StockDisplayModel[] saleDisplayModel = Arrays.stream(sales[0].getSoldStock()).map(item -> {
-                       Shoe s = ((ArrayList<Shoe>)MainActivity.stockDatabase.stockDao().getStock(item.getStock_id())).get(0);
-                       return new SaleDisplayModel.StockDisplayModel(item.getStock_id(), s.getName(), s.getBrand(), s.getColor(), item.getSize(),
-                               s.isSale_enabled() ? s.getSale_price() : s.getPrice());
-                    }).toArray(SaleDisplayModel.StockDisplayModel[]::new);
-
-                    SaleDisplayModel m = new SaleDisplayModel(sales[0].getId(), sales[0].getSeller(), sales[0].getDate(),
-                            saleDisplayModel);
-
-                    SaleDisplayModel lastItem = MainActivity.sales.get(MainActivity.sales.size()-1);
-
-                    try{
-                        for (int i = MainActivity.sales.size()-1; i > 0; i--) {
-                            MainActivity.sales.set(i, MainActivity.sales.get(i-1));
-                        }
-                        MainActivity.sales.set(0, m);
-                        MainActivity.sales.add(lastItem);
-                    }catch(Exception e ){
-                        Log.w("sales", e);
-                    }
-
+                    //TODO: REDIRECT USER TO SALES PAGE
                 }
 
                 @Override
                 public void onError() {
-
+                    //TODO: SHOW ERROR
                 }
             });
         });

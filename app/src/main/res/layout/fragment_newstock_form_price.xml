@@ -49,6 +49,7 @@
             android:fontFamily="@font/poppins"
             android:hint="@string/fragment_newstock_form_price_edittext_originalprice"
             android:includeFontPadding="false"
+            android:inputType="number|numberDecimal"
             android:paddingTop="16dp"
             android:paddingBottom="16dp"
             android:textColor="@color/blue_600"
@@ -84,6 +85,7 @@
             android:fontFamily="@font/poppins"
             android:hint="@string/fragment_newstock_form_price_edittext_discountprice"
             android:includeFontPadding="false"
+            android:inputType="number|numberDecimal"
             android:paddingTop="16dp"
             android:paddingBottom="16dp"
             android:textColor="@color/blue_600"
@@ -91,5 +93,83 @@
             android:textColorHint="@color/blue_600"
             android:textSize="12sp" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fragment_newstock_form_price_priceerror"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/background_input"
+        android:backgroundTint="@color/red_400"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/fragment_newstock_form_price_textinputlayout_originalprice"
+        app:layout_constraintStart_toStartOf="@+id/fragment_newstock_form_price_textinputlayout_originalprice"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_newstock_form_price_textinputlayout_originalprice">
+
+        <ImageView
+            android:id="@+id/fragment_newstock_form_price_priceerror_image_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/icon_error"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/fragment_newstock_form_price_priceerror_text_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:fontFamily="@font/poppins"
+            android:includeFontPadding="false"
+            android:text="@string/input_error_noinput"
+            android:textColor="@color/red_400"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/fragment_newstock_form_price_priceerror_image_error"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fragment_newstock_form_price_discountpriceerror"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/background_input"
+        android:backgroundTint="@color/red_400"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/fragment_newstock_form_price_textinputlayout_discountprice"
+        app:layout_constraintStart_toStartOf="@+id/fragment_newstock_form_price_textinputlayout_discountprice"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_newstock_form_price_textinputlayout_discountprice">
+
+        <TextView
+            android:id="@+id/fragment_newstock_form_price_discountpriceerror_text_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:fontFamily="@font/poppins"
+            android:includeFontPadding="false"
+            android:text="@string/fragment_newstock_form_price_discountpriceerror_text_error"
+            android:textColor="@color/red_400"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/fragment_newstock_form_price_discountpriceerror_image_error"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/fragment_newstock_form_price_discountpriceerror_image_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/icon_error"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

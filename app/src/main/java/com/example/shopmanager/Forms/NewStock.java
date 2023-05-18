@@ -58,9 +58,16 @@ public class NewStock extends AppCompatActivity {
         currentFormLocationIndex = 0;
 
         buttonNextTab.setOnClickListener(v -> {
-            if(currentFormLocationIndex == TOTAL_FORM_LOCATIONS - 1) return;
-            FormFragment currentTab = (FormFragment) formTabsManager.findFragmentById(R.id.activity_newstock_fragment_form);
-            if(!currentTab.validateForm()) return;
+            try {
+                FormFragment currentTab = (FormFragment) formTabsManager.findFragmentById(R.id.activity_newstock_fragment_form);
+                if(!currentTab.validateForm()) return;
+                if(currentFormLocationIndex == TOTAL_FORM_LOCATIONS - 1) {
+                    // TODO: complete new stock form
+                    return;
+                }
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
             changeFormTab(++currentFormLocationIndex);
         });
 

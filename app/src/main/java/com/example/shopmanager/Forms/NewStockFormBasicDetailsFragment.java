@@ -77,6 +77,7 @@ public class NewStockFormBasicDetailsFragment extends Fragment implements NewSto
         if(state.getImg() != null) {
             bitmap = StockDB.decodeBlob(state.getImg());
             img.setImageBitmap(bitmap);
+            imageBtn.setText("");
         }
 
         return view;
@@ -116,6 +117,8 @@ public class NewStockFormBasicDetailsFragment extends Fragment implements NewSto
                     try {
                         bitmap = MediaStore.Images.Media.getBitmap(this.getContext().getContentResolver(), selectedImageUri);
                         img.setImageBitmap(bitmap);
+                        imageBtn.setText("");
+
                         try{
 //                            MainActivity.stockDatabase.updateImage("ntelos123", bitmap);
                         }catch(Exception e) {

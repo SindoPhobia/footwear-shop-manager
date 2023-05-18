@@ -79,9 +79,12 @@ public class StockActivity extends AppCompatActivity{
         Shoe initial = shoes.get(0);
 
         if(initial.getImg()!=null){
-            Log.d("img", "nonull");
-            Log.d("img", String.valueOf(initial.getImg().length));
             shoeImg.setImageBitmap(StockDB.decodeBlob(initial.getImg()));
+
+            ViewGroup.LayoutParams layoutParams = shoeImg.getLayoutParams();
+            layoutParams.width = 500;
+            layoutParams.height = 500;
+            shoeImg.setLayoutParams(layoutParams);
         }
 
         name.setText(new StringBuilder().append(initial.getBrand()).append(" - ").append(initial.getName()));

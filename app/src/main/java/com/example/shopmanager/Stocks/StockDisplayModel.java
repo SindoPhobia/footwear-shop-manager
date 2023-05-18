@@ -14,6 +14,8 @@ public class StockDisplayModel {
     private String brand;
     private String category;
 
+    private byte[] image;
+
     private String code;
 
     private int id;
@@ -39,7 +41,8 @@ public class StockDisplayModel {
                                 item.isSale_enabled(),
                                 item.getSale_price(),
                                 item.getSizesFormatted(),
-                                item.getDate()
+                                item.getDate(),
+                                item.getImg()
                         )
                 ).toArray(StockDisplayModel[]::new);
     }
@@ -47,7 +50,7 @@ public class StockDisplayModel {
     public StockDisplayModel(int id, String code,
             String name, String brand, String category,
             float price, boolean saleEnabled, float salePrice,
-            Map<String, Integer> sizes, long date
+            Map<String, Integer> sizes, long date, byte[] image
     ) {
         this.id = id;
         this.code = code;
@@ -59,6 +62,7 @@ public class StockDisplayModel {
         this.salePrice = salePrice;
         this.sizes = sizes;
         this.date = date;
+        this.image = image;
         this.totalStock = sizes.values().stream().reduce(0, (a,b) -> a+b);
     }
 
@@ -83,6 +87,7 @@ public class StockDisplayModel {
     public Map<String, Integer> getSizes() { return sizes; }
     public int getTotalStock() { return totalStock; }
     public long getDate() { return date; }
+    public byte[] getImage() { return image; }
 
     @Override
     public String toString() {
@@ -96,6 +101,7 @@ public class StockDisplayModel {
                 ", sizes='" + sizes + '\'' +
                 ", totalStock=" + totalStock +
                 ", date=" + date +
+                ", image='" + image + '\'' +
                 '}';
     }
 }

@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.shopmanager.Home.HomeActivity;
 import com.example.shopmanager.MainActivity;
 import com.example.shopmanager.R;
+import com.example.shopmanager.Storage.RoomApi.StockDB;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;
@@ -95,6 +96,15 @@ public class StockRecyclerViewAdapter extends RecyclerView.Adapter<StockRecycler
             holder.discountPercent.setVisibility(View.INVISIBLE);
         }
 
+        if(element.getImage() != null) {
+            holder.image.setImageBitmap(StockDB.decodeBlob(element.getImage()));
+
+            ViewGroup.LayoutParams layoutParams = holder.image.getLayoutParams();
+            layoutParams.width = 250;
+            layoutParams.height = 250;
+            holder.image.setLayoutParams(layoutParams);
+        }
+
         holder.totalStock.setText(String.valueOf(element.getTotalStock()));
 
         holder.sizesList.removeAllViews();
@@ -137,6 +147,8 @@ public class StockRecyclerViewAdapter extends RecyclerView.Adapter<StockRecycler
         TextView category;
         TextView gender;
 
+        ImageView image;
+
         TextView currentPrice;
         TextView originalPrice;
         TextView discountPercent;
@@ -153,6 +165,7 @@ public class StockRecyclerViewAdapter extends RecyclerView.Adapter<StockRecycler
             name = view.findViewById(R.id.recyclerview_stock_text_name);
             category = view.findViewById(R.id.recyclerview_stock_text_category);
             gender = view.findViewById(R.id.recyclerview_stock_text_gender);
+            image = view.findViewById(R.id.recyclerview_stock_constraint_imagecontainer_image);
 
             currentPrice = view.findViewById(R.id.recyclerview_stock_text_currentprice);
             originalPrice = view.findViewById(R.id.recyclerview_stock_text_originalprice);

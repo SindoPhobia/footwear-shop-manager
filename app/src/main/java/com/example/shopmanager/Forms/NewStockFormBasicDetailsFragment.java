@@ -164,13 +164,14 @@ public class NewStockFormBasicDetailsFragment extends Fragment implements NewSto
             errorColor.setVisibility(View.GONE);
         }
 
+
         List<Shoe> similarShoes = MainActivity.stockDatabase.stockDao().getExistingStock(
                 editTextBrand.getText().toString(),
                 editTextCode.getText().toString(),
                 editTextColor.getText().toString()
         );
 
-        if(similarShoes.size() > 0) {
+        if(NewStock.shoe.getId()==0 && similarShoes.size() > 0) {
             isValid = false;
             errorGlobal.setVisibility(View.VISIBLE);
         } else {

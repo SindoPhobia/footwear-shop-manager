@@ -158,6 +158,8 @@ public class NewSale extends AppCompatActivity {
                 @Override
                 public void onComplete(Sale[] sales) {
                     //TODO: REDIRECT USER TO SALES PAGE
+                    Intent i = new Intent(getApplicationContext(), SalesActivity.class);
+                    startActivity(i);
                     finish();
                     notifySaleUpload(Integer.parseInt(sales[0].getId()));
                 }

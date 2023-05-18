@@ -81,7 +81,7 @@ public class HomeActivity extends AppCompatActivity implements StockRecyclerView
         ArrayList<SaleDisplayModel> homeSalesList = new ArrayList<>();
 
         int startCount = Math.min(MainActivity.sales.size(), SALES_DISPLAY_COUNT);
-        for(int i = startCount - 1; i >= 0; i--) {
+        for(int i = 0; i < startCount; i++) {
             homeSalesList.add(MainActivity.sales.get(i));
         }
 

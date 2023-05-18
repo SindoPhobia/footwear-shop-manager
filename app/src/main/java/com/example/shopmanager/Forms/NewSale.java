@@ -24,6 +24,11 @@ import android.widget.Toast;
 
 import com.example.shopmanager.MainActivity;
 import com.example.shopmanager.R;
+import com.example.shopmanager.Sales.SaleDisplayModel;
+import com.example.shopmanager.Stocks.StockDisplayModel;
+import com.example.shopmanager.Storage.Firestore.Collections.Sale;
+import com.example.shopmanager.Storage.Firestore.Collections.SoldStock;
+import com.example.shopmanager.Storage.Firestore.FirestoreDB;
 import com.example.shopmanager.Storage.RoomApi.Entities.Colors;
 import com.example.shopmanager.Storage.RoomApi.Entities.Shoes;
 import com.example.shopmanager.Storage.RoomApi.Shoe;
@@ -31,6 +36,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.function.BiConsumer;
 
@@ -133,6 +141,39 @@ public class NewSale extends AppCompatActivity {
 
             if(hasError) return;
             // TODO: ftiaxnei to sale kai na to vazei sto server
+            SoldStock[] sold = addStockModelList.stream().map(item -> new SoldStock(item.getId(), item.getSize(), item.getPrice())).toArray(SoldStock[]::new);
+            FirestoreDB.addSale(new Sale(inputSoldBy.getText().toString(), new Date().getTime(), sold), new FirestoreDB.Callback() {
+                @Override
+                public void onComplete(Sale[] sales) {
+                    if(sales.length != 1) return;
+                    SaleDisplayModel.StockDisplayModel[] saleDisplayModel = Arrays.stream(sales[0].getSoldStock()).map(item -> {
+                       Shoe s = ((ArrayList<Shoe>)MainActivity.stockDatabase.stockDao().getStock(item.getStock_id())).get(0);
+                       return new SaleDisplayModel.StockDisplayModel(item.getStock_id(), s.getName(), s.getBrand(), s.getColor(), item.getSize(),
+                               s.isSale_enabled() ? s.getSale_price() : s.getPrice());
+                    }).toArray(SaleDisplayModel.StockDisplayModel[]::new);
+
+                    SaleDisplayModel m = new SaleDisplayModel(sales[0].getId(), sales[0].getSeller(), sales[0].getDate(),
+                            saleDisplayModel);
+
+                    SaleDisplayModel lastItem = MainActivity.sales.get(MainActivity.sales.size()-1);
+
+                    try{
+                        for (int i = MainActivity.sales.size()-1; i > 0; i--) {
+                            MainActivity.sales.set(i, MainActivity.sales.get(i-1));
+                        }
+                        MainActivity.sales.set(0, m);
+                        MainActivity.sales.add(lastItem);
+                    }catch(Exception e ){
+                        Log.w("sales", e);
+                    }
+
+                }
+
+                @Override
+                public void onError() {
+
+                }
+            });
         });
     }
 

@@ -1,6 +1,8 @@
 package com.example.shopmanager.Sales;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,16 +11,23 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.shopmanager.MainActivity;
 import com.example.shopmanager.R;
+import com.example.shopmanager.Storage.Firestore.Collections.Sale;
+import com.example.shopmanager.Storage.Firestore.Collections.SoldStock;
+import com.example.shopmanager.Storage.Firestore.FirestoreDB;
 
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Random;
 
 public class SaleRecyclerViewAdapter extends RecyclerView.Adapter<SaleRecyclerViewAdapter.ViewHolder>{
 
@@ -74,6 +83,20 @@ public class SaleRecyclerViewAdapter extends RecyclerView.Adapter<SaleRecyclerVi
         return sales.size();
     }
 
+    private void notifyDelete(int id){
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context.getApplicationContext(), "CHANNEL_ID")
+                .setStyle(new NotificationCompat.BigTextStyle()).setSmallIcon(R.drawable.icon_sales)
+                .setContentTitle("Sale Deleted")
+                .setContentText("Sale successfully deleted!")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context.getApplicationContext());
+
+        if (ActivityCompat.checkSelfPermission(context.getApplicationContext(), Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+        notificationManager.notify(id, builder.build());
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView id;
@@ -85,6 +108,31 @@ public class SaleRecyclerViewAdapter extends RecyclerView.Adapter<SaleRecyclerVi
 
         public ViewHolder(@NonNull View view) {
             super(view);
+
+            view.setOnLongClickListener(c -> {
+                int index = getAdapterPosition();
+                SaleDisplayModel s = sales.get(index);
+                SoldStock[] stocks =  Arrays.stream(s.getStock()).map(item ->
+                        new SoldStock(item.getStockId(), item.getSize(), item.getPrice())).
+                        toArray(SoldStock[]::new);
+                Sale sale = new Sale(s.getSeller(), s.getDate(), stocks);
+                sale.setId(s.getId());
+                FirestoreDB.deleteSale(sale, new FirestoreDB.Callback() {
+                    @Override
+                    public void onComplete(Sale[] salez) {
+                        sales.remove(index);
+                        notifyDataSetChanged();
+                        Random rnd = new Random();
+                        notifyDelete(rnd.nextInt(100));
+                    }
+
+                    @Override
+                    public void onError() {
+
+                    }
+                });
+                return true;
+            });
 
             id = view.findViewById(R.id.recyclerview_sale_text_id);
             seller = view.findViewById(R.id.recyclerview_sale_text_seller);

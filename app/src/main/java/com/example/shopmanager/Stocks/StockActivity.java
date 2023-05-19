@@ -99,6 +99,12 @@ public class StockActivity extends AppCompatActivity{
 
         String code = getIntent().getExtras().getString("code");
         ArrayList<Shoe> shoes = (ArrayList<Shoe>) MainActivity.stockDatabase.stockDao().getShoesSameColor(code);
+        if(shoes.size()==0){
+            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+            startActivity(intent);
+            finish();
+            return;
+        }
 
         Shoe initial = shoes.get(0);
 

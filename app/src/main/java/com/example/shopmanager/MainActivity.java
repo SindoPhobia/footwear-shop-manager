@@ -17,6 +17,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.widget.CheckBox;
 import android.widget.Toast;
 
 import com.example.shopmanager.Home.HomeActivity;
@@ -58,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
     public static ArrayList<SaleDisplayModel> sales;
     public static ArrayList<StockDisplayModel> stock;
 
+    CheckBox checkbox1, checkbox2, checkbox3;
+
 
 
     public interface SearchFilter{
@@ -67,6 +70,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        checkbox1 = findViewById(R.id.main_activity_checkbox_1);
+        checkbox2 = findViewById(R.id.main_activity_checkbox_2);
+        checkbox3 = findViewById(R.id.main_activity_checkbox_3);
 
         createNotificationChannel();
 
@@ -85,6 +92,8 @@ public class MainActivity extends AppCompatActivity {
             startActivityIntent = new Intent(this, StockActivity.class);
             startActivityIntent.putExtra("code", data);
         }
+
+        checkbox1.setChecked(true);
 
 
         firestoreDB = new FirestoreDB();
@@ -113,72 +122,6 @@ public class MainActivity extends AppCompatActivity {
 
         // TODO: Grab data from both databases for the main recycler views
 
-        populateRoom();
-    }
-
-    private void populateRoom(){
-        Brands brand1 = new Brands();
-//        brand1.setId(1);
-        brand1.setName("    ");
-        Brands brand2 = new Brands();
-//        brand2.setId(2);
-        brand2.setName("Adidas");
-        Brands brand3 = new Brands();
-//        brand3.setId(3);
-        brand3.setName("Puma");
-
-        Categories cat1 = new Categories();
-//        cat1.setId(1);
-        cat1.setName("Athletic");
-        Categories cat2 = new Categories();
-//        cat2.setId(2);
-        cat2.setName("Hiking");
-        Categories cat3 = new Categories();
-//        cat3.setId(3);
-        cat3.setName("Walking");
-
-        Colors color1 = new Colors();
-//        color1.setId(1);
-        color1.setName("Black");
-        Colors color2 = new Colors();
-//        color2.setId(2);
-        color2.setName("White");
-        Colors color3 = new Colors();
-//        color3.setId(3);
-        color3.setName("Red");
-
-        Shoes shoe1 = new Shoes( "adibas", 42.5f,
-                false, 42.5f, "ntelos123", new Date().getTime(), 0);
-        Shoes shoe2 = new Shoes( "Adibas", 62.5f,
-                false, 22.5f, "ntelos456", new Date().getTime(), 0);
-        Shoes shoe3 = new Shoes( "Adibas", 12.5f,
-                false, 12.5f, "ntelos789", new Date().getTime(), 0);
-
-        Stock stock1 = new Stock( 1, 1, 1, 1);
-        Stock stock2 = new Stock( 2, 2, 2, 2);
-        Stock stock3 = new Stock( 3, 3, 3, 3);
-        shoe1.setSizes("41-2,42-2,43-2,44-2,5-2,6-2,7-2,8-2,9-2");
-        shoe2.setSizes("1-3,2-3,3-3,4-3,5-3,6-3,7-3,8-3,9-3");
-        shoe3.setSizes("1-5,2-4");
-
-//        stockDatabase.stockDao().insertBrands(brand1);
-//        stockDatabase.stockDao().insertBrands(brand2);
-//        stockDatabase.stockDao().insertBrands(brand3);
-//        stockDatabase.stockDao().insertCategories(cat1);
-//        stockDatabase.stockDao().insertCategories(cat2);
-//        stockDatabase.stockDao().insertCategories(cat3);
-//
-//        stockDatabase.stockDao().insertColors(color1);
-//        stockDatabase.stockDao().insertColors(color2);
-//        stockDatabase.stockDao().insertColors(color3);
-//
-//        stockDatabase.stockDao().insertShoe(shoe1);
-//        stockDatabase.stockDao().insertShoe(shoe2);
-//        stockDatabase.stockDao().insertShoe(shoe3);
-////
-//        stockDatabase.stockDao().insertStock(stock1);
-//        stockDatabase.stockDao().insertStock(stock2);
-//        stockDatabase.stockDao().insertStock(stock3);
     }
 
     public static void updateStock(){
@@ -215,6 +158,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onComplete(Sale[] salesData) {
                 ArrayList<SaleDisplayModel> salesDisplayModel = new ArrayList<>();
+                checkbox2.setChecked(true);
                 for(Sale sale : salesData){
                     SaleDisplayModel saleDisplayModel = new SaleDisplayModel(
                             sale.getId(),
@@ -250,6 +194,7 @@ public class MainActivity extends AppCompatActivity {
                     salesDisplayModel.add(saleDisplayModel);
 
                 }
+                checkbox3.setChecked(true);
                 startActivity(intent);
                 finish();
                 if(salesDisplayModel==null || salesDisplayModel.size()==0) {

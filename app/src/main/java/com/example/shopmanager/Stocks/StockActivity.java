@@ -139,7 +139,6 @@ public class StockActivity extends AppCompatActivity{
             Stock deletedStock = MainActivity.stockDatabase.stockDao().getStockRaw(initial.getId());
             Shoes deletedShoe = MainActivity.stockDatabase.stockDao().getShoeRaw(initial.getCode());
 
-
             MainActivity.stockDatabase.stockDao().deleteStock(deletedStock);
             MainActivity.stockDatabase.stockDao().deleteShoe(deletedShoe);
             Intent i = new Intent(getApplicationContext(), HomeActivity.class);
@@ -298,6 +297,22 @@ public class StockActivity extends AppCompatActivity{
         return sizeRoot;
     }
 
+    private void notifyDownload(int id){
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), "SHOP_MANAGER_CHANNEL_ID")
+                .setSmallIcon(R.drawable.icon_stock)
+                .setStyle(new NotificationCompat.BigTextStyle())
+                .setContentTitle("QR-CODE Saved")
+                .setContentText("QR-CODE for this product saved in your gallery.")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(getApplicationContext());
+
+        if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+        notificationManager.notify(id, builder.build());
+    }
+
+
     private Uri saveImage(String displayName, Bitmap image) {
         try {
             ContentValues imageData = new ContentValues();
@@ -311,6 +326,7 @@ public class StockActivity extends AppCompatActivity{
             OutputStream stream = resolver.openOutputStream(uri);
             image.compress(Bitmap.CompressFormat.PNG, 100, stream);
             stream.close();
+            notifyDownload(16);
             return uri;
         } catch (Exception e) {
             e.printStackTrace();

@@ -9,8 +9,10 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.shopmanager.Forms.NewStock;
 import com.example.shopmanager.MainActivity;
@@ -26,6 +28,8 @@ public class StocksActivity extends AppCompatActivity implements StockRecyclerVi
     RecyclerView stockRecyclerView;
     FloatingActionButton buttonNewStock;
 
+    TextView noItems;
+
     StockRecyclerViewAdapter stockRecyclerViewAdapter;
 
     @Override
@@ -33,12 +37,20 @@ public class StocksActivity extends AppCompatActivity implements StockRecyclerVi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stocks);
 
+        noItems = findViewById(R.id.activity_stocks_no_items);
+
 
         stockRecyclerView = findViewById(R.id.activity_stocks_recyclerview_stock);
         buttonNewStock = findViewById(R.id.activity_stocks_button_createnew);
 
         ArrayList<StockDisplayModel> stockList = new ArrayList<>(Arrays.asList(StockDisplayModel.parseStockToDisplayModel(
                 (ArrayList<Shoe>) MainActivity.stockDatabase.stockDao().getStockDesc())));
+
+        if(stockList.size()==0){
+            noItems.setVisibility(View.VISIBLE);
+        }else{
+            noItems.setVisibility(View.INVISIBLE);
+        }
 
         stockRecyclerViewAdapter = new StockRecyclerViewAdapter(this, stockList, this);
         stockRecyclerView.setAdapter(stockRecyclerViewAdapter);

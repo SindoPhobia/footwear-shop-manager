@@ -60,10 +60,14 @@ public class FirestoreDB {
     }
 
     public static void addSale(Sale sale, Callback cl){
-        getTotalSales(new CallbackAggregate() {
+        getLatestSales(1, new Callback() {
             @Override
-            public void onComplete(int count) {
-                 sale.setId(String.format("%04d", count+1));
+            public void onComplete(Sale[] salez) {
+                if(salez.length==0){
+                    cl.onError();
+                    return;
+                }
+                sale.setId(String.format("%04d", Integer.parseInt(salez[0].getId())+1));
                 db.collection("Sales").add(sale.parseSale()).addOnCompleteListener(task -> {
                     if(!task.isSuccessful()){
                         cl.onError();

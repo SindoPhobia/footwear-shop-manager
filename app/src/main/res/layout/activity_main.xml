@@ -10,9 +10,86 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_semibold"
         android:text="@string/app_name"
+        android:textColor="@color/blue_400"
+        android:textSize="26dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.128" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="95dp"
+        android:layout_height="74dp"
+        android:layout_marginTop="76dp"
+        android:foregroundTint="#FFFFFF"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/blue_400"
+        android:indeterminateTintMode="src_atop"
+        android:progressTint="#AF1B1B"
+        android:scrollbarSize="50dp"
+        android:secondaryProgressTint="#B61F1F"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <CheckBox
+        android:id="@+id/main_activity_checkbox_1"
+        android:layout_width="240dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="20dp"
+        android:buttonTint="@color/blue_400"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="@string/main_activity_checkbox_fetching_stock"
+        android:textColor="#000000"
+        app:checkedState="unchecked"
+        app:layout_constraintBottom_toTopOf="@+id/main_activity_checkbox_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <CheckBox
+        android:id="@+id/main_activity_checkbox_2"
+        android:layout_width="240dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="20dp"
+        android:buttonTint="@color/blue_400"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="@string/main_activity_checkbox_fetching_sales"
+        app:layout_constraintBottom_toTopOf="@+id/main_activity_checkbox_3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <CheckBox
+        android:id="@+id/main_activity_checkbox_3"
+        android:layout_width="240dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="152dp"
+        android:buttonTint="@color/blue_400"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="@string/activity_main_checkbox_calculating_analytics"
+        android:textColorHighlight="#29B6F6"
+        android:textColorLink="#29B6F6"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="@string/main_activity_about"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

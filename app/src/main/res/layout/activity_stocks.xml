@@ -109,5 +109,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/icon_plus"
             app:tint="@color/neutral_100" />
+
+        <TextView
+            android:id="@+id/activity_stocks_no_items"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/activity_stocks_no_items"
+            android:textSize="14dp"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

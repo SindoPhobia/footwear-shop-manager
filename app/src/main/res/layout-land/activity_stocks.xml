@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Stocks.StocksActivity">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/activity_stocks_fragment_navigation"
+        android:name="com.example.shopmanager.AppNavigationFragment"
+        android:layout_width="64dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout="@layout/fragment_app_navigation" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/activity_stocks_fragment_navigation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/activity_stocks_constraint_filters"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:clipToPadding="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/activity_stocks_constraint_filters_constraint_search"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:background="@drawable/background_rounded_blue"
+                android:baselineAligned="false"
+                android:gravity="center"
+                android:paddingStart="24dp"
+                android:paddingEnd="24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="4dp"
+                    android:tint="@color/neutral_100"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/activity_stocks_constraint_filters_edittext_search"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/icon_search" />
+
+                <EditText
+                    android:id="@+id/activity_stocks_constraint_filters_edittext_search"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/blue_400"
+                    android:ems="10"
+                    android:fontFamily="@font/poppins"
+                    android:hint="@string/activity_sales_constraint_filters_edittext_search"
+                    android:includeFontPadding="false"
+                    android:inputType="text"
+                    android:textColor="@color/neutral_100"
+                    android:textColorHint="@color/blue_300"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/activity_stocks_recyclerview_stock"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_stocks_constraint_filters" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/activity_stocks_button_createnew"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:clickable="true"
+            app:backgroundTint="@color/blue_700"
+            app:layout_constraintBottom_toBottomOf="@+id/activity_stocks_recyclerview_stock"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/icon_plus"
+            app:tint="@color/neutral_100" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

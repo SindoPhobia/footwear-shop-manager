@@ -226,7 +226,14 @@ public class MainActivity extends AppCompatActivity {
                         SoldStock soldTmp = sale.getSoldStock()[i];
                         ArrayList<Shoe> returnData = (ArrayList<Shoe>) MainActivity.stockDatabase.stockDao().
                                 getStock(soldTmp.getStock_id());
-                        if(returnData.size()==0) continue;
+                        if(returnData.size()==0) {
+                            SaleDisplayModel.StockDisplayModel soldStockDisplay = new SaleDisplayModel.StockDisplayModel(
+                                    soldTmp.getSize(),
+                                    soldTmp.getPrice()
+                            );
+                            soldStock[i] = soldStockDisplay;
+                            continue;
+                        }
                         Shoe shoe = returnData.get(0);
 
                         SaleDisplayModel.StockDisplayModel soldStockDisplay = new SaleDisplayModel.StockDisplayModel(

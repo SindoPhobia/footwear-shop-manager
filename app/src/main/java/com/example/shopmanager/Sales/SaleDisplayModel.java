@@ -60,6 +60,11 @@ public class SaleDisplayModel {
             this.price = price;
         }
 
+        public StockDisplayModel(String size, float price){
+            this.size = size;
+            this.price = price;
+        }
+
         public int getStockId() { return stock_id; }
         public String getName() { return name; }
         public String getBrand() { return brand; }

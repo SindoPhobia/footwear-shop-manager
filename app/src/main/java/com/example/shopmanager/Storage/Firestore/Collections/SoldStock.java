@@ -6,12 +6,12 @@ public class SoldStock {
 //    private String color;
     private float price;
 
+
     public SoldStock(){}
 
     public SoldStock(int stock_id, String size, float price) {
         this.stock_id = stock_id;
         this.size = size;
-//        this.color = color;
         this.price = price;
     }
 

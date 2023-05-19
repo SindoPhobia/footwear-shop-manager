@@ -7,10 +7,17 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 import android.Manifest;
+import android.content.ContentResolver;
+import android.content.ContentUris;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +26,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -43,8 +51,12 @@ import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
@@ -52,6 +64,7 @@ import java.util.ArrayList;
 import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 public class StockActivity extends AppCompatActivity{
 
@@ -211,14 +224,18 @@ public class StockActivity extends AppCompatActivity{
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            Log.d("QRCODE", response.getString("code"));
+                            String code = response.getString("code").replace("data:image/png;base64,", "");
+
                             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                                byte[]  bytesImage = Base64.getDecoder().decode(response.getString("code").replace("data:image/png;base64,", ""));
+                                byte[]  bytesImage = Base64.getDecoder().decode(code);
                                 Bitmap image = StockDB.decodeBlob(bytesImage);
                                 imageQRCode.setImageBitmap(image);
+                                imageQRCode.setOnClickListener(v -> {
+                                    saveImage(initial.getCode(), image);
+                                });
 
                             } else {
-                                Log.d("QRCODE","OLD PHONE BRO, pare kainourgio");
+                                Toast.makeText(StockActivity.this, "Can't load load QR Code image", Toast.LENGTH_SHORT).show();
                             }
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -279,6 +296,27 @@ public class StockActivity extends AppCompatActivity{
         countView.setText(String.valueOf(count));
 
         return sizeRoot;
+    }
+
+    private Uri saveImage(String displayName, Bitmap image) {
+        try {
+            ContentValues imageData = new ContentValues();
+            imageData.put(MediaStore.MediaColumns.DISPLAY_NAME, displayName + UUID.randomUUID().toString().replace("-", "").substring(0, 8));
+            imageData.put(MediaStore.MediaColumns.MIME_TYPE, "image/png");
+            imageData.put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_DCIM);
+
+            ContentResolver resolver = getContentResolver();
+            Uri uri = resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, imageData);
+
+            OutputStream stream = resolver.openOutputStream(uri);
+            image.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            stream.close();
+            return uri;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 }
 

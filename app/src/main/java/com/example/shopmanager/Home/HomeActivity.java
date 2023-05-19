@@ -29,6 +29,7 @@ import java.util.Arrays;
 
 public class HomeActivity extends AppCompatActivity implements StockRecyclerViewAdapter.StockOnClickInterface{
     private static final int SALES_DISPLAY_COUNT = 2;
+    private static final int STOCKS_DISPLAY_COUNT = 3;
 
     SaleRecyclerViewAdapter saleRecyclerViewAdapter;
     StockRecyclerViewAdapter stockRecyclerViewAdapter;
@@ -82,7 +83,7 @@ public class HomeActivity extends AppCompatActivity implements StockRecyclerView
     private void setStockRecyclerView(){
         stockRecyclerView = findViewById(R.id.activity_home_constraint_stock_recyclerview_stock);
         ArrayList<StockDisplayModel> stockList = new ArrayList<>(Arrays.asList(StockDisplayModel.parseStockToDisplayModel(
-                (ArrayList<Shoe>) MainActivity.stockDatabase.stockDao().getStockDesc(3))));
+                (ArrayList<Shoe>) MainActivity.stockDatabase.stockDao().getStockDesc(STOCKS_DISPLAY_COUNT))));
 
         stockRecyclerViewAdapter = new StockRecyclerViewAdapter(this, stockList, this);
         stockRecyclerView.setAdapter(stockRecyclerViewAdapter);

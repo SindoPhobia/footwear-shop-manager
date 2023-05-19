@@ -217,14 +217,14 @@ public class StockActivity extends AppCompatActivity{
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             JsonObjectRequest request = new JsonObjectRequest(
                 Request.Method.GET,
-                "https://qrapi.vercel.app/api/generate?text=test",
+                "https://qrapi.vercel.app/api/generate?text=shopmanager://" + initial.getCode(),
                 null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
                             String code = response.getString("code").replace("data:image/png;base64,", "");
-
+                            Log.d("QR", "Code: " + code);
                             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
                                 byte[]  bytesImage = Base64.getDecoder().decode(code);
                                 Bitmap image = StockDB.decodeBlob(bytesImage);

@@ -73,7 +73,12 @@ public class SaleRecyclerViewAdapter extends RecyclerView.Adapter<SaleRecyclerVi
         holder.stock.removeAllViews();
 
         for(SaleDisplayModel.StockDisplayModel stock : sales.get(position).getStock()) {
-            View rowView = this.createStockRowView(stock.getBrand(), stock.getName(), stock.getSize(), stock.getPrice());
+            View rowView;
+            if(stock.getStockId()==0) { //Then item has been deleted and stock id is default value = 0.
+                rowView = this.createStockRowView("Deleted", "Deleted", stock.getSize(), stock.getPrice());
+            }else{
+                rowView = this.createStockRowView(stock.getBrand(), stock.getName(), stock.getSize(), stock.getPrice());
+            }
             holder.stock.addView(rowView);
         }
     }

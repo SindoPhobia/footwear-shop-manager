@@ -66,7 +66,6 @@ public class Sale {
                             new SoldStock(
                                     Integer.parseInt(data.get("stock_id").toString()),
                                     data.get("size").toString(),
-//                                    data.get("color").toString(),
                                     Float.parseFloat(data.get("price").toString())
                             )
                     );

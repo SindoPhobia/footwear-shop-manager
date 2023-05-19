@@ -1,6 +1,7 @@
 package com.example.shopmanager.Sales;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.shopmanager.Home.HomeActivity;
 import com.example.shopmanager.MainActivity;
 import com.example.shopmanager.R;
 import com.example.shopmanager.Storage.Firestore.Collections.Sale;
@@ -56,7 +58,7 @@ public class SaleRecyclerViewAdapter extends RecyclerView.Adapter<SaleRecyclerVi
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.recyclerview_sale, parent, false);
 
-        return new SaleRecyclerViewAdapter.ViewHolder(view);
+        return new SaleRecyclerViewAdapter.ViewHolder(view, context);
     }
 
     @Override
@@ -111,10 +113,13 @@ public class SaleRecyclerViewAdapter extends RecyclerView.Adapter<SaleRecyclerVi
 
         LinearLayout stock;
 
-        public ViewHolder(@NonNull View view) {
+        public ViewHolder(@NonNull View view, Context context) {
             super(view);
 
             view.setOnLongClickListener(c -> {
+                if(((Activity)context) instanceof HomeActivity){
+                    return false;
+                }
                 int index = getAdapterPosition();
                 SaleDisplayModel s = sales.get(index);
                 SoldStock[] stocks =  Arrays.stream(s.getStock()).map(item ->

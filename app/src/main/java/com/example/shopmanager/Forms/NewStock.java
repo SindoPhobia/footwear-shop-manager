@@ -79,6 +79,7 @@ public class NewStock extends AppCompatActivity {
                     Intent i = new Intent(getApplicationContext(),StockActivity.class);
                     i.putExtra("code", shoe.getCode());
                     startActivity(i);
+                    NewStock.shoe = new Shoe();
                     notifyStockUpload(0);
                     finish();
                     return;

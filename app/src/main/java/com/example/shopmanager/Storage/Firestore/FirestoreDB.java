@@ -63,62 +63,70 @@ public class FirestoreDB {
         getLatestSales(1, new Callback() {
             @Override
             public void onComplete(Sale[] salez) {
-                if(salez.length==0){
-                    cl.onError();
-                    return;
-                }
-                sale.setId(String.format("%04d", Integer.parseInt(salez[0].getId())+1));
-                db.collection("Sales").add(sale.parseSale()).addOnCompleteListener(task -> {
-                    if(!task.isSuccessful()){
-                        cl.onError();
-                        return;
+                try{
+                    if(salez.length==0){
+                        sale.setId("0001");
+                    }else{
+                        sale.setId(String.format("%04d", Integer.parseInt(salez[0].getId())+1));
                     }
-                    Sale[] sales = new Sale[1];
-                    sales[0] = sale;
-                    if(sales.length != 1) {
-                        cl.onError();
-                        return;
-                    }
-                    SaleDisplayModel.StockDisplayModel[] saleDisplayModel = Arrays.stream(sales[0].getSoldStock()).map(item -> {
-                        Shoe s = ((ArrayList<Shoe>)MainActivity.stockDatabase.stockDao().getStock(item.getStock_id())).get(0);
-                        HashMap<String, Integer> sizes =  s.getSizesFormatted();
-                        try{
-                            int newTotal = sizes.get(item.getSize()) - 1;
-                            if(newTotal <= 0){
-                                sizes.remove(item.getSize());
-                            }else{
-                                sizes.put(item.getSize(), newTotal);
+                    db.collection("Sales").add(sale.parseSale()).addOnCompleteListener(task -> {
+                        if(!task.isSuccessful()){
+                            cl.onError();
+                            return;
+                        }
+                        Sale[] sales = new Sale[1];
+                        sales[0] = sale;
+                        if(sales.length != 1) {
+                            cl.onError();
+                            return;
+                        }
+                        SaleDisplayModel.StockDisplayModel[] saleDisplayModel = Arrays.stream(sales[0].getSoldStock()).map(item -> {
+                            Shoe s = ((ArrayList<Shoe>)MainActivity.stockDatabase.stockDao().getStock(item.getStock_id())).get(0);
+                            HashMap<String, Integer> sizes =  s.getSizesFormatted();
+                            try{
+                                int newTotal = sizes.get(item.getSize()) - 1;
+                                if(newTotal <= 0){
+                                    sizes.remove(item.getSize());
+                                }else{
+                                    sizes.put(item.getSize(), newTotal);
+                                }
+                                s.setSizes(s.parseSizes(sizes));
+                                MainActivity.stockDatabase.createShoe(s);
+                                MainActivity.updateStock();
+                            }catch(NullPointerException e){
+                                Log.w("sizes", e);
                             }
-                            s.setSizes(s.parseSizes(sizes));
-                            MainActivity.stockDatabase.createShoe(s);
-                            MainActivity.updateStock();
-                        }catch(NullPointerException e){
-                            Log.w("sizes", e);
+                            return new SaleDisplayModel.StockDisplayModel(item.getStock_id(), s.getName(), s.getBrand(), s.getColor(), item.getSize(),
+                                    s.isSale_enabled() ? s.getSale_price() : s.getPrice());
+                        }).toArray(SaleDisplayModel.StockDisplayModel[]::new);
+
+                        SaleDisplayModel saleToAdd = new SaleDisplayModel(sales[0].getId(), sales[0].getSeller(), sales[0].getDate(),
+                                saleDisplayModel);
+
+                        if(MainActivity.sales.size()>0){
+                            SaleDisplayModel lastItem = MainActivity.sales.get(MainActivity.sales.size()-1);
+
+                            try{
+                                for (int i = MainActivity.sales.size()-1; i > 0; i--) {
+                                    MainActivity.sales.set(i, MainActivity.sales.get(i-1));
+                                }
+                                MainActivity.sales.set(0, saleToAdd);
+                                MainActivity.sales.add(lastItem);
+                            }catch(Exception e ){
+                                Log.w("sales", e);
+                                cl.onError();
+                                return;
+                            }
+                        }else{
+                            MainActivity.sales.add(saleToAdd);
                         }
-                        return new SaleDisplayModel.StockDisplayModel(item.getStock_id(), s.getName(), s.getBrand(), s.getColor(), item.getSize(),
-                                s.isSale_enabled() ? s.getSale_price() : s.getPrice());
-                    }).toArray(SaleDisplayModel.StockDisplayModel[]::new);
 
-                    SaleDisplayModel m = new SaleDisplayModel(sales[0].getId(), sales[0].getSeller(), sales[0].getDate(),
-                            saleDisplayModel);
-
-                    SaleDisplayModel lastItem = MainActivity.sales.get(MainActivity.sales.size()-1);
-
-                    try{
-                        for (int i = MainActivity.sales.size()-1; i > 0; i--) {
-                            MainActivity.sales.set(i, MainActivity.sales.get(i-1));
-                        }
-                        MainActivity.sales.set(0, m);
-                        MainActivity.sales.add(lastItem);
-                    }catch(Exception e ){
-                        Log.w("sales", e);
-                        cl.onError();
-                        return;
-                    }
-
-                    MainActivity.salesAnalytics.onNewSale(sale);
-                    cl.onComplete(sales);
-                });
+                        MainActivity.salesAnalytics.onNewSale(sale);
+                        cl.onComplete(sales);
+                    });
+                }catch(Exception e) {
+                    e.printStackTrace();
+                }
             }
 
             @Override

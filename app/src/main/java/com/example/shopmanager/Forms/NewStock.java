@@ -74,7 +74,6 @@ public class NewStock extends AppCompatActivity {
                 if(!currentTab.validateForm()) return;
                 currentTab.fillData(shoe);
                 if(currentFormLocationIndex == TOTAL_FORM_LOCATIONS - 1) {
-                    // TODO: complete new stock form
                     MainActivity.stockDatabase.createShoe(shoe);
                     MainActivity.updateStock();
                     Intent i = new Intent(getApplicationContext(),StockActivity.class);
@@ -112,15 +111,7 @@ public class NewStock extends AppCompatActivity {
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(getApplicationContext());
 
-// notificationId is a unique int for each notification that you must define
         if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-//                           public void onRequestPermissionsResult(int requestCode, String[] permissions,
-//                                                                  int[] grantResults)
-//                         to handle the case where the user grants the permission. See the documentation
-//                         for ActivityCompat#requestPermissions for more details.
             return;
         }
         notificationManager.notify(id, builder.build());

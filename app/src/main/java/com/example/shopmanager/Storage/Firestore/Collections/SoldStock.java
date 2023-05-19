@@ -3,7 +3,6 @@ package com.example.shopmanager.Storage.Firestore.Collections;
 public class SoldStock {
     private int stock_id;
     private String size;
-//    private String color;
     private float price;
 
 
@@ -31,14 +30,6 @@ public class SoldStock {
         this.size = size;
     }
 
-//    public String getColor() {
-//        return color;
-//    }
-//
-//    public void setColor(String color) {
-//        this.color = color;
-//    }
-
     public float getPrice() {
         return price;
     }
@@ -52,7 +43,6 @@ public class SoldStock {
         return "SoldStock{" +
                 "stock_id='" + stock_id + '\'' +
                 ", size=" + size +
-//                ", color='" + color + '\'' +
                 ", price=" + price +
                 '}';
     }

@@ -42,7 +42,6 @@ public class Sale {
         ArrayList<HashMap<String, Object>> listSold = new ArrayList<>();
         for(SoldStock item : soldStock){
             HashMap<String, Object> tmp = new HashMap<>();
-//            tmp.put("color", item.getColor());
             tmp.put("price", item.getPrice());
             tmp.put("size", item.getSize());
             tmp.put("stock_id", item.getStock_id());

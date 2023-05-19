@@ -160,7 +160,6 @@ public class StockRecyclerViewAdapter extends RecyclerView.Adapter<StockRecycler
 
         public ViewHolder(@NonNull View view, StockOnClickInterface onClickInterface) {
             super(view);
-            // TODO: SETUP HANDLE FOR SIZES
 
             name = view.findViewById(R.id.recyclerview_stock_text_name);
             category = view.findViewById(R.id.recyclerview_stock_text_category);

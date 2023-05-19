@@ -74,7 +74,7 @@ public class SaleRecyclerViewAdapter extends RecyclerView.Adapter<SaleRecyclerVi
 
         for(SaleDisplayModel.StockDisplayModel stock : sales.get(position).getStock()) {
             View rowView;
-            if(stock.getStockId()==0) { //Then item has been deleted and stock id is default value = 0.
+            if(stock.getStockId()==0) {
                 rowView = this.createStockRowView("Deleted", "Deleted", stock.getSize(), stock.getPrice());
             }else{
                 rowView = this.createStockRowView(stock.getBrand(), stock.getName(), stock.getSize(), stock.getPrice());

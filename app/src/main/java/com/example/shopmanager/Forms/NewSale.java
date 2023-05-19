@@ -152,12 +152,10 @@ public class NewSale extends AppCompatActivity {
 
 
             if (hasError) return;
-            // TODO: ftiaxnei to sale kai na to vazei sto server
             SoldStock[] sold = addStockModelList.stream().map(item -> new SoldStock(item.getId(), item.getSize(),item.getPrice())).toArray(SoldStock[]::new);
             FirestoreDB.addSale(new Sale(inputSoldBy.getText().toString(), new Date().getTime(), sold), new FirestoreDB.Callback() {
                 @Override
                 public void onComplete(Sale[] sales) {
-                    //TODO: REDIRECT USER TO SALES PAGE
                     Intent i = new Intent(getApplicationContext(), SalesActivity.class);
                     startActivity(i);
                     finish();
@@ -166,7 +164,6 @@ public class NewSale extends AppCompatActivity {
 
                 @Override
                 public void onError() {
-                    //TODO: SHOW ERROR
                 }
             });
         });
@@ -203,7 +200,6 @@ public class NewSale extends AppCompatActivity {
 
         listResults.removeAllViews();
 
-        // TODO: Get all shoes that match input
         ArrayList<Shoe> stock = (ArrayList<Shoe>) MainActivity.stockDatabase.stockDao().getStock(input.replaceAll("-| ", ""));
 
         if(stock.size()==0){

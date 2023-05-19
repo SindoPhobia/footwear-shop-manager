@@ -236,6 +236,7 @@ public interface StockDao{
             "order by s2.date asc")
     public List<Shoe> getStockAsc();
 
+
     @Query("select " +
             "(select count(*) from Stock) as stockTotal," +
             "(select count(*) from Categories) as categoriesTotal")

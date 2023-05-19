@@ -91,7 +91,6 @@ public class FirestoreDB {
                             }
                             s.setSizes(s.parseSizes(sizes));
                             MainActivity.stockDatabase.createShoe(s);
-                            //TODO: LIVE UPDATE STOCK LIST
                             MainActivity.updateStock();
                         }catch(NullPointerException e){
                             Log.w("sizes", e);

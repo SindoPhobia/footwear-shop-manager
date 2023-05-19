@@ -33,7 +33,6 @@ public class NewStockFormPrice extends Fragment implements NewStock.FormFragment
         errorDiscountedPrice = view.findViewById(R.id.fragment_newstock_form_price_discountpriceerror);
 
         Shoe state = NewStock.shoe;
-        Log.d("state", NewStock.shoe.toString());
         try{
             if(state.getPrice()!=0.0f){
                 editTextOriginalPrice.setText(String.valueOf(state.getPrice()));

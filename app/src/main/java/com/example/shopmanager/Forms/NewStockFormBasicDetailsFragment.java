@@ -85,14 +85,10 @@ public class NewStockFormBasicDetailsFragment extends Fragment implements NewSto
 
 
     private void chooseImage(){
-        // create an instance of the
-        // intent of the type image
         Intent i = new Intent();
         i.setType("image/*");
         i.setAction(Intent.ACTION_GET_CONTENT);
 
-        // pass the constant to compare it
-        // with the returned requestCode
         startActivityForResult(Intent.createChooser(i, "Select Picture"), 200);
     }
 
@@ -101,33 +97,19 @@ public class NewStockFormBasicDetailsFragment extends Fragment implements NewSto
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        Log.d("file", "test-1");
         if (resultCode == RESULT_OK) {
-            Log.d("file", "test-2");
 
-            // compare the resultCode with the
-            // SELECT_PICTURE constant
-            Log.d("file", String.valueOf(requestCode));
             if (requestCode == 200) {
-                Log.d("file", "test-3");
-                // Get the url of the image from data
                 Uri selectedImageUri = data.getData();
                 if (null != selectedImageUri) {
-                    // update the preview image in the layout
                     try {
                         bitmap = MediaStore.Images.Media.getBitmap(this.getContext().getContentResolver(), selectedImageUri);
                         img.setImageBitmap(bitmap);
                         imageBtn.setText("");
 
-                        try{
-//                            MainActivity.stockDatabase.updateImage("ntelos123", bitmap);
-                        }catch(Exception e) {
-                            Log.w("error", e);
-                        }
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
-                    Log.d("file", "success");
                 }
             }
         }
@@ -178,13 +160,6 @@ public class NewStockFormBasicDetailsFragment extends Fragment implements NewSto
             errorGlobal.setVisibility(View.GONE);
         }
 
-        try{
-            if(bitmap==null){
-                isValid = false;
-            }
-        }catch (NullPointerException e){
-            isValid = false;
-        }
 
         return isValid;
     }

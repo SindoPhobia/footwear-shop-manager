@@ -104,14 +104,18 @@ public class HomeActivity extends AppCompatActivity implements StockRecyclerView
         salesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
+    public static double roundPrice(float price){
+        return (double)Math.round(price*100)/100;
+    }
+
     private void setAnalytics(){
         analyticsSalesTotal = findViewById(R.id.activity_home_constraint_sales_text_salestotal);
         analyticsSalesToday = findViewById(R.id.activity_home_constraint_sales_text_salestoday);
         analyticsStockTotal = findViewById(R.id.activity_home_constraint_analyticstock_text_totalstock);
         analyticsCategoriesTotal = findViewById(R.id.activity_home_constraint_analyticstock_text_stockcategories);
 
-        analyticsSalesTotal.setText(new StringBuilder().append(MainActivity.salesAnalytics.getTotal()).append("€"));
-        analyticsSalesToday.setText(new StringBuilder().append(MainActivity.salesAnalytics.getToday()).append("€"));
+        analyticsSalesTotal.setText(new StringBuilder().append(roundPrice(MainActivity.salesAnalytics.getTotal())).append("€"));
+        analyticsSalesToday.setText(new StringBuilder().append(roundPrice(MainActivity.salesAnalytics.getToday())).append("€"));
 
         StockAnalytics stockAnalytics = MainActivity.stockDatabase.stockDao().getStockAnalytics();
         analyticsStockTotal.setText(String.valueOf(stockAnalytics.getStockTotal()));

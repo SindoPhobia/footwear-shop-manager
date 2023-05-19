@@ -13,6 +13,7 @@ import android.text.TextWatcher;
 import android.widget.EditText;
 
 import com.example.shopmanager.Forms.NewSale;
+import com.example.shopmanager.Home.HomeActivity;
 import com.example.shopmanager.MainActivity;
 import com.example.shopmanager.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -41,10 +42,10 @@ public class SalesActivity extends AppCompatActivity implements MainActivity.Sea
         analyticsSalesToday = findViewById(R.id.activity_sales_constraint_sales_text_salestoday);
         buttonNewSale = findViewById(R.id.activity_sales_button_createnew);
 
-        analyticsSalesTotal.setText(new StringBuilder().append(MainActivity.salesAnalytics.getTotal()).append("€"));
-        analyticsSalesMonthly.setText(new StringBuilder().append(MainActivity.salesAnalytics.getMonthly()).append("€"));
-        analyticsSalesWeekly.setText(new StringBuilder().append(MainActivity.salesAnalytics.getWeekly()).append("€"));
-        analyticsSalesToday.setText(new StringBuilder().append(MainActivity.salesAnalytics.getToday()).append("€"));
+        analyticsSalesTotal.setText(new StringBuilder().append(HomeActivity.roundPrice(MainActivity.salesAnalytics.getTotal())).append("€"));
+        analyticsSalesMonthly.setText(new StringBuilder().append(HomeActivity.roundPrice(MainActivity.salesAnalytics.getMonthly())).append("€"));
+        analyticsSalesWeekly.setText(new StringBuilder().append(HomeActivity.roundPrice(MainActivity.salesAnalytics.getWeekly())).append("€"));
+        analyticsSalesToday.setText(new StringBuilder().append(HomeActivity.roundPrice(MainActivity.salesAnalytics.getToday())).append("€"));
 
         saleRecyclerViewAdapter = new SaleRecyclerViewAdapter(this, MainActivity.sales);
         salesRecyclerView.setAdapter(saleRecyclerViewAdapter);

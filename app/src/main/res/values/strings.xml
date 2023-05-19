@@ -70,4 +70,5 @@
     <string name="activity_main_checkbox_calculating_analytics">Loading Analytics</string>
     <string name="main_activity_about">Made by Pandelis Bezolli and Trifon Mazarakis.</string>
     <string name="activity_stocks_no_items">Looks like you haven\'t added any items yet.</string>
+    <string name="activity_sales_no_items">Looks like there haven\'t been any sales yet.</string>
 </resources>

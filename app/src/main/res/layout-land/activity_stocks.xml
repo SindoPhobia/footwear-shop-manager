@@ -95,7 +95,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/activity_stocks_constraint_filters" />
+            app:layout_constraintTop_toBottomOf="@+id/activity_stocks_constraint_filters"
+            app:layout_constraintVertical_bias="0.0" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/activity_stocks_button_createnew"
@@ -109,5 +110,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/icon_plus"
             app:tint="@color/neutral_100" />
+
+        <TextView
+            android:id="@+id/activity_stocks_no_items"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/activity_stocks_no_items"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="@+id/activity_stocks_recyclerview_stock"
+            app:layout_constraintStart_toStartOf="@+id/activity_stocks_recyclerview_stock"
+            app:layout_constraintTop_toTopOf="@+id/activity_stocks_recyclerview_stock" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

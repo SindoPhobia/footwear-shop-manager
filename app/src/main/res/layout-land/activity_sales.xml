@@ -266,6 +266,17 @@
             app:srcCompat="@drawable/icon_plus"
             app:tint="@color/neutral_100" />
 
+        <TextView
+            android:id="@+id/activity_sales_no_items"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/activity_sales_no_items"
+            app:layout_constraintEnd_toEndOf="@+id/activity_sales_recyclerview_sales"
+            app:layout_constraintStart_toStartOf="@+id/activity_sales_recyclerview_sales"
+            app:layout_constraintTop_toTopOf="@+id/activity_sales_recyclerview_sales" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

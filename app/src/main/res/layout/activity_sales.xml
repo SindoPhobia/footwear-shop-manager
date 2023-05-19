@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:visibility="visible"
     tools:context=".Sales.SalesActivity">
 
     <androidx.fragment.app.FragmentContainerView
@@ -268,6 +269,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/icon_plus"
             app:tint="@color/neutral_100" />
+
+        <TextView
+            android:id="@+id/activity_sales_no_items"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@string/activity_sales_no_items"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="@+id/activity_sales_recyclerview_sales"
+            app:layout_constraintStart_toStartOf="@+id/activity_sales_recyclerview_sales"
+            app:layout_constraintTop_toTopOf="@+id/activity_sales_recyclerview_sales" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

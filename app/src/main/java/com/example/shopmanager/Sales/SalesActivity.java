@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.TextView;
 import android.text.Editable;
@@ -23,10 +24,7 @@ public class SalesActivity extends AppCompatActivity implements MainActivity.Sea
     SaleRecyclerViewAdapter saleRecyclerViewAdapter;
 
     RecyclerView salesRecyclerView;
-    TextView analyticsSalesTotal;
-    TextView analyticsSalesMonthly;
-    TextView analyticsSalesWeekly;
-    TextView analyticsSalesToday;
+    TextView analyticsSalesTotal, analyticsSalesMonthly, analyticsSalesWeekly, analyticsSalesToday, noItems;
 
     FloatingActionButton buttonNewSale;
 
@@ -42,10 +40,18 @@ public class SalesActivity extends AppCompatActivity implements MainActivity.Sea
         analyticsSalesToday = findViewById(R.id.activity_sales_constraint_sales_text_salestoday);
         buttonNewSale = findViewById(R.id.activity_sales_button_createnew);
 
+        noItems = findViewById(R.id.activity_sales_no_items);
+
         analyticsSalesTotal.setText(new StringBuilder().append(HomeActivity.roundPrice(MainActivity.salesAnalytics.getTotal())).append("€"));
         analyticsSalesMonthly.setText(new StringBuilder().append(HomeActivity.roundPrice(MainActivity.salesAnalytics.getMonthly())).append("€"));
         analyticsSalesWeekly.setText(new StringBuilder().append(HomeActivity.roundPrice(MainActivity.salesAnalytics.getWeekly())).append("€"));
         analyticsSalesToday.setText(new StringBuilder().append(HomeActivity.roundPrice(MainActivity.salesAnalytics.getToday())).append("€"));
+
+        if(MainActivity.sales.size()==0){
+            noItems.setVisibility(View.VISIBLE);
+        }else{
+            noItems.setVisibility(View.INVISIBLE);
+        }
 
         saleRecyclerViewAdapter = new SaleRecyclerViewAdapter(this, MainActivity.sales);
         salesRecyclerView.setAdapter(saleRecyclerViewAdapter);

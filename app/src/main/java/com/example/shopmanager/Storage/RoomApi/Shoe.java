@@ -163,7 +163,7 @@ public class Shoe {
     }
 
     public boolean isSale_enabled() {
-        return sale_enabled;
+        return sale_enabled || this.getSale_price() > 0.f;
     }
 
     public void setSale_enabled(boolean sale_enabled) {

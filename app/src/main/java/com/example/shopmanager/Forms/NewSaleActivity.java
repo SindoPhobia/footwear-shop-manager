@@ -134,7 +134,7 @@ public class NewSaleActivity extends AppCompatActivity {
 
 
             if (hasError) return;
-            SoldStock[] sold = addStockModelList.stream().map(item -> new SoldStock(item.getId(), item.getSize(),item.getPrice())).toArray(SoldStock[]::new);
+            SoldStock[] sold = addStockModelList.stream().map(item -> new SoldStock(item.getId(), item.getSize(),item.isSaleEnabled() ? item.getSalePrice() : item.getPrice())).toArray(SoldStock[]::new);
             FirestoreDB.addSale(new Sale(inputSoldBy.getText().toString(), new Date().getTime(), sold), new FirestoreDB.Callback() {
                 @Override
                 public void onComplete(Sale[] sales) {

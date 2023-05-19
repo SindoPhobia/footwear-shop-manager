@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.example.shopmanager.Home.HomeActivity;
 import com.example.shopmanager.Sales.SaleDisplayModel;
+import com.example.shopmanager.Stocks.StockActivity;
 import com.example.shopmanager.Stocks.StockDisplayModel;
 import com.example.shopmanager.Storage.Analytics.SalesAnalytics;
 import com.example.shopmanager.Storage.Firestore.Collections.Sale;
@@ -73,7 +74,18 @@ public class MainActivity extends AppCompatActivity {
                 getApplicationContext(), StockDB.class, "StockDB"
                 ).allowMainThreadQueries().build();
 
-        Intent startActivityIntent = new Intent(this, HomeActivity.class);
+        Intent dataIntent = getIntent();
+        String data = dataIntent.getDataString();
+        Intent startActivityIntent;
+
+        if(data == null) {
+            startActivityIntent = new Intent(this, HomeActivity.class);
+        } else {
+            data = data.replace("shopmanager://", "");
+            startActivityIntent = new Intent(this, StockActivity.class);
+            startActivityIntent.putExtra("code", data);
+        }
+
 
         firestoreDB = new FirestoreDB();
         firestoreDB.init(FirebaseFirestore.getInstance());

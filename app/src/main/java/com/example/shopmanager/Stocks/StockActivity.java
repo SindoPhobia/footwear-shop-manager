@@ -9,6 +9,7 @@ import androidx.core.app.NotificationManagerCompat;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,6 +20,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.shopmanager.Forms.NewSale;
 import com.example.shopmanager.Forms.NewStock;
 import com.example.shopmanager.Home.HomeActivity;
@@ -31,7 +39,17 @@ import com.example.shopmanager.Storage.RoomApi.StockDB;
 import com.example.shopmanager.Storage.RoomApi.StockDao;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import org.json.JSONObject;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -56,6 +74,7 @@ public class StockActivity extends AppCompatActivity{
     TextView colorCount;
 
     ImageView shoeImg;
+    ImageView imageQRCode;
 
     LinearLayout stockList;
 
@@ -125,6 +144,7 @@ public class StockActivity extends AppCompatActivity{
         sizesCount = findViewById(R.id.activity_stock_list_header_text_sizes);
         colorCount = findViewById(R.id.activity_stock_list_header_text_colors);
         shoeImg = findViewById(R.id.activity_stock_container_image_image_stock);
+        imageQRCode = findViewById(R.id.activity_stock_qrcode_image);
 
         stockList = findViewById(R.id.activity_stock_list);
 
@@ -174,6 +194,44 @@ public class StockActivity extends AppCompatActivity{
         inventoryCount.setText(new StringBuilder().append(totalInventory));
         colorCount.setText(new StringBuilder().append(totalColors));
         sizesCount.setText(new StringBuilder().append(totalSizes));
+
+        try {
+            RequestQueue requestQueue = Volley.newRequestQueue(this);
+            JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.GET,
+                "https://qrapi.vercel.app/api/generate?text=test",
+                null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            Log.d("QRCODE", response.getString("code"));
+                            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                                byte[]  bytesImage = Base64.getDecoder().decode(response.getString("code").replace("data:image/png;base64,", ""));
+                                Bitmap image = StockDB.decodeBlob(bytesImage);
+                                imageQRCode.setImageBitmap(image);
+
+                            } else {
+                                Log.d("QRCODE","OLD PHONE BRO, pare kainourgio");
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }
+            );
+
+            requestQueue.add(request);
+            requestQueue.start();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     private View createInventoryRow(String color, HashMap<String, Integer> sizes) {

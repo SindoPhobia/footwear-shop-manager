@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -22,7 +24,8 @@
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".Stocks.StockActivity"
-            android:exported="false" />
+            android:exported="true">
+        </activity>
         <activity
             android:name=".Stocks.StocksActivity"
             android:windowSoftInputMode="adjustPan"
@@ -41,6 +44,10 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="shopmanager"/>
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>

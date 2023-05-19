@@ -15,7 +15,7 @@ import com.example.shopmanager.R;
 import com.example.shopmanager.Storage.RoomApi.Shoe;
 import com.google.android.material.textfield.TextInputEditText;
 
-public class NewStockFormCategorizations extends Fragment implements NewStock.FormFragment {
+public class NewStockFormCategorizationsFragment extends Fragment implements NewStockActivity.FormFragment {
 
     ConstraintLayout errorCategory;
     ConstraintLayout errorGender;
@@ -41,7 +41,7 @@ public class NewStockFormCategorizations extends Fragment implements NewStock.Fo
         errorCategory = view.findViewById(R.id.fragment_newstock_form_categorizations_constraint_categoryerror);
         errorGender = view.findViewById(R.id.fragment_newstock_form_categorizations_constraint_gendererror);
 
-        Shoe state = NewStock.shoe;
+        Shoe state = NewStockActivity.shoe;
         if (state.getCategory() != null) editTextCategories.setText(state.getCategory());
         if (
                 state.getGender() == Shoe.getGenderCode("Male") ||

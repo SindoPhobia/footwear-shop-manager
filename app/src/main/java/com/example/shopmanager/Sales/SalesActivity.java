@@ -13,7 +13,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
 
-import com.example.shopmanager.Forms.NewSale;
+import com.example.shopmanager.Forms.NewSaleActivity;
 import com.example.shopmanager.Home.HomeActivity;
 import com.example.shopmanager.MainActivity;
 import com.example.shopmanager.R;
@@ -58,7 +58,7 @@ public class SalesActivity extends AppCompatActivity implements MainActivity.Sea
         salesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         buttonNewSale.setOnClickListener(v -> {
-            Intent newSaleActivity = new Intent(this, NewSale.class);
+            Intent newSaleActivity = new Intent(this, NewSaleActivity.class);
             startActivity(newSaleActivity);
         });
 

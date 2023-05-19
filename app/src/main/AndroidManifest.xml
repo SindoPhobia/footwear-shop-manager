@@ -18,10 +18,10 @@
         android:requestLegacyExternalStorage="true"
         tools:targetApi="31">
         <activity
-            android:name=".Forms.NewStock"
+            android:name=".Forms.NewStockActivity"
             android:exported="false" />
         <activity
-            android:name=".Forms.NewSale"
+            android:name=".Forms.NewSaleActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustPan" />
         <activity

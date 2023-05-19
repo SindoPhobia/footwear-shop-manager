@@ -4,7 +4,6 @@ import static android.app.Activity.RESULT_OK;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -12,7 +11,6 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,14 +21,13 @@ import com.example.shopmanager.MainActivity;
 import com.example.shopmanager.R;
 import com.example.shopmanager.Storage.RoomApi.Shoe;
 import com.example.shopmanager.Storage.RoomApi.StockDB;
-import com.example.shopmanager.Storage.RoomApi.StockDao;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
-public class NewStockFormBasicDetailsFragment extends Fragment implements NewStock.FormFragment {
+public class NewStockFormBasicDetailsFragment extends Fragment implements NewStockActivity.FormFragment {
 
     TextInputEditText editTextName;
     TextInputEditText editTextBrand;
@@ -69,7 +66,7 @@ public class NewStockFormBasicDetailsFragment extends Fragment implements NewSto
             chooseImage();
         });
 
-        Shoe state = NewStock.shoe;
+        Shoe state = NewStockActivity.shoe;
         if(state.getName() != null) editTextName.setText(state.getName());
         if(state.getBrand() != null) editTextBrand.setText(state.getBrand());
         if(state.getCode() != null) editTextCode.setText(state.getColor());
@@ -153,7 +150,7 @@ public class NewStockFormBasicDetailsFragment extends Fragment implements NewSto
                 editTextColor.getText().toString()
         );
 
-        if(NewStock.shoe.getId()==0 && similarShoes.size() > 0) {
+        if(NewStockActivity.shoe.getId()==0 && similarShoes.size() > 0) {
             isValid = false;
             errorGlobal.setVisibility(View.VISIBLE);
         } else {

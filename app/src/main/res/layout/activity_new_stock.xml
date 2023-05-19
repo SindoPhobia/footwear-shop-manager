@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/neutral_150"
-    tools:context=".Forms.NewStock">
+    tools:context=".Forms.NewStockActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/activity_newstock_header"

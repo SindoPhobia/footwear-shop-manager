@@ -6,12 +6,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.shopmanager.Forms.NewSale;
-import com.example.shopmanager.Forms.NewStock;
+import com.example.shopmanager.Forms.NewSaleActivity;
+import com.example.shopmanager.Forms.NewStockActivity;
 import com.example.shopmanager.MainActivity;
 import com.example.shopmanager.R;
 import com.example.shopmanager.Sales.SaleDisplayModel;
@@ -65,12 +64,12 @@ public class HomeActivity extends AppCompatActivity implements StockRecyclerView
         });
 
         buttonNewSale.setOnClickListener(v -> {
-          Intent intentNewSale = new Intent(this, NewSale.class);
+          Intent intentNewSale = new Intent(this, NewSaleActivity.class);
           startActivity(intentNewSale);
         });
 
         buttonNewStock.setOnClickListener(v -> {
-            Intent intentNewStock = new Intent(this, NewStock.class);
+            Intent intentNewStock = new Intent(this, NewStockActivity.class);
             startActivity(intentNewStock);
         });
 

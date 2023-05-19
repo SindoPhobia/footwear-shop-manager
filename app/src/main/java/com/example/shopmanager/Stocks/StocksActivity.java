@@ -8,13 +8,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.shopmanager.Forms.NewStock;
+import com.example.shopmanager.Forms.NewStockActivity;
 import com.example.shopmanager.MainActivity;
 import com.example.shopmanager.R;
 import com.example.shopmanager.Storage.RoomApi.Shoe;
@@ -58,7 +57,7 @@ public class StocksActivity extends AppCompatActivity implements StockRecyclerVi
         setUpSearchFilter();
 
         buttonNewStock.setOnClickListener(v -> {
-            Intent newStockIntent = new Intent(this, NewStock.class);
+            Intent newStockIntent = new Intent(this, NewStockActivity.class);
             startActivity(newStockIntent);
         });
     }

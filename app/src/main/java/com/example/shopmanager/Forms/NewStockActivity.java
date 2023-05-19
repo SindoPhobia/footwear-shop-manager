@@ -13,9 +13,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -25,7 +23,7 @@ import com.example.shopmanager.Stocks.StockActivity;
 import com.example.shopmanager.Storage.RoomApi.Shoe;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class NewStock extends AppCompatActivity {
+public class NewStockActivity extends AppCompatActivity {
 
     static final int TOTAL_FORM_LOCATIONS = 4;
     int currentFormLocationIndex;
@@ -79,7 +77,7 @@ public class NewStock extends AppCompatActivity {
                     Intent i = new Intent(getApplicationContext(),StockActivity.class);
                     i.putExtra("code", shoe.getCode());
                     startActivity(i);
-                    NewStock.shoe = new Shoe();
+                    NewStockActivity.shoe = new Shoe();
                     notifyStockUpload(0);
                     finish();
                     return;
@@ -161,13 +159,13 @@ public class NewStock extends AppCompatActivity {
         setLocationPips(location);
         switch(location) {
             case 1:
-                fragmentFormTab = new NewStockFormCategorizations();
+                fragmentFormTab = new NewStockFormCategorizationsFragment();
                 break;
             case 2:
-                fragmentFormTab = new NewStockFormInventory();
+                fragmentFormTab = new NewStockFormInventoryFragment();
                 break;
             case 3:
-                fragmentFormTab = new NewStockFormPrice();
+                fragmentFormTab = new NewStockFormPriceFragment();
                 break;
             default:
                 fragmentFormTab = new NewStockFormBasicDetailsFragment();

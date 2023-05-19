@@ -8,11 +8,9 @@ import androidx.core.app.NotificationManagerCompat;
 
 import android.Manifest;
 import android.content.ContentResolver;
-import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -22,7 +20,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -33,10 +30,8 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.shopmanager.Forms.NewSale;
-import com.example.shopmanager.Forms.NewStock;
+import com.example.shopmanager.Forms.NewStockActivity;
 import com.example.shopmanager.Home.HomeActivity;
 import com.example.shopmanager.MainActivity;
 import com.example.shopmanager.R;
@@ -44,22 +39,11 @@ import com.example.shopmanager.Storage.RoomApi.Entities.Shoes;
 import com.example.shopmanager.Storage.RoomApi.Entities.Stock;
 import com.example.shopmanager.Storage.RoomApi.Shoe;
 import com.example.shopmanager.Storage.RoomApi.StockDB;
-import com.example.shopmanager.Storage.RoomApi.StockDao;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONObject;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.HashMap;
@@ -130,9 +114,9 @@ public class StockActivity extends AppCompatActivity{
         });
 
         buttonEdit.setOnClickListener(v -> {
-            Intent i = new Intent(getApplicationContext(), NewStock.class);
+            Intent i = new Intent(getApplicationContext(), NewStockActivity.class);
             startActivity(i);
-            NewStock.shoe = initial;
+            NewStockActivity.shoe = initial;
         });
 
         buttonDelete.setOnClickListener(v -> {

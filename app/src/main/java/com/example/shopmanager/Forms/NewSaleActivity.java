@@ -5,55 +5,37 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
-import androidx.core.content.ContextCompat;
-import androidx.core.content.res.ResourcesCompat;
-import androidx.core.graphics.TypefaceCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
-import android.text.Layout;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.shopmanager.MainActivity;
 import com.example.shopmanager.R;
-import com.example.shopmanager.Sales.SaleDisplayModel;
 import com.example.shopmanager.Sales.SalesActivity;
-import com.example.shopmanager.Stocks.StockActivity;
-import com.example.shopmanager.Stocks.StockDisplayModel;
 import com.example.shopmanager.Storage.Firestore.Collections.Sale;
 import com.example.shopmanager.Storage.Firestore.Collections.SoldStock;
 import com.example.shopmanager.Storage.Firestore.FirestoreDB;
-import com.example.shopmanager.Storage.RoomApi.Entities.Colors;
-import com.example.shopmanager.Storage.RoomApi.Entities.Shoes;
 import com.example.shopmanager.Storage.RoomApi.Shoe;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.function.BiConsumer;
 
-public class NewSale extends AppCompatActivity {
+public class NewSaleActivity extends AppCompatActivity {
 
     AddStockRecyclerViewAdapter addStockRecyclerViewAdapter;
     ArrayList<AddStockModel> addStockModelList;

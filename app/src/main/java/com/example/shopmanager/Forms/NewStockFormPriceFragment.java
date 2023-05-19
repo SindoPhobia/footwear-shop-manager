@@ -14,7 +14,7 @@ import com.example.shopmanager.R;
 import com.google.android.material.textfield.TextInputEditText;
 import com.example.shopmanager.Storage.RoomApi.Shoe;
 
-public class NewStockFormPrice extends Fragment implements NewStock.FormFragment {
+public class NewStockFormPriceFragment extends Fragment implements NewStockActivity.FormFragment {
 
     TextInputEditText editTextOriginalPrice;
     TextInputEditText editTextDiscountedPrice;
@@ -32,7 +32,7 @@ public class NewStockFormPrice extends Fragment implements NewStock.FormFragment
         errorOriginalPrice = view.findViewById(R.id.fragment_newstock_form_price_priceerror);
         errorDiscountedPrice = view.findViewById(R.id.fragment_newstock_form_price_discountpriceerror);
 
-        Shoe state = NewStock.shoe;
+        Shoe state = NewStockActivity.shoe;
         try{
             if(state.getPrice()!=0.0f){
                 editTextOriginalPrice.setText(String.valueOf(state.getPrice()));

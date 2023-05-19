@@ -17,9 +17,8 @@ import com.example.shopmanager.Storage.RoomApi.Shoe;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.concurrent.atomic.AtomicInteger;
 
-public class NewStockFormInventory extends Fragment implements NewStock.FormFragment {
+public class NewStockFormInventoryFragment extends Fragment implements NewStockActivity.FormFragment {
 
     private static final int MIN_SIZE = 34;
     private static final int MAX_SIZE = 49;
@@ -57,7 +56,7 @@ public class NewStockFormInventory extends Fragment implements NewStock.FormFrag
         inventoryRecyclerView.setAdapter(inventoryRecyclerViewAdapter);
         inventoryRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        Shoe state = NewStock.shoe;
+        Shoe state = NewStockActivity.shoe;
         Log.d("state", state.toString());
         if(state.getSizes()!=null){
             HashMap<String, Integer> map = state.getSizesFormatted();

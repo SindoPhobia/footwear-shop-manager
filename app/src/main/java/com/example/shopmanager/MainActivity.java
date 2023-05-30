@@ -35,6 +35,7 @@ import com.example.shopmanager.Storage.RoomApi.Entities.Shoes;
 import com.example.shopmanager.Storage.RoomApi.Entities.Stock;
 import com.example.shopmanager.Storage.RoomApi.Shoe;
 import com.example.shopmanager.Storage.RoomApi.StockDB;
+import com.example.shopmanager.Storage.RoomApi.StockDao;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.File;
@@ -145,9 +146,82 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void createStock(){
+        String[] cats = new String[]{"Lifestyle", "Running", "Basket", "Football"};
+        for(int i=0;i<cats.length;i++){
+            Categories cat = new Categories();
+            cat.setName(cats[i]);
+            stockDatabase.stockDao().insertCategories(cat);
+        }
+        Brands b1 = new Brands();
+        b1.setName("Adidas");
+        Brands b2 = new Brands();
+        b2.setName("Nike");
+        stockDatabase.stockDao().insertBrands(b1);
+        stockDatabase.stockDao().insertBrands(b2);
+
+
+        try{
+            String[] colors = {"White", "Black", "Blue", "Green", "Red", "Yellow"};
+            for(int i=0;i<colors.length;i++){
+                Colors color = new Colors();
+                color.setName(colors[i]);
+                stockDatabase.stockDao().insertColors(color);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+        Date d = new Date();
+        String[] names = new String[]{"Stan Smith", "Air Force", "Air Jordan 1", "Mercurial", "Pegasus"};
+        Shoes s1 = new Shoes("Stan Smith", 110f, false, 0f, "zfx-32", d.getTime(), 0, "42-3,44-4,45-6");
+        Shoes s2 = new Shoes("Stan Smith", 110f, false, 0f, "zfx-32", d.getTime()+50, 0, "42-3,44-4,45-6,41-8");
+        Shoes s3 = new Shoes("Stan Smith", 110f, false, 0f, "zfx-32", d.getTime()+60, 0, "42-3,44-10,45-6");
+        Shoes s4 = new Shoes("Stan Smith", 110f, false, 0f, "zfx-32", d.getTime()+20, 0, "42-15,44-14");
+        stockDatabase.stockDao().insertShoe(s1);
+        stockDatabase.stockDao().insertShoe(s2);
+        stockDatabase.stockDao().insertShoe(s3);
+        stockDatabase.stockDao().insertShoe(s4);
+
+        Stock st1 = new Stock(1, 1, 4, 1);
+        Stock st2 = new Stock(2, 1, 2, 1);
+        Stock st3 = new Stock(3, 1, 5, 1);
+        Stock st4 = new Stock(4, 1, 3, 1);
+
+        Shoes s5 = new Shoes("Air Force", 119.99f, true, 99.99f, "air-7001", d.getTime()+20, 2, "41-5,42-5,45-2");
+        stockDatabase.stockDao().insertShoe(s5);
+        Stock st5 = new Stock(5, 1, 1, 2);
+
+        Shoes s6 = new Shoes("Air Jordan 1", 209.99f, false, 0f, "air-7002", d.getTime()+19, 2, "42-6,43-10");
+        stockDatabase.stockDao().insertShoe(s6);
+        Stock st6 = new Stock(6, 3, 5, 2);
+
+        Shoes s7 = new Shoes("Mercurial", 74.99f, false, 0f, "merc-8001", d.getTime()+5, 0, "38-6,39-5,40-4,41-3,42-3,44-10");
+        stockDatabase.stockDao().insertShoe(s7);
+        Stock st7 = new Stock(7, 4, 6, 2);
+
+        Shoes s8 = new Shoes("Pegasus", 129.99f, false, 0f,"pega-3001", d.getTime()+4, 2, "42-3,44-4,45-6,41-8");
+        stockDatabase.stockDao().insertShoe(s8);
+        Stock st8 = new Stock(8, 2, 2, 2);
+
+        stockDatabase.stockDao().insertStock(st1);
+        stockDatabase.stockDao().insertStock(st2);
+        stockDatabase.stockDao().insertStock(st3);
+        stockDatabase.stockDao().insertStock(st4);
+        stockDatabase.stockDao().insertStock(st5);
+        stockDatabase.stockDao().insertStock(st6);
+        stockDatabase.stockDao().insertStock(st7);
+        stockDatabase.stockDao().insertStock(st8);
+    }
+
 
     public void populateData(Intent intent){
         updateStock();
+        try{
+//            createStock();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
 
         FirestoreDB.getLatestSales(50, new FirestoreDB.Callback() {
             @Override

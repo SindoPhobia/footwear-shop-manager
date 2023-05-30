@@ -62,7 +62,7 @@ public class Shoes {
     }
 
     @Ignore
-    public Shoes(String name, float price, boolean saleEnabled, float salePrice, String code, long date, int gender) {
+    public Shoes(String name, float price, boolean saleEnabled, float salePrice, String code, long date, int gender, String sizes) {
         this.name = name;
         this.price = price;
         this.saleEnabled = saleEnabled;
@@ -70,6 +70,7 @@ public class Shoes {
         this.code = code;
         this.date = date;
         this.gender = gender;
+        this.sizes = sizes;
     }
 
     public Shoes(String name, float price, boolean saleEnabled, float salePrice, String code, long date, int gender, String sizes, byte[] image) {

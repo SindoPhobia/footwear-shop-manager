@@ -58,6 +58,16 @@ public class Shoe {
     private static final String SIZE_SEPARATOR = ",";
     private static final String AMOUNT_SEPARATOR = "-";
 
+/*
+"42-3,44-4,45-6"
+"41-5,42-5,45-2"
+"39-2,44-6"
+"42-6,43-10"
+"38-6,39-5,40-4,41-3,42-3,44-10"
+"42-3,44-4,45-6,41-8"
+ */
+
+
     public HashMap<String, Integer> getSizesFormatted(){
         HashMap<String, Integer> data = new HashMap<>();
         String[] sizes = this.sizes.split(SIZE_SEPARATOR);

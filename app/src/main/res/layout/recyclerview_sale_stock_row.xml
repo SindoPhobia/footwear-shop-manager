@@ -47,12 +47,12 @@
 
     <TextView
         android:id="@+id/recyclerview_sale_list_item_text_price"
-        android:layout_width="30dp"
+        android:layout_width="40dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="4dp"
         android:fontFamily="@font/poppins"
         android:includeFontPadding="false"
-        android:text="120"
+        android:text="202.22"
         android:textAlignment="textEnd"
         android:textColor="@color/neutral_700"
         android:textSize="12sp"
